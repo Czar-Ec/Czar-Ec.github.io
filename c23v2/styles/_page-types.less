@@ -1,0 +1,36 @@
+/* Page Types */
+
+.wsite-header-section {
+  background: url(images/default-bg.jpg) no-repeat center center;
+  background-size: cover;
+}
+
+.header-page {
+  .wsite-header-section {
+    height: 550px;
+  }
+}
+
+body:not(.wsite-editor) {
+  .nav-wrap {
+    opacity: 0;
+    .transition(~'opacity 500ms ease-in 300ms');
+  }
+
+  &.fade-in {
+    .nav-wrap {
+      opacity: 1;
+    }
+  }
+}
+
+.splash-page {
+  .wsite-header-section {
+    height: 100vh;
+  }
+
+  .footer-wrap,
+  .main-wrap {
+    display: none;
+  }
+}

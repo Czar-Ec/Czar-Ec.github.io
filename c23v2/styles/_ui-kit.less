@@ -1,0 +1,334 @@
+/* UI Kit */
+
+::-webkit-input-placeholder,
+:-moz-placeholder,
+::-moz-placeholder,
+:-ms-input-placeholder {
+  color: fade(@fill, 40%);
+}
+
+.wsite-form-input,
+.wsite-search-element-input,
+.form-select,
+.wsite-form-field select,
+.wsite-com-product-option-groups select,
+.form-radio-container,
+input[type='radio'],
+input[type='checkbox'] {
+  color: @fill;
+  font-family: @font1;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1;
+  border-radius: 0;
+  .transition(all 300ms ease-in);
+}
+
+.wsite-form-input,
+.wsite-search-element-input,
+.form-select,
+.wsite-form-field select,
+.wsite-com-product-option-groups select,
+#commentPostDiv .field input[type=text],
+#commentPostDiv .field textarea {
+  height: auto;
+  max-width: 370px;
+  padding: 10px 20px !important;
+  margin-bottom: 10px;
+  background-image: none;
+  background-color: @input;
+  border: none;
+
+  &:hover,
+  &:focus {
+    background-color: mix(@fill, @input, 5%);
+  }
+}
+
+.form-select,
+.wsite-form-field select,
+.wsite-com-product-option-groups select {
+  text-indent: 0.01px;
+  text-overflow: '';
+  height: 40px;
+  background-image: url(images/select-dropdown.svg);
+  background-position: 97% center;
+  background-repeat: no-repeat ;
+}
+
+input[type='radio'],
+input[type='checkbox'] {
+  width: 20px;
+  height: 20px;
+  border: 1px solid fade(@fill, 30%) !important;
+
+  &:hover,
+  &:checked {
+    border-color: @fill !important;
+  }
+}
+
+input[type='radio'] {
+  border-radius: 100%;
+
+  &:after {
+    display: block;
+    border-radius: 100%;
+    box-sizing: border-box;
+    content: '';
+  }
+
+  &:checked:after {
+    background: @fill;
+    border: 4px solid @bg;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+input[type='checkbox'] {
+  &:after {
+    position: relative;
+    top: 2px;
+    left: 6px;
+    width: 4px;
+    height: 8px;
+    border: solid transparent;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  &:checked {
+    background: @bg;
+  }
+
+  &:checked:after {
+    display: block;
+    border-color: @fill;
+    content: ' ';
+  }
+}
+
+.wsite-search-element {
+  margin-bottom: 10px;
+
+  .wsite-search-element-input {
+    height: 40px;
+    margin-bottom: 0;
+  }
+}
+
+.wsite-form-label {
+  display: inline-block;
+  padding: 0;
+  color: @fill;
+  font-family: @font1;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.wsite-form-sublabel {
+  display: none;
+}
+
+.wsite-form-radio-container {
+  margin-bottom: 15px;
+}
+
+.formlist,
+.wsite-editor .formlist {
+  min-height: inherit;
+}
+
+.wsite-form-container .form-input-error {
+  border: 1px solid red !important;
+}
+
+.form-field-error .wsite-form-radio-container {
+  border: none;
+}
+
+/* Buttons */
+
+.wsite-button {
+  display: inline-block;
+  height: auto;
+  padding: 0;
+  background-image: none !important;
+  background-color: transparent;
+  color: @bg !important;
+  background-color: @primary !important;
+  .transition(all 300ms ease-in-out);
+
+  &:hover {
+    background-color: mix(@primary, @bg, 70%) !important;
+  }
+
+  .wsite-button-inner {
+    display: inline-block;
+    height: auto;
+    padding: 15px 32px;
+    background: transparent;
+    background-image: none !important;
+    color: inherit;
+    letter-spacing: 0.15em;
+    font-family: @font1;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+  }
+}
+
+.wsite-button-large {
+  color: @fill !important;
+  background-color: @bg !important;
+  .box-shadow(0px 0px 0px 1px fade(@fill, 20));
+
+  &:hover {
+   background-color: mix(@bg, @fill, 70) !important;
+  .box-shadow(0px 0px 0px 1px fade(@fill, 30));
+  }
+}
+
+.wsite-button-highlight {
+  color: @fill !important;
+  background-color: mix(@primary, @bg, 60%) !important;
+
+  &:hover {
+    background-color: @primary !important;
+  }
+
+  &.wsite-button-large {
+    color: @bg !important;
+    background-color: @fill !important;
+
+    &:hover {
+      background-color: mix(@fill, @bg, 70%) !important;
+    }
+  }
+}
+
+/* Social icons */
+
+.wsite-social-item {
+  display: inline-block !important;
+  font-size: 20px;
+  margin: 6px;
+  color: @primary;
+  .transition(all 300ms ease);
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+/* Gallery + Images */
+
+.imageGallery .galleryImageHolder {
+  .fullImageGalleryCaption,
+  .partialImageGalleryCaption {
+    .galleryCaptionHolderInnerBg {
+      opacity: 1;
+      background: fade(mix(@primary, @fill, 70), 85);
+      .transition(all 260ms ease);
+    }
+  }
+
+  &:hover .galleryCaptionHolderInnerBg {
+    background: fade(mix(@primary, @fill, 85), 85);
+  }
+
+  .galleryCaptionInnerText {
+    color: @bg;
+    margin: 20px auto;
+    text-shadow: none;
+    font-family: @font1;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    line-height: 1.15;
+  }
+}
+
+.wsite-image img {
+  margin-bottom: 10px;
+}
+
+/* Fancybox */
+
+.fancybox-overlay {
+  background: fade(@bg, 95%);
+}
+
+.fancybox-skin {
+  background: transparent !important;
+  .box-shadow(~'none !important');
+}
+
+.fancybox-title {
+  color: @fill;
+  font-family: @font1;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: normal;
+}
+
+.fancybox-close,
+.fancybox-next span,
+.fancybox-prev span {
+  background: none !important;
+  width: auto;
+  height: auto;
+}
+
+.fancybox-close:before,
+.fancybox-next span:before,
+.fancybox-prev span:before {
+  color: @bg !important;
+  font-family: @font1;
+  font-size: 45px;
+  font-weight: 400;
+  line-height: 0.75em;
+  .transition(all 300ms ease);
+}
+
+.fancybox-close:hover:before,
+.fancybox-next:hover span:before,
+.fancybox-prev:hover span:before {
+  color: fade(@bg, 80%) !important;
+}
+
+.fancybox-prev span:before {
+  position: relative;
+  left: -10px;
+  content: '\3008';
+}
+
+.fancybox-next span:before {
+  position: relative;
+  right: -10px;
+  content: '\3009';
+}
+
+.fancybox-close {
+  top: 20px;
+  right: 20px;
+}
+.fancybox-close:before {
+  content: '\00D7';
+}

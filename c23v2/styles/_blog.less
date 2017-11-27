@@ -1,0 +1,172 @@
+#blogTable {
+  .blog-post {
+    .blog-header {
+      h2.blog-title {
+        font-family: @font2;
+        font-size: 28px;
+        font-weight: 400;
+        letter-spacing: 0.015em;
+        margin-bottom: 10px !important;
+      }
+    }
+
+    .blog-date, .blog-comments {
+      float: left;
+      color: fade(@fill, 60);
+      font-size: 16px;
+    }
+
+    .blog-date {
+      margin-right: 30px !important;
+    }
+
+    .blog-separator{
+      margin: 0 auto 20px;
+      border: none;
+    }
+
+    .blog-read-more {
+      text-align: left;
+    }
+
+    .blog-content {
+      margin-bottom: 40px;
+
+      hr {
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .blog-sidebar {
+    width: 30%;
+
+    .column-blog {
+      width: 70%;
+      max-width: 240px;
+    }
+
+    h2 {
+      font-family: @font1;
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+  }
+
+  .blog-comments-bottom {
+    display: none;
+  }
+
+  #commentArea {
+    #commentAreaTitle,
+    #commentReplyTitle,
+    .blogCommentText p,
+    .blog-sidebar h2 {
+      padding: 0;
+      font-family: inherit;
+    }
+
+    #commentAreaTitle,
+    #commentReplyTitle,
+    .blog-sidebar h2 {
+      font-family: @font1;
+      font-size: 14px;
+      letter-spacing: 0.015em;
+    }
+  }
+
+  .blogCommentWrap {
+    padding-top: 20px;
+    border-top: 1px solid fade(@fill, 5%);
+    background: none;
+
+    .blogCommentAuthor,
+    .blogCommentHeading,
+    .blogCommentHeadingInner {
+      background: none !important;
+    }
+
+    .blogCommentAuthor {
+      margin-bottom: 10px;
+
+      .name,
+      .email,
+      .link {
+        color: @fill !important;
+        float: none !important;
+        line-height: 1;
+      }
+
+      .link {
+        display: inline-block;
+        font-size: 0 !important;
+      }
+    }
+
+    .blogCommentHeading {
+      padding: 0;
+      margin-bottom: 20px;
+
+      .blogCommentHeadingInner {
+        height: auto;
+      }
+
+      .blogCommentAuthor,
+      .blogCommentDate {
+        float: none !important;
+        text-align: left;
+        height: auto;
+        font-family: @font1;
+        font-weight: 300;
+        line-height: 1;
+        letter-spacing: 0.03em;
+        padding: 0;
+      }
+
+      .blogCommentDate {
+        color: #333;
+      }
+    }
+
+    .blogCommentText {
+      padding: 0;
+
+      p {
+        color: @fill;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.blogCommentReplyWrapper iframe {
+  height: 560px !important;
+}
+
+.blogCommentSubreplyWrapper div.iframeWrapper {
+  background: none;
+  border: none;
+}
+
+.blog-button {
+  height: auto;
+  padding: 10px 20px;
+  background-image: none;
+  background-color: fade(@fill, 60%);
+  color: @bg;
+  font-family: @font1;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  .transition(all 300ms ease);
+
+  &:hover {
+    background-color: fade(@fill, 20%);
+  }
+
+  span {
+    background: none;
+  }
+}
