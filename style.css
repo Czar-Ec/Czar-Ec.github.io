@@ -7,12 +7,43 @@
 header
 {
 	background-image: url(img/czareclogo.png);
-	height: 216vh;
-	background-size: cover;
+	height: 216px;
+	background-size: auto;
+    background-repeat: no-repeat;
 	background-position: center;
+    background-color: black;
 }
 
 .main-nav
 {
+    width: 200px;
+    float: left;
 	list-style: none;
+    margin-top: 30px;
+}
+
+.main-nav li a
+{
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    font-family: sans-serif;
+}
+
+.main-nav li.active a
+{
+    background-color: darkred;
+    text-decoration-color: white;
+}
+
+.main-nav li a:hover
+{
+    background-color: slategrey;
+}
+
+body
+{
+    background-color: black;
+    font-family: sans-serif;
 }
