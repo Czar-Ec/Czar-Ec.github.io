@@ -128,6 +128,7 @@ img
 #sidebar ul li
 {
     margin 0 0 7px 0;
+    padding-bottom: 5px;
 }
     
 #footer
