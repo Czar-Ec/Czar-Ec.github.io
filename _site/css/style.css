@@ -18,22 +18,26 @@ a
 img
 {
     border: none;
-    
 }
     
 #header
 {
-    width: auto;
-    min-height: 150px;
+    width: 100%;
     margin: 0 auto;
+    min-height: 150px;
 }
-    
+
 #nav
 {
-    width: 1160px;
+    top: 0;
+    width: 100%;
+    min-height: 150px;
     margin: 0 auto;
     font-weight: bold;
     text-align: center;
+    position: fixed;
+    background: black;
+    z-index: 10;
 }
     
 #nav ul 
@@ -71,8 +75,8 @@ img
     overflow: auto;
     width: 1160px;
     height: auto;
-    margin: 0 auto;
-    padding: 10px;
+    margin: 175px auto;
+    padding: -175px auto;
     background: #fff;
 }
     
@@ -82,40 +86,31 @@ img
     min-height: 700;
     height: auto;
     margin: 0 auto;
-    background: #fff; 
-}
-
-#contentleft
-{
-    width: 1130px;
-    /*780 is sidebar is implemented*/
-    float: left;
-    margin-right: 20px;
-    padding: 20px;
+    background: #fff;
     text-align: center;
 }
     
-#contentleft h1
+#content h1
 {
     font-size: 30px;
     margin-top: 10px;
 }
 
-#contentleft h2
+#content h2
 {
     font-size: 24px;
     margin-top: 20px;
     margin-bottom: 0;
 }
 
-#contentleft h3
+#content h3
 {
     font-size: 18px;
     margin-top: 5px;
     margin-bottom: 0;
 }
 
-#contentleft p
+#content p
 {
     font-size: 14px;
     margin-top: 0;
@@ -160,9 +155,13 @@ img
     
 #footer
 {
-    width: 960px;
+    width: 100%;
     margin: 0 auto;
     text-align: center;
+    position:fixed;
+    bottom: 0;
+    min-height: 50px;
+    background: black;
 }
     
 #footer ul
