@@ -19,28 +19,33 @@ img
 {
     border: none;
 }
+
+.anchor
+{
+    display: block;
+    content: " ";
+    height: 0px;
+    margin-top: 200px;
+    visibility: hidden;
+}
     
 #header
 {
     width: 100%;
     margin: 0 auto;
-    min-height: 150px;
 }
 
 #nav
 {
-    top: 0;
     width: 100%;
-    min-height: 150px;
     margin: 0 auto;
     font-weight: bold;
     text-align: center;
-    position: fixed;
     background: black;
-    z-index: 10;
+    z-index: 99;
 }
     
-#nav ul 
+#nav ul
 {
     margin: 0;
     padding: 0;
@@ -73,16 +78,15 @@ img
 #container
 {
     overflow: auto;
-    width: 1160px;
+    width: 80%;
     height: auto;
-    margin: 175px auto;
-    padding: -175px auto;
+    margin: 0 auto;
     background: #fff;
 }
     
 #content
 {
-    width: 1160px;
+    width: 100%;
     min-height: 700;
     height: auto;
     margin: 0 auto;
@@ -94,6 +98,8 @@ img
 {
     font-size: 30px;
     margin-top: 10px;
+    background-color: #2d0000;
+    color: #fff;
 }
 
 #content h2
