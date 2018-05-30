@@ -91,15 +91,16 @@ img
     height: auto;
     margin: 0 auto;
     background: #fff;
-    text-align: center;
+    text-align: left;
 }
     
 #content h1
 {
     font-size: 30px;
-    margin-top: 10px;
+    margin-top: 0;
     background-color: #2d0000;
     color: #fff;
+	padding: 20px 20px 20px 20px;
 }
 
 #content h2
@@ -121,6 +122,7 @@ img
     font-size: 14px;
     margin-top: 0;
     margin-bottom: 30px;
+    padding: 20px 20px 20px 20px;
 }
 /*
 #sidebar
