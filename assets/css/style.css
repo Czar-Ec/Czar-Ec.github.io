@@ -90,6 +90,14 @@ h2
     color: darkred;
 }
 
+h3
+{
+    font-size: 150%;
+    text-align: center;
+    font-family: 'Share Tech';
+    color: darkred;
+}
+
 p
 {
     font-size: 160%;
