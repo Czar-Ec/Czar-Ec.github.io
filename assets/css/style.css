@@ -76,9 +76,9 @@ ul li a
 
 ul li a:hover
 {
-    color: red;
+    color: white;
     border: solid red 4px;
-    background: white;
+    background: darkred;
 }
 
 h2
