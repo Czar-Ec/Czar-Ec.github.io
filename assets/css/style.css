@@ -45,7 +45,7 @@ html, body
 {
     font-family: 'Share Tech', sans-serif;
     color: darkred;
-    text-shadow: 0px 0px 200px #fff;
+    text-shadow: 0 0 200px #fff;
     font-size: 500%;
 }
 
@@ -66,18 +66,20 @@ ul li a
 {
     border-radius: 10px;
     font-family: 'Share Tech';
-    color: darkred;
+    color: white;
     font-size: 135%;
-    padding: 10px 20px;
+    padding: 10px 50px;
     border: solid darkred 4px;
     text-transform: uppercase;
     text-decoration: none;
+    background: red;
 }
 
 ul li a:hover
 {
     color: red;
     border: solid red 4px;
+    background: white;
 }
 
 h2
@@ -96,6 +98,7 @@ h3
     text-align: center;
     font-family: 'Share Tech';
     color: darkred;
+    text-shadow: 0 0 50px #fff;
 }
 
 p
