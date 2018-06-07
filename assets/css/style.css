@@ -187,7 +187,7 @@ footer ul li
 footer ul li a
 {
     font-family: 'Share Tech';
-    font-size: 80%;
+    font-size: 70%;
     text-decoration: underline;
     padding: 10px 20px;
     border: none;
@@ -217,6 +217,11 @@ footer ul li a:hover
     {
         font-size: 100%;
         line-height: 100%;
+    }
+    
+    ul li a
+    {
+        padding: 10px 10px;
     }
     
     nav
