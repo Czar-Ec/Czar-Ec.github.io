@@ -6,6 +6,4 @@
 #(please don't actually hack me x)
 #
 User-agent: *
-Disallow: /docs
-Disallow: /css
-Disallow: /img
+Disallow: /
