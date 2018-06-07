@@ -66,13 +66,12 @@ ul li a
 {
     border-radius: 10px;
     font-family: 'Share Tech';
-    color: white;
+    color: red;
     font-size: 135%;
     padding: 10px 50px;
     border: solid darkred 4px;
     text-transform: uppercase;
     text-decoration: none;
-    background: red;
 }
 
 ul li a:hover
