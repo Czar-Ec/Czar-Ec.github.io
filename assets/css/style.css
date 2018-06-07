@@ -218,4 +218,40 @@ footer ul li a:hover
         font-size: 100%;
         line-height: 100%;
     }
+    
+    nav
+    {
+        text-align: center;
+        width:100%;
+    }
+    
+    nav ul
+    {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    nav ul li a
+    {
+        display: block;
+    }
+    
+    footer
+    {
+        text-align: center;
+        width: 100%;
+    }
+    
+    footer ul
+    {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    footer ul li a
+    {
+        display: block;
+    }
 }
