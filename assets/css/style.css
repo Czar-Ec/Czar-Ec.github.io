@@ -83,6 +83,11 @@ ul li a:hover
     background: darkred;
 }
 
+a
+{
+    text-decoration: none;
+}
+
 .cvbutton
 {
     display: inline;
@@ -160,6 +165,39 @@ nav ul
 {
     padding-bottom: 50px;
     display: block;
+}
+
+footer
+{
+    width: 100%;
+    text-align: center;
+}
+
+footer ul
+{
+    list-style-type: none;
+}
+
+footer ul li
+{
+    display: inline;
+    margin: 15px;
+}
+
+footer ul li a
+{
+    font-family: 'Share Tech';
+    font-size: 80%;
+    text-decoration: underline;
+    padding: 10px 20px;
+    border: none;
+}
+
+footer ul li a:hover
+{
+    color: white;
+    background: darkred;
+    border: none;
 }
 
 /*screen size queries to alter the look of header image for different devices*/
