@@ -111,6 +111,10 @@ a
 }
 
 /*table formatting*/
+table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+    content: " \25B4\25BE" 
+}
+
 table, th, td
 {
     border: 1px solid rgba(150, 0, 0, 0.5);
