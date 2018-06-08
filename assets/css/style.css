@@ -88,6 +88,7 @@ a
     text-decoration: none;
 }
 
+/*button linking to the CV*/
 .cvbutton
 {
     display: inline;
@@ -109,9 +110,41 @@ a
     background: darkred;
 }
 
+/*table formatting*/
+table, th, td
+{
+    border: 1px solid rgba(150, 0, 0, 0.5);
+}
+
+table
+{
+    width: 70%;
+    margin: 20px 15% 20px; 15%;
+}
+
+th, td
+{
+    text-align: center;
+}
+
+th
+{
+    color: darkred;
+    font-size: 120%;
+    font-family: 'Share Tech';
+}
+
+td
+{
+    color: black;
+    font-size: 100%;
+    font-family: 'Share Tech';
+}
+
+/*text formatting*/
 h2
 {
-    font-size: 250%;
+    font-size: 300%;
     line-height: 100%;
     text-align: justify;
     margin: 3%;
@@ -136,10 +169,43 @@ h4
     color: darkred;
 }
 
+h5
+{
+    font-size: 200%;
+    text-align: center;
+    font-family: 'Share Tech';
+    color: darkred;
+    margin: 0;
+    padding: 0;
+}
+
+h6
+{
+    font-size: 150%;
+    text-align: center;
+    font-family: 'Share Tech';
+    color: darkred;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 0;
+}
+
+/*i'll streamline these headeings someday*/
+.h7
+{
+    font-size: 120%;
+    text-align: center;
+    font-family: 'Share Tech';
+    color: darkred;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 0;
+}
+
 p
 {
-    font-size: 160%;
-    line-height: 100%;
+    font-size: 120%;
+    line-height: 110%;
     text-align: justify;
     margin: 3%;
     font-family: 'Share Tech';
@@ -161,12 +227,14 @@ nav ul
     text-align: center;
 }
 
+/*span class for spaces between heading2*/
 .divider
 {
     padding-bottom: 50px;
     display: block;
 }
 
+/*footer navigation*/
 footer
 {
     width: 100%;
@@ -240,6 +308,12 @@ footer ul li a:hover
     nav ul li a
     {
         display: block;
+    }
+    
+    table
+    {
+        width: 100%;
+        margin: 20px 0 20px 0;
     }
     
     footer
