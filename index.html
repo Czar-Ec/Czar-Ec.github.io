@@ -7,6 +7,7 @@
     <meta name="viewport" content="width-device-width, initial-scale=1, user-scalable=no">
     
     <script src="assets/js/sorttable.js"></script><!--table sorting-->
+    <!--javascript source: https://www.kryogenix.org/code/browser/sorttable/-->
 </head>
 
 <body>
@@ -25,7 +26,7 @@
                     </li>
                 </ul>
                 
-                <h3><a href="/assets/docs/CzarEchavezCV.pdf" target="_blank" class="cvbutton">Download CV</a></h3>
+                <a href="/assets/docs/CzarEchavezCV.pdf" target="_blank" class="cvbutton">Download CV</a>
             </div><!--content-->
         </div><!--inner-->
         
@@ -76,26 +77,46 @@
         <tr>
             <th>Module</th>
             <th>Percentage</th>
-            <th>Grade</th>
+            <th>Grade (EXPECTED)</th>
         </tr>
         <tr>
-            <td>Test</td>
-            <td>50%</td>
-            <td>D</td>
+            <td>Advanced Computing</td>
+            <td>60%+</td>
+            <td>B</td>
         </tr>
         <tr>
-            <td>Test</td>
-            <td>40%</td>
-            <td>E</td>
+            <td>Computer Networking</td>
+            <td>60%+</td>
+            <td>B</td>
         </tr>
         <tr>
-            <td>Test</td>
-            <td>80%</td>
+            <td>Data Mining</td>
+            <td>60%+</td>
+            <td>B</td>
+        </tr>
+        <tr>
+            <td>Information Security</td>
+            <td>70%+</td>
             <td>A</td>
         </tr>
         <tr>
-            <td>Test</td>
-            <td>90%</td>
+            <td>Social, Legal and Ethical Aspects of Engineering</td>
+            <td>70%+</td>
+            <td>A</td>
+        </tr>
+        <tr>
+            <td>Software Quality and Testing</td>
+            <td>60%+</td>
+            <td>B</td>
+        </tr>
+        <tr>
+            <td>Virtual Reality</td>
+            <td>70%+</td>
+            <td>A</td>
+        </tr>
+        <tr>
+            <td>Individual Project</td>
+            <td>75% (UNMODERATED)</td>
             <td>A</td>
         </tr>
     </table>
@@ -108,22 +129,93 @@
             <th>Grade</th>
         </tr>
         <tr>
-            <td>Test</td>
+            <td>Essential Algorithms</td>
+            <td>88%</td>
+            <td>A</td>
+        </tr>
+        <tr>
+            <td>Java</td>
+            <td>76%</td>
+            <td>A</td>
+        </tr>
+        <tr>
+            <td>Systems Design and Project Management</td>
+            <td>75%</td>
+            <td>A</td>
+        </tr>
+        <tr>
+            <td>Neural Networks</td>
+            <td>74%</td>
+            <td>A</td>
+        </tr>
+        <tr>
+            <td>Computer Architecture</td>
+            <td>59%</td>
+            <td>C</td>
+        </tr>
+        <tr>
+            <td>Compilers</td>
+            <td>59%</td>
+            <td>C</td>
+        </tr>
+        <tr>
+            <td>Advanced Databses</td>
+            <td>57%</td>
+            <td>C</td>
+        </tr>
+        
+        <tr>
+            <td>Databases</td>
+            <td>55%</td>
+            <td>C</td>
+        </tr>
+        <tr>
+            <td>Operating Systems</td>
+            <td>51%</td>
+            <td>C</td>
+        </tr>
+        <tr>
+            <td>Robotic Systems</td>
             <td>50%</td>
-            <td>D</td>
+            <td>C</td>
         </tr>
     </table>
     
     <p class="h7">1<sup>st</sup> Year</p>
-    <table>
+    <table class="sortable">
         <tr>
             <th>Module</th>
             <th>Percentage</th>
             <th>Grade</th>
         </tr>
         <tr>
-            <td>Test</td>
+            <td>Programming</td>
+            <td>78%</td>
+            <td>A</td>
+        </tr>
+        <tr>
+            <td>Software Engineering</td>
+            <td>70%</td>
+            <td>A</td>
+        </tr>
+        <tr>
+            <td>Fundamentals and Applications of Computing</td>
+            <td>57%</td>
+            <td>C</td>
+        </tr>
+        <tr>
+            <td>IWLP Russian Level 1</td>
+            <td>57%</td>
+            <td>C</td>
+        </tr>
+        <tr>
+            <td>Codes and Code Breaking</td>
             <td>50%</td>
+            <td>C</td>
+        </tr>
+        <tr>
+            <td>Mathematics</td>
+            <td>47%</td>
             <td>D</td>
         </tr>
     </table>
@@ -139,10 +231,31 @@
             <th>Grade</th>
         </tr>
         <tr>
-            <td>Test</td>
-            <td>50%</td>
+            <td>IT</td>
+            <td>A2</td>
+            <td>A</td>
+        </tr>
+        <tr>
+            <td>Physics</td>
+            <td>A2</td>
+            <td>C</td>
+        </tr>
+        <tr>
+            <td>Chemistry</td>
+            <td>A2</td>
+            <td>C</td>
+        </tr>
+        <tr>
+            <td>Computing</td>
+            <td>AS</td>
+            <td>C</td>
+        </tr>
+        <tr>
+            <td>Mathematics</td>
+            <td>AS</td>
             <td>D</td>
         </tr>
+        
     </table>
     
     <h5>GCSE</h5>
@@ -155,8 +268,62 @@
             <th>Grade</th>
         </tr>
         <tr>
-            <td>Test</td>
-            <td>D</td>
+            <td>ICT</td>
+            <td sorttable_customkey="A">Distinction</td>
+        </tr>
+        <tr>
+            <td>Mathematics</td>
+            <td>A</td>
+        </tr>
+        <tr>
+            <td>Physics</td>
+            <td>A</td>
+        </tr>
+        <tr>
+            <td>Chemistry</td>
+            <td>A</td>
+        </tr>
+        <tr>
+            <td>Biology</td>
+            <td>B</td>
+        </tr>
+        <tr>
+            <td>Statistics</td>
+            <td>B</td>
+        </tr>
+        <tr>
+            <td>Geography</td>
+            <td>B</td>
+        </tr>
+        <tr>
+            <td>Religious Studies</td>
+            <td>A</td>
+        </tr>
+        <tr>
+            <td>Media Studies</td>
+            <td>B</td>
+        </tr>
+        <tr>
+            <td>English Literature</td>
+            <td>C</td>
+        </tr>
+        <tr>
+            <td>Enligh Studies</td>
+            <td>C</td>
+        </tr>
+    </table>
+    
+    <h6>Central Sussex College, Crawley (Sept 2010 - Aug 2012)</h6>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+    
+    <table>
+        <tr>
+            <th>Subject</th>
+            <th>Grade</th>
+        </tr>
+        <tr>
+            <td>Engineering</td>
+            <td>Merit</td>
         </tr>
     </table>
     
