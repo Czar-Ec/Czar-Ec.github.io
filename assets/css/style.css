@@ -128,9 +128,16 @@ table
     margin: 20px 15% 20px; 15%;
 }
 
+table.clang, td.clang
+{
+    border: none;
+}
+
 th, td
 {
     text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 th
@@ -145,6 +152,14 @@ td
     color: black;
     font-size: 100%;
     font-family: 'Share Tech';
+}
+
+td.clang
+{
+    color: black;
+    font-size: 200%;
+    font-family: 'Share Tech';
+    padding: 20px 0 20px 0;
 }
 
 /*text formatting*/
@@ -277,7 +292,7 @@ footer ul li a:hover
 }
 
 /*screen size queries to alter the look of header image for different devices*/
-@media screen and (max-width: 768px)
+@media screen and (max-width: 1000px)
 {
     .content h1
     {
