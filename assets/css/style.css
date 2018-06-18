@@ -257,6 +257,17 @@ nav ul
     display: block;
 }
 
+/*images*/
+.imgitem
+{
+    display: block;
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    height: auto;
+    border: 1px solid darkred;
+}
+
 /*footer navigation*/
 footer
 {
