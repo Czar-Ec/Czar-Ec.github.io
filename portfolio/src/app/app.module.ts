@@ -6,16 +6,27 @@ import { AppComponent } from './app.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule, MatButtonModule, MatIconModule, MatTabsModule } from '@angular/material';
+import { PortfolioHeaderComponent } from './portfolio-header/portfolio-header.component';
+import { PortfolioContentComponent } from './portfolio-content/portfolio-content.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PortfolioHeaderComponent,
+    PortfolioContentComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MatButtonModule,
+    MaterialModule,
+    MatIconModule,
+    MatMenuModule,
+    MatTabsModule,
+    MatToolbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
