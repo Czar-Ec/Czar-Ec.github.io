@@ -10,12 +10,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule, MatButtonModule, MatIconModule, MatTabsModule } from '@angular/material';
 import { PortfolioHeaderComponent } from './portfolio-header/portfolio-header.component';
 import { PortfolioContentComponent } from './portfolio-content/portfolio-content.component';
+import { ContentIntroComponent } from './portfolio-content/content-intro/content-intro.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PortfolioHeaderComponent,
     PortfolioContentComponent,
+    ContentIntroComponent,
   ],
   imports: [
     BrowserModule,

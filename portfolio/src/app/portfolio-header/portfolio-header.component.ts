@@ -12,4 +12,8 @@ export class PortfolioHeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  public openGithub() {
+    window.open('https://github.com/Czar-Ec/', '_blank');
+  }
 }

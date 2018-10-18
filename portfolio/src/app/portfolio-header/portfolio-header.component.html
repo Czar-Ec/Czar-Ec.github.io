@@ -1,7 +1,24 @@
 <div class="header">
-  <mat-toolbar color="primary">
+  <mat-toolbar color="primary" class="toolbar">
     <mat-toolbar-row>
-      test
+      <span>
+        <div class="toolbar-logo">
+          <button mat-flat-button>
+            test
+          </button>
+        </div>
+      </span>
+      <span class="toolbar-spacer"></span>
+      <div class="toolbar-external-links">
+          <button mat-flat-button>test1</button>
+          <button mat-flat-button>test1</button>
+          <button mat-flat-button>test1</button>
+          <button mat-flat-button>test1</button>
+          <button mat-flat-button (click)="openGithub()">
+              <span class="toolbar-icon"><i class="fab fa-github" style="font-size:20px;"></i></span>
+              Github
+          </button>
+      </div>
     </mat-toolbar-row>
   </mat-toolbar>
 </div>

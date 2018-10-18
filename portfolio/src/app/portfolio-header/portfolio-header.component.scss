@@ -6,3 +6,28 @@
     z-index: 999;
     height: 50px;
 }
+
+.toolbar-icon {
+    padding: 10px;
+}
+
+.button {
+    padding: 10px 0 10px;
+    margin: 10px 0 10px;
+}
+
+.toolbar {
+    display: flex;
+}
+
+.toolbar-logo {
+    float: left;
+}
+
+.toolbar-external-links {
+    float: right;
+}
+
+.toolbar-spacer {
+    flex: 1 1 auto;
+  }
