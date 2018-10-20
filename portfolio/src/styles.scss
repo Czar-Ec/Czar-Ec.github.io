@@ -1,3 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@import "assets/themes/czarec-theme.css";
 
-@import "assets/themes/czarec-theme.css"
+@font-face {
+    font-family: Plateia;
+    src: url(assets/fonts/plateia.ttf) format('truetype')
+}
+
+.cover-page {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
