@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material';
 
 @Component({
   selector: 'app-portfolio-header',
@@ -12,6 +14,13 @@ export class PortfolioHeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  public openCV() {
+    window.open('assets/docs/CzarEchavezCV.pdf', '_blank');
+  }
+
+  public openLinkedIn() {
+    window.open('https://www.linkedin.com/in/czarec', '_blank');
+  }
 
   public openGithub() {
     window.open('https://github.com/Czar-Ec/', '_blank');

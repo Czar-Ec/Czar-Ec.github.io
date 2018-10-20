@@ -11,6 +11,8 @@ import { MatMenuModule, MatButtonModule, MatIconModule, MatTabsModule } from '@a
 import { PortfolioHeaderComponent } from './portfolio-header/portfolio-header.component';
 import { PortfolioContentComponent } from './portfolio-content/portfolio-content.component';
 import { ContentIntroComponent } from './portfolio-content/content-intro/content-intro.component';
+import { HttpClientModule } from '@angular/common/http';
+import { LocationStrategy, HashLocationStrategy, APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -23,14 +25,19 @@ import { ContentIntroComponent } from './portfolio-content/content-intro/content
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatButtonModule,
     MaterialModule,
     MatIconModule,
     MatMenuModule,
     MatTabsModule,
     MatToolbarModule,
+    MatIconModule
   ],
-  providers: [],
+  providers: [
+    { provide: APP_BASE_HREF, useValue: '/'},
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
