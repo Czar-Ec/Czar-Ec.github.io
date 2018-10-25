@@ -9,17 +9,23 @@ import { MaterialModule } from './material';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule, MatButtonModule, MatIconModule, MatTabsModule } from '@angular/material';
 import { PortfolioHeaderComponent } from './portfolio-header/portfolio-header.component';
-import { PortfolioContentComponent } from './portfolio-content/portfolio-content.component';
 import { ContentIntroComponent } from './portfolio-content/content-intro/content-intro.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LocationStrategy, HashLocationStrategy, APP_BASE_HREF } from '@angular/common';
+import { ContentWorkExperienceComponent } from './portfolio-content/content-work-experience/content-work-experience.component';
+import { ContentEducationComponent } from './portfolio-content/content-education/content-education.component';
+import { ContentExtraSkillsComponent } from './portfolio-content/content-extra-skills/content-extra-skills.component';
+import { ContentContactComponent } from './portfolio-content/content-contact/content-contact.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PortfolioHeaderComponent,
-    PortfolioContentComponent,
     ContentIntroComponent,
+    ContentWorkExperienceComponent,
+    ContentEducationComponent,
+    ContentExtraSkillsComponent,
+    ContentContactComponent,
   ],
   imports: [
     BrowserModule,

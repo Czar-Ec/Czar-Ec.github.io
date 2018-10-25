@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PortfolioContentComponent } from './portfolio-content.component';
+import { ContentExtraSkillsComponent } from './content-extra-skills.component';
 
-describe('PortfolioContentComponent', () => {
-  let component: PortfolioContentComponent;
-  let fixture: ComponentFixture<PortfolioContentComponent>;
+describe('ContentExtraSkillsComponent', () => {
+  let component: ContentExtraSkillsComponent;
+  let fixture: ComponentFixture<ContentExtraSkillsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PortfolioContentComponent ]
+      declarations: [ ContentExtraSkillsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PortfolioContentComponent);
+    fixture = TestBed.createComponent(ContentExtraSkillsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
