@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Share+Tech');
+
 h1 {
   font-size: 225%;
   color: #a50000;
@@ -19,7 +21,7 @@ h3 {
 p {
   font-size: 100%;
   color: #a50000;
-  font-family: Plateia;
+  font-family: 'Share Tech';
 }
 
 .mat-elevation-z0 {

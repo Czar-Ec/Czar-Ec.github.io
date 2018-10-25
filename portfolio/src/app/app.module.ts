@@ -16,6 +16,7 @@ import { ContentWorkExperienceComponent } from './portfolio-content/content-work
 import { ContentEducationComponent } from './portfolio-content/content-education/content-education.component';
 import { ContentExtraSkillsComponent } from './portfolio-content/content-extra-skills/content-extra-skills.component';
 import { ContentContactComponent } from './portfolio-content/content-contact/content-contact.component';
+import { PortfolioFooterComponent } from './portfolio-footer/portfolio-footer.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ContentContactComponent } from './portfolio-content/content-contact/con
     ContentEducationComponent,
     ContentExtraSkillsComponent,
     ContentContactComponent,
+    PortfolioFooterComponent,
   ],
   imports: [
     BrowserModule,

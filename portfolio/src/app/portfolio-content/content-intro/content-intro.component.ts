@@ -11,5 +11,4 @@ export class ContentIntroComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
