@@ -8,15 +8,19 @@ h2 {
   font-size: 175%;
   color: #aaaaaa;
   font-family: Plateia;
+  font-size: 140%;
+  text-align: center;
 }
 
 h3 {
   font-size: 140%;
   color: #aaaaaa;
   font-family: Plateia;
+  font-size: 100%;
+  text-align: center;
 }
 
-p {
+p, tr {
   font-size: 100%;
   color: #aaaaaa;
   font-family: 'Share Tech';
