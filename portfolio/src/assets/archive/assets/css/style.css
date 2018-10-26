@@ -125,7 +125,7 @@ table, th, td
 table
 {
     width: 70%;
-    margin: 20px 15% 20px; 15%;
+    margin: 20px 15% 20px 15%;
 }
 
 table.clang, td.clang

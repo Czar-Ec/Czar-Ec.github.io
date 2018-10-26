@@ -7,14 +7,25 @@
     position: fixed !important;
     z-index: 9999;
     height: 50px;
+    top: 64px;
+    width: 100%;
+}
+
+::ng-deep .mat-tab-labels {
+    background-color: rgb(10, 10, 10);
+}
+
+::ng-deep .mat-tab-label {
+    color: #fff;
 }
 
 .content-container {
     padding-top: 20px;
     margin: 40px 40px 40px 40px;
+    background-color: rgb(10, 10, 10);
 }
 
-.footer{
+.footer {
     width: 100%;
     height: 50px;
 }
