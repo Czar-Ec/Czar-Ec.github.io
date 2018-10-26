@@ -1,7 +1,14 @@
 <div>
     <form class="contact-form">
         <mat-form-field class="form-field">
-            
+            <input matInput placeholder="Email" [formControl]="emailFormControl"
+                [errorStateMatcher]="matcher">
+            <mat-error> *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+              How does one reply without an email to reply to?
+            </mat-error>
         </mat-form-field>
     </form>
     <img src="./assets/img/logo2018.svg" class="introLogo" style="height: 150px;display: block;margin: 0 auto;">
