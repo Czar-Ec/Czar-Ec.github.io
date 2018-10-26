@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+@import "assets/themes/czarec-theme.css";
+
+@import url('https://fonts.googleapis.com/css?family=Share+Tech');
+
+@font-face {
+    font-family: Plateia;
+    src: url(assets/fonts/plateia.ttf) format('woff')
+}
+
+body {
+    background-color: rgb(20, 20, 20);
+}
+
+.cover-page {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
