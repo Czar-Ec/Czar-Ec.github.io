@@ -1,9 +1,0 @@
-#u wot m8?
-#u tryna hack me?
-#
-#git gud scrub
-#
-#(please don't actually hack me x)
-#
-User-agent: *
-Disallow: /
