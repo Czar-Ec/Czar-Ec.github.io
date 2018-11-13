@@ -674,7 +674,7 @@ var PortfolioFooterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\">\r\n  <mat-toolbar style=\"min-height:40px\" color=\"primary\" class=\"toolbar\">\r\n    <mat-toolbar-row>\r\n      <span>\r\n        <div class=\"toolbar-logo\">\r\n          <button mat-flat-button>\r\n            <mat-icon svgIcon=\"crescent\" color=\"accent\" class=\"toolbar-icon\"></mat-icon>\r\n            Czar Ec\r\n          </button>\r\n        </div>\r\n      </span>\r\n      <span class=\"toolbar-spacer\"></span>\r\n      <div class=\"toolbar-external-links\">\r\n          <button mat-flat-button (click)=\"openLinkedIn()\">\r\n            <span class=\"toolbar-icon\"><i class=\"fab fa-linkedin-in\"  style=\"font-size:20px;\"></i></span>\r\n            <span class=\"icon-text\">LinkedIn</span>\r\n          </button>\r\n\r\n          <button mat-flat-button (click)=\"openGithub()\">\r\n              <span class=\"toolbar-icon\"><i class=\"fab fa-github\" style=\"font-size:20px;\"></i></span>\r\n              <span class=\"icon-text\">Github</span>\r\n          </button>\r\n\r\n          <button mat-raised-button (click)=\"openCV()\" color=\"accent\" class=\"header-cv-button\">\r\n            <span class=\"cv-text\">CV</span>\r\n            <span class=\"icon-text\">View CV</span>\r\n          </button>\r\n      </div>\r\n    </mat-toolbar-row>\r\n  </mat-toolbar>\r\n</div>\r\n  "
+module.exports = "<div class=\"header\">\r\n  <mat-toolbar style=\"min-height:40px\" color=\"primary\" class=\"toolbar\">\r\n    <mat-toolbar-row>\r\n      <span>\r\n        <div class=\"toolbar-logo\">\r\n          <button mat-flat-button>\r\n            <mat-icon svgIcon=\"crescent\" color=\"accent\" class=\"toolbar-icon\"></mat-icon>\r\n            Czar Ec\r\n          </button>\r\n        </div>\r\n      </span>\r\n      <span class=\"toolbar-spacer\"></span>\r\n      <div class=\"toolbar-external-links\">\r\n          <button mat-flat-button (click)=\"openLinkedIn()\">\r\n            <span class=\"toolbar-icon\"><i class=\"fab fa-linkedin-in\"  style=\"font-size:20px;\"></i></span>\r\n            <span class=\"icon-text\"></span>\r\n          </button>\r\n\r\n          <button mat-flat-button (click)=\"openGithub()\">\r\n              <span class=\"toolbar-icon\"><i class=\"fab fa-github\" style=\"font-size:20px;\"></i></span>\r\n              <span class=\"icon-text\"></span>\r\n          </button>\r\n\r\n          <button mat-raised-button (click)=\"openCV()\" color=\"accent\" class=\"header-cv-button\">\r\n            <span class=\"cv-text\">CV</span>\r\n            <span class=\"icon-text\">View CV</span>\r\n          </button>\r\n      </div>\r\n    </mat-toolbar-row>\r\n  </mat-toolbar>\r\n</div>\r\n  "
 
 /***/ }),
 
@@ -685,7 +685,7 @@ module.exports = "<div class=\"header\">\r\n  <mat-toolbar style=\"min-height:40
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".mat-toolbar {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  z-index: 999;\n  height: 45px; }\n\n.toolbar-icon {\n  padding: 10px; }\n\n.button {\n  padding: 10px 0 10px;\n  margin: 10px 0 10px; }\n\n.toolbar {\n  display: flex; }\n\n.toolbar-logo {\n  float: left; }\n\n.toolbar-external-links {\n  float: right; }\n\n.toolbar-spacer {\n  flex: 1 1 auto; }\n\n.header-cv-button {\n  top: -1px; }\n\n@media screen and (min-width: 1000px) {\n  .cv-text {\n    display: none; } }\n\n@media screen and (max-width: 1000px) {\n  .icon-text {\n    display: none; } }\n"
+module.exports = ".mat-toolbar {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  z-index: 999;\n  height: 45px; }\n\n.toolbar-icon {\n  padding: 10px; }\n\n.button {\n  padding: 5px 0 5px;\n  margin: 2px 0 2px; }\n\n.toolbar {\n  display: flex; }\n\n.toolbar-logo {\n  float: left; }\n\n.toolbar-external-links {\n  float: right; }\n\n.toolbar-spacer {\n  flex: 1 1 auto; }\n\n.header-cv-button {\n  top: -1px; }\n\n@media screen and (min-width: 1000px) {\n  .cv-text {\n    display: none; } }\n\n@media screen and (max-width: 1000px) {\n  .icon-text {\n    display: none; } }\n"
 
 /***/ }),
 
@@ -803,7 +803,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\User\Documents\GitHub\Czar-Ec.github.io\portfolio\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\User\Documents\GitHub\WebsiteDevRepo\portfolio\src\main.ts */"./src/main.ts");
 
 
 /***/ })

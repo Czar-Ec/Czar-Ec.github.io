@@ -1,0 +1,4 @@
+# ignore the tmp folder
+# the tmp folder contains the built website
+# unpack the site by copying the tmp tot he root
+tmp/
