@@ -1,0 +1,89 @@
+@import '~@angular/material/theming';
+
+@font-face {
+  font-family: Plateia;
+  src: url('../fonts/plateia.ttf') format('woff')
+}
+
+/* plateia font */
+$custom-typography: mat-typography-config($font-family: Plateia);
+
+@include mat-core($custom-typography);
+
+/* Primary colour palette */
+$mat-czarecredprimary: (50 : #ff7070,
+100 : #ff2424,
+200 : #eb0000,
+300 : #a30000,
+400 : #850000,
+500 : #660000,
+600 : #470000,
+700 : #290000,
+800 : #0a0000,
+900 : #000000,
+A100 : #ff6666,
+A200 : #ff0000,
+A400 : #990000,
+A700 : #800000,
+contrast: (50 : #000000,
+100 : #ffffff,
+200 : #ffffff,
+300 : #ffffff,
+400 : #ffffff,
+500 : #ffffff,
+600 : #ffffff,
+700 : #ffffff,
+800 : #ffffff,
+900 : #ffffff,
+A100 : #000000,
+A200 : #ffffff,
+A400 : #ffffff,
+A700 : #ffffff,
+));
+
+/* Accent colour palette */
+$mat-czarecredaccent: (50 : #ffd6d6,
+100 : #ff8a8a,
+200 : #ff5252,
+300 : #ff0a0a,
+400 : #eb0000,
+500 : #cc0000,
+600 : #ad0000,
+700 : #8f0000,
+800 : #700000,
+900 : #520000,
+A100 : #ffcccc,
+A200 : #ff6666,
+A400 : #ff0000,
+A700 : #e60000,
+contrast: (50 : #000000,
+100 : #000000,
+200 : #000000,
+300 : #ffffff,
+400 : #ffffff,
+500 : #ffffff,
+600 : #ffffff,
+700 : #ffffff,
+800 : #ffffff,
+900 : #ffffff,
+A100 : #000000,
+A200 : #000000,
+A400 : #ffffff,
+A700 : #ffffff,
+));
+
+/*Palette colours*/
+$czarec-red-theme-primary: mat-palette($mat-czarecredprimary);
+$czarec-red-theme-accent: mat-palette($mat-czarecredaccent);
+$czarec-red-theme-warn: mat-palette($mat-amber);
+
+
+/*Dark theme*/
+.dark-theme {
+  $czarec-red-theme-dark: mat-dark-theme($czarec-red-theme-primary, $czarec-red-theme-accent, $czarec-red-theme-warn);
+  @include angular-material-theme($czarec-red-theme-dark);
+}
+
+/*Light theme*/
+$czarec-red-theme-light: mat-light-theme($czarec-red-theme-primary, $czarec-red-theme-accent, $czarec-red-theme-warn);
+@include angular-material-theme($czarec-red-theme-light);
