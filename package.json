@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve --open --host czarec --port 80",
     "build": "ng build",
+    "build:prod": "ng build --prod",
     "test": "ng test --watch",
     "lint": "ng lint",
     "e2e": "ng e2e",

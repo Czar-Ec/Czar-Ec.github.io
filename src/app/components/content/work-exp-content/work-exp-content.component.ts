@@ -8,29 +8,6 @@ interface Experience {
   description: string;
 }
 
-@Component({
-  selector: 'app-work-exp-content',
-  templateUrl: './work-exp-content.component.html',
-  styleUrls: ['./work-exp-content.component.scss']
-})
-export class WorkExpContentComponent implements OnInit {
-
-  public experience: Experience[];
-
-  constructor() {
-    this.experience = list;
-  }
-
-  ngOnInit() {
-  }
-
-  openLink(link) {
-    if (link) {
-      window.open(link, '_blank');
-    }
-  }
-}
-
 const list: Experience[] = [
   {
     role: 'Junior Engineer',
@@ -72,3 +49,27 @@ const list: Experience[] = [
       'The role also required the maintenance of the cleanliness of the eating area as well as ensuring the customers are comfortable.'
   }
 ];
+
+
+@Component({
+  selector: 'app-work-exp-content',
+  templateUrl: './work-exp-content.component.html',
+  styleUrls: ['./work-exp-content.component.scss']
+})
+export class WorkExpContentComponent implements OnInit {
+
+  public experience: Experience[];
+
+  constructor() {
+    this.experience = list;
+  }
+
+  ngOnInit() {
+  }
+
+  openLink(link) {
+    if (link) {
+      window.open(link, '_blank');
+    }
+  }
+}

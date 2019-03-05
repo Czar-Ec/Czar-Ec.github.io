@@ -3,57 +3,6 @@ import { QualType, Qualification } from './qual-enums';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { MatTableDataSource } from '@angular/material';
 
-@Component({
-  selector: 'app-education-content',
-  templateUrl: './education-content.component.html',
-  styleUrls: ['./education-content.component.scss'],
-  animations: [
-    trigger('detailExpand', [
-      state('collapsed', style({ height: '0px', minHeight: '0', display: 'none' })),
-      state('expanded', style({ height: '*' })),
-      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
-    ]),
-  ],
-})
-export class EducationContentComponent implements OnInit {
-
-  qualificationTypes = [
-    QualType.thirdyr,
-    QualType.secondyr,
-    QualType.firstyr,
-    QualType.alvl2,
-    QualType.alvl,
-    QualType.gcse,
-    QualType.btec2
-  ];
-
-  public qualList = new MatTableDataSource<Qualification>(qualifications);
-  public columnsDisplayed = ['subject', 'grade'];
-  public expandedElement: Qualification | null;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-  /**
-   * Filters the table data source via the
-   * chosen qualification type
-   * @param filterVal filter value
-   */
-  filter(filterVal: string) {
-    this.qualList.filter = filterVal;
-  }
-
-  /**
-   * Opens the project in another tab
-   * @param projectUrl project url location
-   */
-  public openProject(projectUrl) {
-    window.open(projectUrl, '_blank');
-  }
-}
-
 const qualifications: Qualification[] = [
   {
     qualType: QualType.thirdyr,
@@ -371,3 +320,55 @@ const qualifications: Qualification[] = [
     grade: 'M'
   }
 ];
+
+
+@Component({
+  selector: 'app-education-content',
+  templateUrl: './education-content.component.html',
+  styleUrls: ['./education-content.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0', display: 'none' })),
+      state('expanded', style({ height: '*' })),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
+})
+export class EducationContentComponent implements OnInit {
+
+  qualificationTypes = [
+    QualType.thirdyr,
+    QualType.secondyr,
+    QualType.firstyr,
+    QualType.alvl2,
+    QualType.alvl,
+    QualType.gcse,
+    QualType.btec2
+  ];
+
+  public qualList = new MatTableDataSource<Qualification>(qualifications);
+  public columnsDisplayed = ['subject', 'grade'];
+  public expandedElement: Qualification | null;
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+  /**
+   * Filters the table data source via the
+   * chosen qualification type
+   * @param filterVal filter value
+   */
+  filter(filterVal: string) {
+    this.qualList.filter = filterVal;
+  }
+
+  /**
+   * Opens the project in another tab
+   * @param projectUrl project url location
+   */
+  public openProject(projectUrl) {
+    window.open(projectUrl, '_blank');
+  }
+}

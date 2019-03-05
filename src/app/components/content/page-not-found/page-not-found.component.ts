@@ -23,7 +23,7 @@ export class PageNotFoundComponent implements OnInit {
     // can read this from config later
     this.randAssets = 'assets/';
     const assetsUrl = this.randAssets + '404phrases.json';
-    
+
     // choose a random phrase
     this.http.get(assetsUrl)
       .subscribe((res: any) => {
