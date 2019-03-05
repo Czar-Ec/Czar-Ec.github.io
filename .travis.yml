@@ -13,7 +13,7 @@ node_js:
 
 branches:
   except:
-  - gh-pages
+  - master
 
 before_script:
 - yarn global add @angular/cli
@@ -39,4 +39,6 @@ deploy:
   keep-history: true
   local-dir: ./dist/
   on:
-    branch: master
+    branches: 
+      only:
+        - master
