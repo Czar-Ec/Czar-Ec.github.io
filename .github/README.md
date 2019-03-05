@@ -7,4 +7,5 @@ Made this site quite a while ago but I use it nowadays for **_eXpErImEnTaL_** pu
 
 Why are you still here, just to suffer?
 Go to my site, otherwise you'll need to bleach your eyes with terrible code
-[CzarEc Portfolio](https://czar-ec.github.io/home)
+
+# [CzarEc Portfolio](https://czar-ec.github.io/home)
