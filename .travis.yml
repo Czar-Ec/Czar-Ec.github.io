@@ -1,0 +1,36 @@
+sudo: required
+dist: trusty
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+
+language: node_js
+node_js:
+- "10.8"
+
+branches:
+  except:
+  - gh-pages
+
+before_script:
+- yarn global add @angular/cli
+
+cache:
+  yarn: true
+  directories:
+  - node_modules
+
+script:
+- ng lint
+- yarn test:ci
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  local-dir: ./dist/
+  on:
