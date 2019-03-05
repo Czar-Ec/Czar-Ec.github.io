@@ -41,4 +41,4 @@ deploy:
   on:
     branches: 
       only:
-        - master
+        - develop
