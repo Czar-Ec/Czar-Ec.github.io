@@ -1,0 +1,39 @@
+.page {
+  height: 100%;
+}
+
+.phrase {
+  text-align: center;
+}
+
+.image {
+  display: block;
+  padding: 20px;
+}
+
+.udaman {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.pepeText {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: #00bd00;
+}
+
+@media screen and (min-width: 1000px) {
+  .image {
+    height: 30vh;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .image {
+    height: 50vw;
+  }
+}

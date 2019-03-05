@@ -1,0 +1,18 @@
+<div class="page">
+  <h1>404</h1>
+  <div [ngSwitch]="randImg">
+    <div *ngSwitchCase="'udaman'" class="udaman">
+      <mat-icon [inline]="true" [svgIcon]="randImg" class="image"></mat-icon>
+      <p>You look lost, why don't I take you 
+          <button mat-raised-button routerLink="/">home</button></p>
+    </div>
+    <div *ngSwitchCase="'pepe'">
+      <mat-icon [inline]="true" [svgIcon]="randImg" class="image"></mat-icon>
+      <p class="pepeText">{{randPhrase}}</p>
+    </div>
+    <div *ngSwitchDefault>
+      <mat-icon [inline]="true" [svgIcon]="randImg" class="image"></mat-icon>
+      <p class="phrase">{{randPhrase}}</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+.logoText {
+  height: 32px;
+  width: 144px;
+}
+
+.toolbar {
+  display: flex;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.navMenuButton.mat-menu-item {
+  text-align: center;
+}
+
+.settingsMenu {
+  padding: 5px 5px;
+  margin-top: 50px; 
+}
+
+::ng-deep .mat-slide-toggle-content {
+  padding: 0 10px;
+  text-align: right
+}
+
+.navMenuButton {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 50px;
+}
+
+mat-icon, mat-icon.mat-menu-item {
+  padding: 0 10px;
+}
+
+@media screen and (min-width: 1000px) {
+  .mobileItem {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .desktopItem {
+    display: none;
+  }
+}

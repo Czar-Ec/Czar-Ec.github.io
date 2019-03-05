@@ -1,0 +1,118 @@
+.page {
+  height: 100%;
+}
+
+mat-panel-title {
+  justify-content: center !important;
+}
+
+::ng-deep .mat-expansion-panel-body {
+  padding: 0 8px 16px !important;
+}
+
+.mat-header-cell, .mat-cell {
+  text-align: center;
+}
+
+table {
+  margin: 0 auto;
+  width: 100%;
+}
+
+tr.detail-row {
+  height: 0;
+  width: 100%;
+}
+
+tr.element-row:not(.expanded-row):hover {
+  background: #909090;
+}
+
+tr.element-row:not(.expanded-row):active {
+  background: #909090;
+}
+
+.element-row td {
+  border-bottom-width: 0;
+}
+
+.element-details {
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 30px 1px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+button {
+  margin: 20px auto;
+  display: block;
+}
+
+.grade-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-width: 10vw;
+  border: 2px solid #660000;
+  font-weight: lighter;
+  margin: 0 auto;
+  padding: 10px;
+  min-height: 5vh;
+}
+
+.grade-letter {
+  font-size: 500%;
+  line-height: 100%;
+}
+
+.grade-percentage {
+  font-size: 200%;
+}
+
+.grade-description {
+  padding: 0 16px;
+  text-align: center;
+}
+
+// mobile
+@media screen and (max-width: 1000px) {
+  ::ng-deep .mat-expansion-panel-body {
+    padding: 0 !important;
+  }
+
+  .element-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .grade-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-width: 70%;
+    border: 2px solid #660000;
+    font-weight: lighter;
+    margin: 8px 12px 8px 0;
+    padding: 10px;
+    min-height: 0.75vh;
+  }
+
+  .grade-letter {
+    font-size: 400%;
+    line-height: 100%;
+  }
+  
+  .grade-percentage {
+    font-size: 100%;
+  }
+}

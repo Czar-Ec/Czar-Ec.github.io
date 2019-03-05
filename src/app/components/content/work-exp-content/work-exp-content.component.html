@@ -1,0 +1,9 @@
+<div class="page">
+  <div *ngFor="let exp of experience" class="workexp">
+    <h2>{{exp.role}}</h2>
+    <button mat-flat-button color="primary"
+    (click)="openLink(exp.link)">{{exp.name}}</button>
+    <h3>{{exp.date}}</h3>
+    <p>{{exp.description}}</p>
+  </div>
+</div>
