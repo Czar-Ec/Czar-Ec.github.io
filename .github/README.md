@@ -1,8 +1,10 @@
-# [CzarEc Portfolio](http://czar-ec.github.io)
-My online portfolio page which should display my wonderful life experiences.
+# CzarEc Portfolio
 
-Right now this isn't of much use since I already have a job, but since I kind of want to show off my skills and learn this weird ass Angular thing for work, I might as well
+[![Build Status](https://travis-ci.org/Czar-Ec/Czar-Ec.github.io.svg?branch=develop)](https://travis-ci.org/Czar-Ec/Czar-Ec.github.io)
 
-#### Note to self: Make this sound more professional in the future
+Yes, this is indeed my portfolio. And yes it now has continuous integration/deployment (after hours of crying)!
+Made this site quite a while ago but I use it nowadays for **_eXpErImEnTaL_** purposes... (**cough** getting gud **cough**)
 
-#### [Legacy Portfolio](http://czar-ec.github.io/~archive/index.html)
+Why are you still here, just to suffer?
+Go to my site, otherwise you'll need to bleach your eyes with terrible code
+[CzarEc Portfolio](https://czar-ec.github.io/home)
