@@ -56,7 +56,7 @@ export class ToolbarComponent implements OnInit {
   /**
    * toggles between dark theme and light theme
    */
-  toggleAppTheme() {
+  public toggleAppTheme() {
     this.toggleTheme.emit(this.darkTheme);
   }
 

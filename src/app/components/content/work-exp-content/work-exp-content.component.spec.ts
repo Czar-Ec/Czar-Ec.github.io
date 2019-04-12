@@ -8,9 +8,9 @@ describe('WorkExpContentComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WorkExpContentComponent ]
+      declarations: [WorkExpContentComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -21,5 +21,19 @@ describe('WorkExpContentComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  describe('METHOD: openLink', () => {
+    it('should open the correct link', () => {
+      const spy = spyOn(window, 'open');
+      component.openLink('idiot sandwich');
+      expect(spy).toHaveBeenCalledWith('idiot sandwich', '_blank');
+    });
+
+    it('should do nothing if no link given', () => {
+      const spy = spyOn(window, 'open');
+      component.openLink('');
+      expect(spy).not.toHaveBeenCalled();
+    });
   });
 });

@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './page-not-found.component.html',
   styleUrls: ['./page-not-found.component.scss']
 })
-export class PageNotFoundComponent implements OnInit {
+export class PageNotFoundComponent {
 
   // base url of image to display
   public randAssets;
@@ -22,6 +22,13 @@ export class PageNotFoundComponent implements OnInit {
   ) {
     // can read this from config later
     this.randAssets = 'assets/';
+    this.randomPhrase();
+  }
+
+  /**
+   * Function that chooses a random phrase to display
+   */
+  private randomPhrase() {
     const assetsUrl = this.randAssets + '404phrases.json';
 
     // choose a random phrase
@@ -39,9 +46,6 @@ export class PageNotFoundComponent implements OnInit {
         this.randImg = res.assets[randNum].img;
         this.randPhrase = res.assets[randNum].phrase;
       });
-  }
-
-  ngOnInit() {
   }
 
 }

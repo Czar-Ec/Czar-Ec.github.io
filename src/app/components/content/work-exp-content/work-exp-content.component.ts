@@ -67,7 +67,11 @@ export class WorkExpContentComponent implements OnInit {
   ngOnInit() {
   }
 
-  openLink(link) {
+  /**
+   * Function used to open a link
+   * @param link link that should be opened
+   */
+  public openLink(link) {
     if (link) {
       window.open(link, '_blank');
     }
