@@ -11,8 +11,20 @@ import {
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ContentComponent } from './components/content/content.component';
+import { OverlayContainer } from '@angular/cdk/overlay';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+
+  const cList = {
+    add: () => { },
+    remove: () => { }
+  };
+
+  const stubOverlay = {
+    classList: cList
+  };
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -30,18 +42,56 @@ describe('AppComponent', () => {
         ContentComponent,
         ToolbarComponent,
       ],
+      providers: [
+        OverlayContainer
+      ]
     }).compileComponents();
   }));
 
-  it('should create the app', () => {
+  beforeEach(() => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    component = fixture.debugElement.componentInstance;
+  });
+
+  it('should create the app', () => {
+    expect(component).toBeTruthy();
   });
 
   it(`should have as title 'CzarEc Portfolio'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('CzarEc Portfolio');
+    expect(component.title).toEqual('CzarEc Portfolio');
+  });
+
+  describe('METHOD: toggleDarkTheme', () => {
+    it('should toggle the dark theme', () => {
+      component.setDarkTheme = true;
+      component.toggleDarkTheme();
+      expect(component.setDarkTheme).toBeFalsy();
+    });
+
+    it('should call applyTheme', () => {
+      const spy = spyOn<any>(component, 'applyTheme');
+      component.toggleDarkTheme();
+      expect(spy).toHaveBeenCalled();
+    });
+  });
+
+  describe('METHOD: applyTheme', () => {
+    it('should add the dark theme if setDarkTheme is true', () => {
+      component.setDarkTheme = true;
+      component['overlay'] = stubOverlay;
+      const spy = spyOn<any>(component['overlay'].classList, 'add');
+
+      component['applyTheme']();
+      expect(spy).toHaveBeenCalled();
+    });
+
+    it('should remove the dark theme if setDarkTheme is false', () => {
+      component.setDarkTheme = false;
+      component['overlay'] = stubOverlay;
+      const spy = spyOn<any>(component['overlay'].classList, 'remove');
+
+      component['applyTheme']();
+      expect(spy).toHaveBeenCalled();
+    });
   });
 });

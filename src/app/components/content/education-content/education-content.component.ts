@@ -360,7 +360,7 @@ export class EducationContentComponent implements OnInit {
    * chosen qualification type
    * @param filterVal filter value
    */
-  filter(filterVal: string) {
+  public filter(filterVal: string) {
     this.qualList.filter = filterVal;
   }
 

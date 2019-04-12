@@ -7,11 +7,31 @@ body {
   margin: 0;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: 'Plateia';
   text-align: center;
 }
 
 p {
   font-family: Share Tech;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 10px #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #400000;
+  border-radius: 25px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e40000;
 }

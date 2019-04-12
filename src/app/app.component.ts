@@ -83,13 +83,19 @@ export class AppComponent {
 
   }
 
-  toggleDarkTheme() {
+  /**
+   * Function that toggles the theme
+   */
+  public toggleDarkTheme() {
     this.setDarkTheme = !this.setDarkTheme;
 
     this.applyTheme();
   }
 
-  applyTheme() {
+  /**
+   * Function that applies the theme set
+   */
+  private applyTheme() {
     if (this.setDarkTheme) {
       this.overlay.classList.add('dark-theme');
     } else {
