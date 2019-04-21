@@ -1,6 +1,8 @@
 {
   "name": "website-dev-repo",
-  "version": "0.0.0",
+  "author": "Czar Ian Echavez <czar.echavez@yahoo.co.uk>",
+  "license": "MIT",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open --host czarec --port 80",
@@ -10,6 +12,10 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "test:ci": "ng test --watch=false && ng e2e"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Czar-Ec/Czar-Ec.github.io.git"
   },
   "private": true,
   "dependencies": {
