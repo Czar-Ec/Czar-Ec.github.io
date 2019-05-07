@@ -11,7 +11,7 @@
     "test": "ng test --watch",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "test:ci": "ng test --watch=false && ng e2e"
+    "test:ci": "ng test --watch=false --codeCoverage=true && ng e2e"
   },
   "repository": {
     "type": "git",

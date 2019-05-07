@@ -27,10 +27,14 @@ before_script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
 
-script:
+scripts:
+- yarn add codecov -g
 - ng lint
 - yarn test:ci
 - yarn build:prod
+
+after_success:
+- codecov
 
 deploy:
   provider: pages
