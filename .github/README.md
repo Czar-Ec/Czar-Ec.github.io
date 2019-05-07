@@ -1,6 +1,7 @@
 # CzarEc Portfolio
 
 [![Build Status](https://travis-ci.com/Czar-Ec/Czar-Ec.github.io.svg?branch=develop)](https://travis-ci.com/Czar-Ec/Czar-Ec.github.io)
+[![codecov](https://codecov.io/gh/Czar-Ec/Czar-Ec.github.io/branch/develop/graph/badge.svg)](https://codecov.io/gh/Czar-Ec/Czar-Ec.github.io)
 
 Yes, this is indeed my portfolio. And yes it now has continuous integration/deployment (after hours of crying)!
 Made this site quite a while ago but I use it nowadays for **_eXpErImEnTaL_** purposes... (**cough** getting gud **cough**)
