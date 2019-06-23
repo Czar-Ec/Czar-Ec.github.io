@@ -15,14 +15,18 @@ branches:
   except:
   - master
 
+install:
+- npm ci
+
 before_script:
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
-- npm ci
 - yarn global add codecov
 
 cache:
   yarn: true
+  directories:
+  - "$HOME/.npm"
 
 script:
 - ng lint
@@ -34,7 +38,7 @@ after_success:
 
 deploy:
   provider: pages
-  skip-cleanup: false
+  skip-cleanup: true
   github-token: $GITHUB_TOKEN
   keep-history: true
   local-dir: ./dist/
