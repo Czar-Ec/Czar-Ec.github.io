@@ -15,16 +15,13 @@ branches:
   except:
   - master
 
+install:
+- yarn install
+
 before_script:
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
-- yarn global add @angular/cli
 - yarn global add codecov
-
-cache:
-  yarn: true
-  directories:
-  - node_modules
 
 script:
 - ng lint
