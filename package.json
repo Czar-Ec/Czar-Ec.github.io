@@ -13,7 +13,8 @@
     "test": "ng test --watch",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "test:ci": "ng test --watch=false --codeCoverage=true && yarn cypress-run"
+    "test:ci": "ng test --watch=false --codeCoverage=true",
+    "test:ci:e2e": "yarn cypress cache clear && yarn cypress install && yarn cypress-run"
   },
   "repository": {
     "type": "git",
