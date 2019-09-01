@@ -40,4 +40,4 @@ deploy:
   local-dir: ./dist/
   target_branch: master
   on:
-    branch: develop
+    branch: pre-deploy
