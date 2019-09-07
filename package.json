@@ -8,16 +8,17 @@
     "cypress-run": "cypress run",
     "ng": "ng",
     "start": "ng serve --host czarec --port 80",
-    "start:ci": "ng serve --port 8080 --progress=false --watch=false",
+    "start:ci": "http-server ./dist -c-1 -s &",
     "build": "ng build",
     "build:prod": "ng build --prod",
     "test": "ng test --watch",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "test:ci": "ng test --watch=false --codeCoverage=true",
-    "test:e2e": "start-server-and-test start:ci http-get://localhost:8080 cypress-open",
+    "test:e2e": "start-server-and-test start:ci http://localhost:8080/index.html cypress-open",
     "test:ci:e2e": "yarn cypress cache clear && yarn cypress install && yarn setup:ci:e2e",
-    "setup:ci:e2e": "start-server-and-test start:ci http-get://localhost:8080 cypress-run"
+    "build:ci:e2e": "ng build --prod --aot --output-hashing=none",
+    "setup:ci:e2e": "yarn build:ci:e2e && start-server-and-test start:ci http://localhost:8080/index.html cypress-run"
   },
   "repository": {
     "type": "git",
