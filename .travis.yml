@@ -11,6 +11,10 @@ language: node_js
 node_js:
 - "10.9"
 
+cache:
+  directories:
+    - node_modules
+
 branches:
   except:
   - master
