@@ -15,7 +15,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "test:ci": "ng test --watch=false --codeCoverage=true",
-    "test:ci:e2e": "yarn cypress cache clear && yarn cypress install && yarn setup",
+    "test:ci:e2e": "yarn cypress cache clear && yarn cypress install && yarn setup:ci:e2e",
     "setup:ci:e2e": "start-server-and-test start:ci \"http-get://czarec/\" cypress-run"
   },
   "repository": {
