@@ -9,8 +9,6 @@ import {
   MatTabsModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { ContentComponent } from './components/content/content.component';
 import { OverlayContainer } from '@angular/cdk/overlay';
 
 describe('AppComponent', () => {
@@ -39,8 +37,6 @@ describe('AppComponent', () => {
       ],
       declarations: [
         AppComponent,
-        ContentComponent,
-        ToolbarComponent,
       ],
       providers: [
         OverlayContainer
