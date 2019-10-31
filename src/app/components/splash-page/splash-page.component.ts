@@ -12,4 +12,11 @@ export class SplashPageComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Scrolls to the target element
+   */
+  public scroll(id: string) {
+    const el = document.getElementById(id);
+    el.scrollIntoView({behavior: 'smooth'});
+  }
 }
