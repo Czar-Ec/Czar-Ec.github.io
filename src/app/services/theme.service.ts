@@ -10,10 +10,13 @@ export class ThemeService {
   // overlay
   private overlay;
 
+  // current loaded config
+  public configLocation = '';
+
   // dark mode theme
   public darkTheme = true;
 
-  constructor() { }
+  constructor() {}
 
   /**
    * Sets up the container overlay that needs to be modified
@@ -42,16 +45,27 @@ export class ThemeService {
   private applyTheme() {
     if (this.darkTheme) {
       this.overlay.classList.add('dark-theme');
-      // particles js load
-      particlesJS.load('particles', 'assets/dark-particles.json', function () {
-        console.log('callback - particles.js config loaded');
-      });
+      this.applyParticles('assets/dark-particles.json');
     } else {
       this.overlay.classList.remove('dark-theme');
-      // particles js load
-      particlesJS.load('particles', 'assets/particles.json', function () {
-        console.log('callback - particles.js config loaded');
-      });
+      this.applyParticles('assets/particles.json');
     }
+  }
+
+  /**
+   * Applies the particles config
+   * @param config location of config file
+   */
+  public applyParticles(config?: string) {
+    if (!config) {
+      return;
+    }
+
+    this.configLocation = config;
+
+    // particles js load
+    particlesJS.load('particles', config, function () {
+      console.log(`callback - ${config} config loaded`);
+    });
   }
 }

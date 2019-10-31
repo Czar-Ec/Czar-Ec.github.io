@@ -1,0 +1,19 @@
+@import '../app/components/splash-page/splash-page.mixin.scss';
+
+@mixin app-mixins($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, accent);
+
+  .dark-theme {
+    .splash-page {
+      background-color: mat-color($primary, 700);
+    }
+  }
+
+  .splash-page {
+    background-color: mat-color($primary, 300);
+  }
+
+  @include splash-page-mixin($primary, $accent, $warn);
+}

@@ -1,0 +1,13 @@
+@mixin splash-page-mixin($primary, $accent, $warn) {
+  .dark-theme {
+    .logo-svg svg path {
+      fill: mat-color($primary, 400) !important;
+    }
+
+  }
+
+  .logo-svg svg path {
+    fill: mat-color($primary, 500) !important;
+  }
+
+}
