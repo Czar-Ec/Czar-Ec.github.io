@@ -1,8 +1,25 @@
 <div id="particles" class="splash-page">
   <mat-icon svgIcon="crescent" class="logo-svg"></mat-icon>
+  <div class="links-container">
+    <button mat-icon-button>
+      <mat-icon svgIcon="cv" class="link-icon"></mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon svgIcon="github" class="link-icon"></mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon svgIcon="linkedin" class="link-icon"></mat-icon>
+    </button>
+    <button mat-icon-button (click)="toggleDarkMode()">
+      <mat-icon svgIcon="moon" *ngIf="themeService.darkTheme; else day" class="link-icon"></mat-icon>
+      <ng-template #day>
+        <mat-icon svgIcon="sun" class="sun-icon link-icon"></mat-icon>
+      </ng-template>
+    </button>
+  </div>
   <div class="see-more">
     <button mat-icon-button (click)="scroll('infoPage')">
-        <mat-icon>keyboard_arrow_down</mat-icon>
+      <mat-icon class="info-page-icon">keyboard_arrow_down</mat-icon>
     </button>
   </div>
 </div>
