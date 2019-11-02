@@ -1,4 +1,5 @@
 @import '../app/components/splash-page/splash-page.mixin.scss';
+@import '../app/components/splash-page/logo/logo-mixin.scss';
 
 @mixin app-mixins($theme) {
   $primary: map-get($theme, primary);
@@ -15,5 +16,6 @@
     background-color: mat-color($primary, 300);
   }
 
-  @include splash-page-mixin($primary, $accent, $warn);
+  @include splash-page-mixin($theme);
+  @include logo-mixin($theme);
 }

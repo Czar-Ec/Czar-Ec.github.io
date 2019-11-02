@@ -1,4 +1,8 @@
-@mixin splash-page-mixin($primary, $accent, $warn) {
+@mixin splash-page-mixin($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, accent);
+
   .dark-theme {
     .link-icon svg path {
       fill: mat-color($primary, 300);

@@ -1,0 +1,19 @@
+@mixin logo-mixin($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, accent);
+
+  .logo-svg path {
+    stroke-width: 0.2;
+    stroke: mat-color($primary, 600);
+    stroke-dasharray: 200;
+  } 
+
+  .dark-theme {
+    .logo-svg path {
+      stroke-width: 0.2;
+      stroke: mat-color($primary, 200);
+      stroke-dasharray: 200;
+    } 
+  }
+}
