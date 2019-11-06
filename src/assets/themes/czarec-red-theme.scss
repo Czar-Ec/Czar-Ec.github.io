@@ -1,5 +1,8 @@
 @import '~@angular/material/theming';
 
+/* mixin imports */
+@import '../../app/app.mixin.scss';
+
 @font-face {
   font-family: Plateia;
   src: url('../fonts/plateia.ttf') format('woff')
@@ -82,8 +85,10 @@ $czarec-red-theme-warn: mat-palette($mat-amber);
 .dark-theme {
   $czarec-red-theme-dark: mat-dark-theme($czarec-red-theme-primary, $czarec-red-theme-accent, $czarec-red-theme-warn);
   @include angular-material-theme($czarec-red-theme-dark);
+  @include app-mixins($czarec-red-theme-dark);
 }
 
 /*Light theme*/
 $czarec-red-theme-light: mat-light-theme($czarec-red-theme-primary, $czarec-red-theme-accent, $czarec-red-theme-warn);
 @include angular-material-theme($czarec-red-theme-light);
+@include app-mixins($czarec-red-theme-light);

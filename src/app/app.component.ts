@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, AfterViewInit, HostListener } from '@angular/core';
+import { ThemeService } from './services/theme.service';
+import { OverlayContainer } from '@angular/cdk/overlay';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
-import { OverlayContainer } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-root',
@@ -10,34 +11,28 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 })
 export class AppComponent {
 
-  setDarkTheme = true;
-
   title = 'CzarEc Portfolio';
 
-  private overlay;
+  private overlay: HTMLElement;
 
   constructor(
     private iconReg: MatIconRegistry,
     sanitise: DomSanitizer,
-    private overlayContainer: OverlayContainer
+    private overlayContainer: OverlayContainer,
+    public theme: ThemeService
   ) {
+    // pass the container element to theme service
     this.overlay = this.overlayContainer.getContainerElement();
-    this.applyTheme();
-    this.iconReg.addSvgIcon(
-      'cog',
-      sanitise.bypassSecurityTrustResourceUrl('assets/img/cog.svg')
-    );
-    this.iconReg.addSvgIcon(
-      'cv',
-      sanitise.bypassSecurityTrustResourceUrl('assets/img/cv.svg')
-    );
+    this.theme.init(this.overlay);
+
+    // icons
     this.iconReg.addSvgIcon(
       'crescent',
       sanitise.bypassSecurityTrustResourceUrl('assets/img/crescent.svg')
     );
     this.iconReg.addSvgIcon(
-      'extra',
-      sanitise.bypassSecurityTrustResourceUrl('assets/img/extra.svg')
+      'cv',
+      sanitise.bypassSecurityTrustResourceUrl('assets/img/cv.svg')
     );
     this.iconReg.addSvgIcon(
       'github',
@@ -48,58 +43,17 @@ export class AppComponent {
       sanitise.bypassSecurityTrustResourceUrl('assets/img/linkedin.svg')
     );
     this.iconReg.addSvgIcon(
-      'logo',
-      sanitise.bypassSecurityTrustResourceUrl('assets/img/logo.svg')
+      'sun',
+      sanitise.bypassSecurityTrustResourceUrl('assets/img/sun.svg')
     );
     this.iconReg.addSvgIcon(
-      'logotext',
-      sanitise.bypassSecurityTrustResourceUrl('assets/img/logotext.svg')
+      'moon',
+      sanitise.bypassSecurityTrustResourceUrl('assets/img/moon.svg')
     );
-    this.iconReg.addSvgIcon(
-      'menu',
-      sanitise.bypassSecurityTrustResourceUrl('assets/img/menu.svg')
-    );
-
-    this.iconReg.addSvgIcon(
-      'pepe',
-      sanitise.bypassSecurityTrustResourceUrl('assets/img/404/common_rarity_pepe.svg')
-    );
-    this.iconReg.addSvgIcon(
-      'feels',
-      sanitise.bypassSecurityTrustResourceUrl('assets/img/404/feels_bad.svg')
-    );
-    this.iconReg.addSvgIcon(
-      'okay',
-      sanitise.bypassSecurityTrustResourceUrl('assets/img/404/okay.svg')
-    );
-    this.iconReg.addSvgIcon(
-      'rukidding',
-      sanitise.bypassSecurityTrustResourceUrl('assets/img/404/r_u_kidding.svg')
-    );
-    this.iconReg.addSvgIcon(
-      'udaman',
-      sanitise.bypassSecurityTrustResourceUrl('assets/img/404/youre_the_man.svg')
-    );
-
   }
 
-  /**
-   * Function that toggles the theme
-   */
-  public toggleDarkTheme() {
-    this.setDarkTheme = !this.setDarkTheme;
-
-    this.applyTheme();
-  }
-
-  /**
-   * Function that applies the theme set
-   */
-  private applyTheme() {
-    if (this.setDarkTheme) {
-      this.overlay.classList.add('dark-theme');
-    } else {
-      this.overlay.classList.remove('dark-theme');
-    }
+  @HostListener('window:resize')
+  OnWindowResize() {
+    this.theme.applyParticles(this.theme.configLocation);
   }
 }

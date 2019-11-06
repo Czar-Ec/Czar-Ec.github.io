@@ -1,5 +1,9 @@
-<div id="container" class="mat-typography app-frame mat-app-background" [class.dark-theme]="setDarkTheme">
-  <!-- removed for now 
-  <app-footer></app-footer>
-  -->
+<div class="mat-typography app-frame mat-app-background" [class.dark-theme]="theme.darkTheme">
+  <div class="splash-page" id="splash-page">
+    <app-panel>
+      <app-splash-page class="splash-page"></app-splash-page>
+    </app-panel>
+  </div>
+  <app-panel id="infoPage"></app-panel>
+
 </div>

@@ -5,6 +5,12 @@ body {
   min-height: 100vh;
   height: auto;
   margin: 0;
+  overflow: hidden;
+}
+
+.particles-js-canvas-el {
+  position: absolute !important;
+  z-index: 0;
 }
 
 h1,
@@ -34,4 +40,8 @@ p {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #e40000;
+}
+
+.mat-tooltip {
+  text-align: center;
 }

@@ -9,10 +9,16 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { APP_BASE_HREF } from '@angular/common';
+import { PanelComponent } from './components/panel/panel.component';
+import { SplashPageComponent } from './components/splash-page/splash-page.component';
+import { LogoComponent } from './components/splash-page/logo/logo.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PanelComponent,
+    SplashPageComponent,
+    LogoComponent
   ],
   imports: [
     BrowserModule,
