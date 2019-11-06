@@ -22,7 +22,7 @@ export class LogoComponent implements AfterViewInit {
       if (document.querySelector('.logo-svg svg path')) {
         anime({
           targets: '.logo-svg #path3735',
-          strokeDashoffset: [200, 0],
+          strokeDashoffset: [5, 200],
           easing: 'easeInOutSine',
           duration: 5000,
           delay: 250,
@@ -32,7 +32,7 @@ export class LogoComponent implements AfterViewInit {
         });
         anime({
           targets: '.logo-svg #path3723',
-          strokeDashoffset: [0, 200],
+          strokeDashoffset: [5, 200],
           easing: 'easeInOutSine',
           duration: 5000,
           delay: 250,

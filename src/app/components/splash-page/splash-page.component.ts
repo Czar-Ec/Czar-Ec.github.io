@@ -57,6 +57,10 @@ export class SplashPageComponent implements OnInit, AfterViewInit {
    */
   public scroll(id: string) {
     const el = document.getElementById(id);
+    if (!el) {
+      return;
+    }
+
     el.scrollIntoView({ behavior: 'smooth' });
   }
 

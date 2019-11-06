@@ -10,17 +10,15 @@ import {
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OverlayContainer } from '@angular/cdk/overlay';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ThemeService } from './services/theme.service';
 
 describe('AppComponent', () => {
   let component: AppComponent;
 
-  const cList = {
-    add: () => { },
-    remove: () => { }
-  };
-
-  const stubOverlay = {
-    classList: cList
+  const stubThemeService = {
+    init: () => { },
+    applyParticles: () => { }
   };
 
   beforeEach(async(() => {
@@ -39,7 +37,11 @@ describe('AppComponent', () => {
         AppComponent,
       ],
       providers: [
-        OverlayContainer
+        OverlayContainer,
+        { provide: ThemeService, useValue: stubThemeService }
+      ],
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
       ]
     }).compileComponents();
   }));
@@ -57,37 +59,11 @@ describe('AppComponent', () => {
     expect(component.title).toEqual('CzarEc Portfolio');
   });
 
-  describe('METHOD: toggleDarkTheme', () => {
-    it('should toggle the dark theme', () => {
-      component.setDarkTheme = true;
-      component.toggleDarkTheme();
-      expect(component.setDarkTheme).toBeFalsy();
-    });
-
-    it('should call applyTheme', () => {
-      const spy = spyOn<any>(component, 'applyTheme');
-      component.toggleDarkTheme();
-      expect(spy).toHaveBeenCalled();
-    });
-  });
-
-  describe('METHOD: applyTheme', () => {
-    it('should add the dark theme if setDarkTheme is true', () => {
-      component.setDarkTheme = true;
-      component['overlay'] = stubOverlay;
-      const spy = spyOn<any>(component['overlay'].classList, 'add');
-
-      component['applyTheme']();
-      expect(spy).toHaveBeenCalled();
-    });
-
-    it('should remove the dark theme if setDarkTheme is false', () => {
-      component.setDarkTheme = false;
-      component['overlay'] = stubOverlay;
-      const spy = spyOn<any>(component['overlay'].classList, 'remove');
-
-      component['applyTheme']();
-      expect(spy).toHaveBeenCalled();
+  describe('METHOD: OnWindowResize', () => {
+    it('should reapply particles JS on window resize', () => {
+      const applyTheme = spyOn(component.theme, 'applyParticles');
+      component.OnWindowResize();
+      expect(applyTheme).toHaveBeenCalled();
     });
   });
 });

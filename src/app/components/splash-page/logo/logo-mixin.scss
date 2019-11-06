@@ -4,16 +4,16 @@
   $warn: map-get($theme, accent);
 
   .logo-svg path {
-    stroke-width: 0.2;
+    stroke-width: 0.025;
     stroke: mat-color($primary, 600);
-    stroke-dasharray: 200;
+    stroke-dasharray: 10;
   } 
 
   .dark-theme {
     .logo-svg path {
-      stroke-width: 0.2;
+      stroke-width: 0.025;
       stroke: mat-color($primary, 200);
-      stroke-dasharray: 200;
+      stroke-dasharray: 10;
     } 
   }
 }

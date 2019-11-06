@@ -30,7 +30,7 @@ export class ThemeService {
    * Toggles between dark mode and light mode
    */
   public toggleDarkMode(set?: boolean) {
-    if (set) {
+    if (set != null) {
       this.darkTheme = set;
     } else {
       this.darkTheme = !this.darkTheme;
@@ -64,8 +64,6 @@ export class ThemeService {
     this.configLocation = config;
 
     // particles js load
-    particlesJS.load('particles', config, function () {
-      console.log(`callback - ${config} config loaded`);
-    });
+    particlesJS.load('particles', config);
   }
 }
