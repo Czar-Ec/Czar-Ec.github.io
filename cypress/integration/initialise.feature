@@ -1,8 +1,7 @@
-Feature: The Facebook
+Feature: Main
 
-  I want to open a social network page
-  
-  @focus
-  Scenario: Opening a social network page
-    Given I open Google page
-    Then I see "Google" in the title
+  I want to open the web page
+
+  Scenario: Opening the page
+    Given I open the page
+    Then I see the logo

@@ -41,7 +41,9 @@ describe('LogoComponent', () => {
     it('should animate the logo', () => {
       const el = document.createElement('div');
       const svg1 = document. createElementNS('http://www.w3.org/2000/svg', 'svg');
-      svg1.setAttributeNS(null, 'd', '');
+      const svgPath = document. createElementNS('http://www.w3.org/2000/svg', 'path');
+      svgPath.setAttributeNS(null, 'd', '');
+      svg1.appendChild(svgPath);
       el.appendChild(svg1);
       el.className = 'logo-svg';
       document.body.appendChild(el);

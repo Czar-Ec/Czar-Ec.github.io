@@ -1,0 +1,18 @@
+.see-splash {
+  position: relative;
+  bottom: 20px;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+
+  ::ng-deep .mat-icon {
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 40px !important;
+    line-height: 40px !important;
+  }
+}
