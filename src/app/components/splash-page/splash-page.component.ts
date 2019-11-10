@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ThemeService } from 'src/app/services/theme.service';
 import anime from 'animejs/lib/anime.es.js';
+import { PanelScrollService } from 'src/app/services/panel-scroll.service';
 
 @Component({
   selector: 'app-splash-page',
@@ -12,27 +13,12 @@ export class SplashPageComponent implements OnInit, AfterViewInit {
   public seeMoreAnimation: any;
   public linkIconAnimations: any;
 
-  // message to display
-  public message = null;
-
-  private iconEnlarge = {
-    value: 2,
-    duration: 450,
-    easing: 'easeInOutQuad'
-  };
-
-  private iconNormal = {
-    value: 1,
-    duration: 450,
-    easing: 'easeInOutQuad',
-    delay: 3500
-  };
-
   // the iconButtons
   public iconButtons;
 
   constructor(
-    public themeService: ThemeService
+    public themeService: ThemeService,
+    public panelScrollService: PanelScrollService
   ) { }
 
   ngOnInit() {
@@ -50,18 +36,6 @@ export class SplashPageComponent implements OnInit, AfterViewInit {
     });
 
     this.iconButtons = document.querySelectorAll('button.icon-button');
-  }
-
-  /**
-   * Scrolls to the target element
-   */
-  public scroll(id: string) {
-    const el = document.getElementById(id);
-    if (!el) {
-      return;
-    }
-
-    el.scrollIntoView({ behavior: 'smooth' });
   }
 
   /**

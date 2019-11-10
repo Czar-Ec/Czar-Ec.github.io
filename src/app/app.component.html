@@ -1,9 +1,12 @@
 <div class="mat-typography app-frame mat-app-background" [class.dark-theme]="theme.darkTheme">
-  <div class="splash-page" id="splash-page">
+  <div class="splash-panel" id="splash-panel">
     <app-panel>
-      <app-splash-page class="splash-page"></app-splash-page>
+      <app-splash-page class="panel"></app-splash-page>
     </app-panel>
   </div>
-  <app-panel id="infoPage"></app-panel>
-
+  <div class="info-panel" id="info-panel">
+    <app-panel id="info-panel">
+      <app-info-page class="panel"></app-info-page>
+    </app-panel>
+  </div>
 </div>

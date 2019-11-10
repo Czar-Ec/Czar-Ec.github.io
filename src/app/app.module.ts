@@ -12,20 +12,22 @@ import { APP_BASE_HREF } from '@angular/common';
 import { PanelComponent } from './components/panel/panel.component';
 import { SplashPageComponent } from './components/splash-page/splash-page.component';
 import { LogoComponent } from './components/splash-page/logo/logo.component';
+import { InfoPageModule } from './components/info-page/info-page.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     PanelComponent,
     SplashPageComponent,
-    LogoComponent
+    LogoComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-    MaterialModule
+    MaterialModule,
+    InfoPageModule
   ],
   providers: [{
     provide: APP_BASE_HREF,
