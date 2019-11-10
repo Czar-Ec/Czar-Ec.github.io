@@ -26,7 +26,7 @@ export class SplashPageComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.seeMoreAnimation = anime({
-      targets: '.see-more',
+      targets: ['.see-more', '.see-splash'],
       translateY: 30,
       loop: true,
       direction: 'alternate',
