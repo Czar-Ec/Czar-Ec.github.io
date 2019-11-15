@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ThemeService } from 'src/app/services/theme.service';
 import anime from 'animejs/lib/anime.es.js';
 import { PanelScrollService } from 'src/app/services/panel-scroll.service';
+import { ConfigurationService } from 'src/app/services/configuration.service';
 
 @Component({
   selector: 'app-splash-page',
@@ -18,7 +19,8 @@ export class SplashPageComponent implements OnInit, AfterViewInit {
 
   constructor(
     public themeService: ThemeService,
-    public panelScrollService: PanelScrollService
+    public panelScrollService: PanelScrollService,
+    private configService: ConfigurationService
   ) { }
 
   ngOnInit() {
@@ -36,6 +38,27 @@ export class SplashPageComponent implements OnInit, AfterViewInit {
     });
 
     this.iconButtons = document.querySelectorAll('button.icon-button');
+  }
+
+  /**
+   * Function that opens the CV
+   */
+  public openCV() {
+    window.open(this.configService.config.externalLinks.cv, '_blank');
+  }
+
+  /**
+   * Function that opens the CV
+   */
+  public openGithub() {
+    window.open(this.configService.config.externalLinks.github, '_blank');
+  }
+
+  /**
+   * Function that opens the CV
+   */
+  public openLinkedIn() {
+    window.open(this.configService.config.externalLinks.linkedin, '_blank');
   }
 
   /**

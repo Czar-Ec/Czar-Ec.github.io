@@ -2,16 +2,16 @@
   <app-logo></app-logo>
   <div class="links-container">
     <div class="link cv-container" matTooltip="Download my CV">
-      <button mat-icon-button (mouseenter)="animateLinkButton($event, 2)" class="icon-button">
+      <button mat-icon-button (mouseenter)="animateLinkButton($event, 2)" class="icon-button" (click)="openCV()">
         <mat-icon svgIcon="cv" class="link-icon cv-icon"></mat-icon>
       </button>
     </div>
-    <div class="link github-container" matTooltip="Check my other projects on Github">
+    <div class="link github-container" matTooltip="Check my other projects on Github" (click)="openGithub()">
       <button mat-icon-button (mouseenter)="animateLinkButton($event, 2)" class="icon-button">
         <mat-icon svgIcon="github" class="link-icon github-icon"></mat-icon>
       </button>
     </div>
-    <div class="link linkedin-container" matTooltip="Connect with me on LinkedIn">
+    <div class="link linkedin-container" matTooltip="Connect with me on LinkedIn" (click)="openLinkedIn()">
       <button mat-icon-button (mouseenter)="animateLinkButton($event, 2)" class="icon-button">
         <mat-icon svgIcon="linkedin" class="link-icon linkedin-icon"></mat-icon>
       </button>
