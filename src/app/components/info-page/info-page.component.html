@@ -1,5 +1,12 @@
-<div class="see-splash">
-  <button mat-icon-button (click)="panelScrollService.scroll('splash-panel')">
-    <mat-icon class="info-page-icon">keyboard_arrow_up</mat-icon>
-  </button>
+<div class="info-page">
+  <div class="see-splash">
+    <button mat-icon-button (click)="panelScrollService.scroll('splash')">
+      <mat-icon class="info-page-icon">keyboard_arrow_up</mat-icon>
+    </button>
+  </div>
+  <mat-card>
+    <div class="inner-card">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-card>
 </div>
