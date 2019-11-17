@@ -34,9 +34,29 @@ mat-card {
   height: 90%;
   margin: 20px;
   position: relative;
-  
-  .inner-card {
-    padding: 20px;
-    overflow-y: auto;
+}
+
+mat-card-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+
+  .info-link-buttons,
+  .menu-button {
+    padding: 0 16px;
   }
+}
+
+::ng-deep .mat-card-header-text {
+  margin: 16px;
+}
+
+mat-card-content {
+  padding: 20px;
+  overflow-y: auto !important;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
 }
