@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ThemeService } from './services/theme.service';
+import { NavigationEnd, Router } from '@angular/router';
+import { of } from 'rxjs';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -19,6 +21,11 @@ describe('AppComponent', () => {
   const stubThemeService = {
     init: () => { },
     applyParticles: () => { }
+  };
+
+  const stubRouter = {
+    events: of(new NavigationEnd(0, '/info/', '/info/')),
+    navigate: () => null
   };
 
   beforeEach(async(() => {
@@ -38,7 +45,8 @@ describe('AppComponent', () => {
       ],
       providers: [
         OverlayContainer,
-        { provide: ThemeService, useValue: stubThemeService }
+        { provide: ThemeService, useValue: stubThemeService },
+        { provide: Router, useValue: stubRouter }
       ],
       schemas: [
         CUSTOM_ELEMENTS_SCHEMA
@@ -64,6 +72,12 @@ describe('AppComponent', () => {
       const applyTheme = spyOn(component.theme, 'applyParticles');
       component.OnWindowResize();
       expect(applyTheme).toHaveBeenCalled();
+    });
+  });
+
+  describe('METHOD: ngOnInit', () => {
+    it('should scroll to the info page if the url has info', () => {
+      component.ngOnInit();
     });
   });
 });
