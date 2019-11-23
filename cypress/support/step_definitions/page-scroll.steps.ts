@@ -14,12 +14,12 @@ When(`I click on the scroll down button`, () => {
 
 Then('I see the info page', () => {
   cy
-  .get('#info-panel')
+  .get('#info')
   .should('be.visible');
 });
 
 Given('I open the info page', () => {
-  cy.visit('/home#info-panel');
+  cy.visit('/home#info');
 });
 
 Given('I see the scroll up button', () => {
@@ -36,6 +36,6 @@ When(`I click on the scroll up button`, () => {
 
 Then('I see the splash page', () => {
   cy
-  .get('#splash-panel')
+  .get('#splash')
   .should('be.visible');
 });

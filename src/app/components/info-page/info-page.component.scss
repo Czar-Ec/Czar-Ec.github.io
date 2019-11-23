@@ -1,13 +1,23 @@
-.see-splash {
+.info-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 auto;
   position: relative;
-  bottom: 20px;
-  padding: 10px;
+  height: 100vh;
+}
+
+.see-splash {
+  position: absolute;
+  top: 0;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 5;
+  flex-grow: 1;
 
   ::ng-deep .mat-icon {
     width: 40px !important;
@@ -15,4 +25,38 @@
     font-size: 40px !important;
     line-height: 40px !important;
   }
+}
+
+mat-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 90%;
+  margin: 20px;
+  position: relative;
+}
+
+mat-card-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+
+  .info-link-buttons,
+  .menu-button {
+    padding: 0 16px;
+  }
+}
+
+::ng-deep .mat-card-header-text {
+  margin: 16px;
+}
+
+mat-card-content {
+  padding: 20px;
+  overflow-y: auto !important;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
 }

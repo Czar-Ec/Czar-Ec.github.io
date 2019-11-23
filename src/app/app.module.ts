@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 
-import { AppRoutingModule } from './modules/app-routing.module';
 import { AppComponent } from './app.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,11 +13,11 @@ import { SplashPageComponent } from './components/splash-page/splash-page.compon
 import { LogoComponent } from './components/splash-page/logo/logo.component';
 import { InfoPageModule } from './components/info-page/info-page.module';
 import { ConfigurationService } from './services/configuration.service';
+import { SharedModule } from './modules/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PanelComponent,
     SplashPageComponent,
     LogoComponent,
   ],
@@ -26,9 +25,9 @@ import { ConfigurationService } from './services/configuration.service';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    AppRoutingModule,
     MaterialModule,
-    InfoPageModule
+    InfoPageModule,
+    SharedModule
   ],
   providers: [
     { provide: APP_BASE_HREF, useValue: './' },
