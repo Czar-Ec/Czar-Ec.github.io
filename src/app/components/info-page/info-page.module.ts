@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { InfoPageComponent } from './info-page.component';
-import { MaterialModule } from '../../modules/material.module';
 import { InfoPageRoutingModule } from './info-page-routing.module';
 import { IntroPageComponent } from './info-components/intro-page/intro-page.component';
-import { SharedModule } from 'src/app/modules/shared.module';
+import { SharedModule } from '../../modules/shared.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +13,6 @@ import { SharedModule } from 'src/app/modules/shared.module';
     InfoPageComponent
   ],
   imports: [
-    MaterialModule,
     InfoPageRoutingModule,
     SharedModule
   ]

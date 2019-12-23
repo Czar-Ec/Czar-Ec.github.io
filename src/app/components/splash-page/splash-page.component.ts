@@ -1,9 +1,8 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { ThemeService } from 'src/app/services/theme.service';
+import { ThemeService } from '../../services/theme.service';
 import anime from 'animejs/lib/anime.es.js';
-import { PanelScrollService } from 'src/app/services/panel-scroll.service';
-import { ConfigurationService } from 'src/app/services/configuration.service';
-import { ExternalLinkService } from 'src/app/services/external-link.service';
+import { PanelScrollService } from '../../services/panel-scroll.service';
+import { ExternalLinkService } from '../../services/external-link.service';
 
 @Component({
   selector: 'app-splash-page',

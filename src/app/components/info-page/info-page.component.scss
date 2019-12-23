@@ -55,6 +55,7 @@ mat-card-header {
 mat-card-content {
   padding: 20px;
   overflow-y: auto !important;
+  flex: 1 1 auto;
 }
 
 .toolbar-spacer {

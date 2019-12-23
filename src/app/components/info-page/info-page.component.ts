@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PanelScrollService } from 'src/app/services/panel-scroll.service';
-import { ExternalLinkService } from 'src/app/services/external-link.service';
+import { PanelScrollService } from '../../services/panel-scroll.service';
+import { ExternalLinkService } from '../../services/external-link.service';
 
 @Component({
   selector: 'app-info-page',
