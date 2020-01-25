@@ -3,5 +3,12 @@
     "cv": "assets/docs/CzarEchavezCV.pdf",
     "github": "https://github.com/Czar-Ec/",
     "linkedin": "https://www.linkedin.com/in/czarec"
+  },
+  "projectsPreview": {
+    "url": "https://api.github.com/users/Czar-Ec/repos",
+    "pageLengthDefault": 10,
+    "pageLengthOptions": [5, 10, 20],
+    "travisBadgeUrl": "https://travis-ci.com/",
+    "codeCovBadgeUrl": "https://codecov.io/gh/"
   }
 }

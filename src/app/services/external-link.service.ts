@@ -31,4 +31,8 @@ export class ExternalLinkService {
   public openLinkedIn() {
     window.open(this.config.linkedin, '_blank');
   }
+
+  public openLink(link: string) {
+    window.open(link, '_blank');
+  }
 }

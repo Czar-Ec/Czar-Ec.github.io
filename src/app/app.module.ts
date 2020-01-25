@@ -15,8 +15,8 @@ import { ConfigurationService } from './services/configuration.service';
 import { SharedModule } from './modules/shared.module';
 import { ProjectsPageComponent } from './components/info-page/info-components/projects-page/projects-page.component';
 
-import { EXTERNAL_URLS } from './app.tokens';
-import { externalUrlFactory } from './app.factories';
+import { EXTERNAL_URLS, PROJECT_PREVIEW } from './app.tokens';
+import { externalUrlFactory, projectsPreviewFactory } from './app.factories';
 
 @NgModule({
   declarations: [
@@ -43,6 +43,11 @@ import { externalUrlFactory } from './app.factories';
     {
       provide: EXTERNAL_URLS,
       useFactory: externalUrlFactory,
+      deps: [ConfigurationService]
+    },
+    {
+      provide: PROJECT_PREVIEW,
+      useFactory: projectsPreviewFactory,
       deps: [ConfigurationService]
     }
   ],
