@@ -1,12 +1,32 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ProjectsPreviewService } from './project-preview.service';
+import { PROJECT_PREVIEW } from 'src/app/app.tokens';
+import { of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 describe('ProjectsPreviewService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  let service: ProjectsPreviewService;
+
+  const stubConfig = {
+
+  };
+
+  const stubHttp = {
+    get: () => of()
+  };
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [
+        { provide: PROJECT_PREVIEW, useValue: stubConfig },
+        { provide: HttpClient, useValue: stubHttp }
+      ]
+    });
+    service = TestBed.get(ProjectsPreviewService);
+  });
 
   it('should be created', () => {
-    const service: ProjectsPreviewService = TestBed.get(ProjectsPreviewService);
     expect(service).toBeTruthy();
   });
 });

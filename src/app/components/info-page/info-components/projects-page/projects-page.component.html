@@ -1,27 +1,27 @@
 <div class="projects-page">
   <div class="previews-container">
-    <mat-card class="project-detail mat-elevation-z8" *ngFor="let projectDetail of projectsPreviewService.projectDetails">
+    <mat-card class="project-detail mat-elevation-z8"
+      *ngFor="let projectDetail of projectsPreviewService.projectDetails">
       <mat-card-title>{{projectDetail.projectName}}</mat-card-title>
       <mat-card-content>
         <div class="card-description">{{projectDetail.projectDescription}}</div>
       </mat-card-content>
       <mat-card-actions>
-        <div class="badges">
-          <div class=" badge travis-badge" *ngIf="projectDetail.travisBadge">
-            <img [src]="projectDetail.travisBadge.badgeImage" (click)="openBadge(projectDetail.travisBadge.badgeUrl)">
-          </div>
-          <div class="badge codecov-badge" *ngIf="projectDetail.codeCovBadge">
-            <img [src]="projectDetail.codeCovBadge.badgeImage" (click)="openBadge(projectDetail.codeCovBadge.badgeUrl)">
-          </div>
-        </div>
         <div class="openRepositoryButton">
-          <button mat-raised-button color="primary" (click)="openBadge(projectDetail.projectUrl)">Open Repository</button>
+          <button mat-icon-button color="primary" (click)="openBadge(projectDetail.projectUrl)" matTooltip="Open {{projectDetail.projectName}} in Github">
+            <mat-icon svgIcon="github"></mat-icon>
+          </button>
         </div>
       </mat-card-actions>
     </mat-card>
-  </div>
-  <div class="paginator">
-    <mat-paginator [length]="projectsPreviewService.projectDetails.length" [pageSize]="pageSize"
-      [pageSizeOptions]="pageSizeOpts"></mat-paginator>
+    <div class="load-more-button" *ngIf="!projectsPreviewService.requestInProgress; else loadingSpinner">
+      <button mat-raised-button *ngIf="projectsPreviewService.nextPageLink"
+        (click)="projectsPreviewService.getNextDetail()" color="primary">Load More</button>
+    </div>
   </div>
 </div>
+<ng-template #loadingSpinner>
+  <div class="loading-projects-page">
+    <mat-spinner color="primary"></mat-spinner>
+  </div>
+</ng-template>

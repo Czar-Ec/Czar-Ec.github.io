@@ -11,9 +11,6 @@ import { ExternalLinkService } from 'src/app/services/external-link.service';
 })
 export class ProjectsPageComponent implements OnInit {
 
-  public pageSizeOpts: number[];
-  public pageSize: number;
-
   constructor(
     @Inject(PROJECT_PREVIEW) private config,
     public projectsPreviewService: ProjectsPreviewService,
@@ -21,11 +18,8 @@ export class ProjectsPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.pageSizeOpts = this.config.pageLengthOptions;
-    this.pageSize = this.config.pageLengthDefault;
-
     // get the project details initially
-    this.projectsPreviewService.getProjectDetails();
+    this.projectsPreviewService.setupProjectDetails();
   }
 
 
