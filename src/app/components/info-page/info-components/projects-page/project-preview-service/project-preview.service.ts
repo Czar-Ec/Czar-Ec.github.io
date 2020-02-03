@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { PROJECT_PREVIEW } from 'src/app/app.tokens';
+import { PROJECT_PREVIEW } from '../../../../../app.tokens';
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { ProjectDetails, CIBadge } from '../project-object';

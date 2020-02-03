@@ -2,9 +2,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProjectsPageComponent } from './projects-page.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { PROJECT_PREVIEW } from 'src/app/app.tokens';
+import { PROJECT_PREVIEW } from '../../../../app.tokens';
 import { ProjectsPreviewService } from './project-preview-service/project-preview.service';
-import { ExternalLinkService } from 'src/app/services/external-link.service';
+import { ExternalLinkService } from '../../../../services/external-link.service';
 
 describe('ProjectsPageComponent', () => {
   let component: ProjectsPageComponent;

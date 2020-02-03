@@ -1,14 +1,11 @@
 {
   "extends": "../tsconfig.json",
   "include": [
-    "integration/**/*.ts",
+    "integration/**/*",
     "support/**/*.ts",
     "../node_modules/cypress"
   ],
-  "compilerOptions": {
-    "types": [
-      "node",
-      "cypress"
-    ]
-  }
+  "typeRoots": [
+    "node_modules/cypress/types"
+  ]
 }

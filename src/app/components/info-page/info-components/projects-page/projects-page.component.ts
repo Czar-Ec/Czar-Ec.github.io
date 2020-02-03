@@ -1,8 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ProjectsPreviewService } from './project-preview-service/project-preview.service';
 import { PROJECT_PREVIEW } from '../../../../app.tokens';
-import { ProjectDetails } from './project-object';
-import { ExternalLinkService } from 'src/app/services/external-link.service';
+import { ExternalLinkService } from '../../../../services/external-link.service';
 
 @Component({
   selector: 'app-projects-page',

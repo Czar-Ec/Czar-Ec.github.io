@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ProjectsPreviewService } from './project-preview.service';
-import { PROJECT_PREVIEW } from 'src/app/app.tokens';
+import { PROJECT_PREVIEW } from '../../../../../app.tokens';
 import { of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 

@@ -4,7 +4,7 @@ import { SplashPageComponent } from './splash-page.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import * as anime from 'animejs/lib/anime.es.js';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ExternalLinkService } from 'src/app/services/external-link.service';
+import { ExternalLinkService } from '../../services/external-link.service';
 
 describe('SplashPageComponent', () => {
   let component: SplashPageComponent;
