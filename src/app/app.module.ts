@@ -24,9 +24,6 @@ import { externalUrlFactory, projectsPreviewFactory } from './app.factories';
     LogoComponent,
   ],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
     MaterialModule,
     InfoPageModule,
     SharedModule
