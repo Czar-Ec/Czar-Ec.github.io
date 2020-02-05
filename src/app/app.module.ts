@@ -13,7 +13,6 @@ import { LogoComponent } from './components/splash-page/logo/logo.component';
 import { InfoPageModule } from './components/info-page/info-page.module';
 import { ConfigurationService } from './services/configuration.service';
 import { SharedModule } from './modules/shared.module';
-import { ProjectsPageComponent } from './components/info-page/info-components/projects-page/projects-page.component';
 
 import { EXTERNAL_URLS, PROJECT_PREVIEW } from './app.tokens';
 import { externalUrlFactory, projectsPreviewFactory } from './app.factories';
@@ -23,7 +22,6 @@ import { externalUrlFactory, projectsPreviewFactory } from './app.factories';
     AppComponent,
     SplashPageComponent,
     LogoComponent,
-    ProjectsPageComponent,
   ],
   imports: [
     BrowserModule,
