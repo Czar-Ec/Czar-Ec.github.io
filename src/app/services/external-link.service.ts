@@ -1,31 +1,38 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { ConfigurationService } from './configuration.service';
+import { EXTERNAL_URLS } from '../app.tokens';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExternalLinkService {
 
-  constructor(private configService: ConfigurationService) { }
+  constructor(
+    @Inject(EXTERNAL_URLS) private config
+  ) { }
 
   /**
    * Function that opens the CV
    */
   public openCV() {
-    window.open(this.configService.config.externalLinks.cv, '_blank');
+    window.open(this.config.cv, '_blank');
   }
 
   /**
    * Function that opens the CV
    */
   public openGithub() {
-    window.open(this.configService.config.externalLinks.github, '_blank');
+    window.open(this.config.github, '_blank');
   }
 
   /**
    * Function that opens the CV
    */
   public openLinkedIn() {
-    window.open(this.configService.config.externalLinks.linkedin, '_blank');
+    window.open(this.config.linkedin, '_blank');
+  }
+
+  public openLink(link: string) {
+    window.open(link, '_blank');
   }
 }

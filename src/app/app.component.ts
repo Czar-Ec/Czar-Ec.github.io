@@ -61,8 +61,7 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe((res) => {
       // if it has info, scroll to info panel
       if (res instanceof NavigationEnd && res.url.match(/\/info\/*/g) && !res.urlAfterRedirects.match(/#info/g)) {
-        // open on info panel but dont change the url
-        this.router.navigate([res.url], { fragment: 'info', skipLocationChange: true });
+        this.panelScrollService.scroll('info', 'auto');
 
         // set up scroll
         this.panelScrollService.lastScroll = 'info';

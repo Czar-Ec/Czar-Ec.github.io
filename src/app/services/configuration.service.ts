@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -8,17 +9,12 @@ export class ConfigurationService {
 
   private _config: any;
 
-  get config() {
-    return this._config;
-  }
+  get config() { return this._config; }
 
   constructor(private httpClient: HttpClient) { }
 
   public loadConfig(location: string): any {
-    this.httpClient.get(location)
-    .subscribe(res => {
-      // set the config to the response
-      this._config = res;
-    });
+    return this.httpClient.get(location)
+      .pipe(tap(res => this._config = res));
   }
 }

@@ -4,6 +4,7 @@ import { SplashPageComponent } from './splash-page.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import * as anime from 'animejs/lib/anime.es.js';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ExternalLinkService } from '../../services/external-link.service';
 
 describe('SplashPageComponent', () => {
   let component: SplashPageComponent;
@@ -22,11 +23,18 @@ describe('SplashPageComponent', () => {
     toggleDarkMode: () => { }
   };
 
+  const stubExternalLinkService = {
+    openLink: () => { }
+  };
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SplashPageComponent],
       imports: [
         HttpClientTestingModule
+      ],
+      providers: [
+        { provide: ExternalLinkService, useValue: stubExternalLinkService }
       ],
       schemas: [
         CUSTOM_ELEMENTS_SCHEMA

@@ -4,12 +4,17 @@
 @import '../../app/app.mixin.scss';
 
 @font-face {
-  font-family: Plateia;
-  src: url('../fonts/plateia.ttf') format('woff')
+  font-family: 'Quicksand';
+  src: url('https://fonts.googleapis.com/css?family=Quicksand') format('woff')
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('https://fonts.googleapis.com/css?family=Lato') format('woff')
 }
 
 /* plateia font */
-$custom-typography: mat-typography-config($font-family: Plateia);
+$custom-typography: mat-typography-config($font-family: 'Quicksand, Lato');
 
 @include mat-core($custom-typography);
 

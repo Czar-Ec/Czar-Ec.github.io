@@ -2,24 +2,21 @@ import { TestBed } from '@angular/core/testing';
 
 import { ExternalLinkService } from './external-link.service';
 import { ConfigurationService } from './configuration.service';
+import { EXTERNAL_URLS } from '../app.tokens';
 
 describe('ExternalLinkService', () => {
   let service;
 
   const stubConfigService = {
-    config: {
-      externalLinks: {
-        cv: 'cv',
-        github: 'github',
-        linkedin: 'linkedin'
-      }
-    }
+    cv: 'cv',
+    github: 'github',
+    linkedin: 'linkedin'
   };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        { provide: ConfigurationService, useValue: stubConfigService }
+        { provide: EXTERNAL_URLS, useValue: stubConfigService }
       ]
     });
     service = TestBed.get(ExternalLinkService);
@@ -33,7 +30,7 @@ describe('ExternalLinkService', () => {
     it('should open the CV file', () => {
       const spy = spyOn(window, 'open');
       service.openCV();
-      expect(spy).toHaveBeenCalledWith(stubConfigService.config.externalLinks.cv, '_blank');
+      expect(spy).toHaveBeenCalledWith(stubConfigService.cv, '_blank');
     });
   });
 
@@ -41,7 +38,7 @@ describe('ExternalLinkService', () => {
     it('should open the LinkedIn page', () => {
       const spy = spyOn(window, 'open');
       service.openLinkedIn();
-      expect(spy).toHaveBeenCalledWith(stubConfigService.config.externalLinks.linkedin, '_blank');
+      expect(spy).toHaveBeenCalledWith(stubConfigService.linkedin, '_blank');
     });
   });
 
@@ -49,7 +46,7 @@ describe('ExternalLinkService', () => {
     it('should open the Github page', () => {
       const spy = spyOn(window, 'open');
       service.openGithub();
-      expect(spy).toHaveBeenCalledWith(stubConfigService.config.externalLinks.github, '_blank');
+      expect(spy).toHaveBeenCalledWith(stubConfigService.github, '_blank');
     });
   });
 });

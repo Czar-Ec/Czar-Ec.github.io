@@ -1,17 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { IntroPageComponent } from './info-components/intro-page/intro-page.component';
+import { ProjectsPageComponent } from './info-components/projects-page/projects-page.component';
 
 const routes: Routes = [
-  {
-    path: 'info',
-    pathMatch: 'full',
-    component: IntroPageComponent
-  },
-  {
-    path: '**',
-    redirectTo: 'info'
-  }
+  { path: '', component: IntroPageComponent },
+  { path: 'info', component: ProjectsPageComponent },
+  { path: 'info/projects', component: ProjectsPageComponent },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
@@ -19,6 +15,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {
       scrollPositionRestoration: 'enabled',
       anchorScrolling: 'enabled',
+      // enableTracing: true
     })
   ],
   exports: [RouterModule]

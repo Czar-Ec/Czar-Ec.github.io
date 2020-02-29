@@ -1,15 +1,20 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ConfigurationService } from './configuration.service';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 describe('ConfigurationService', () => {
   let service: ConfigurationService;
+
+  const stubHttp = {
+    get: () => of()
+  };
+
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        HttpClientTestingModule
+      providers: [
+        { provide: HttpClient, useValue: stubHttp }
       ]
     });
     service = TestBed.get(ConfigurationService);
@@ -25,8 +30,8 @@ describe('ConfigurationService', () => {
         config: 'yes'
       };
       spyOn<any>(service['httpClient'], 'get').and.returnValue(of(stubConfig));
-      service.loadConfig('');
-      expect(service.config).toBe(stubConfig);
+      service.loadConfig('').toPromise();
+      expect(service['_config']).toBe(stubConfig);
     });
   });
 });

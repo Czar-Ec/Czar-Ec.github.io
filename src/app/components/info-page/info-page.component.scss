@@ -27,7 +27,7 @@
   }
 }
 
-mat-card {
+.mat-card {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -36,7 +36,7 @@ mat-card {
   position: relative;
 }
 
-mat-card-header {
+.mat-card-header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,9 +52,10 @@ mat-card-header {
   margin: 16px;
 }
 
-mat-card-content {
+.mat-card-content {
   padding: 20px;
-  overflow-y: auto !important;
+  overflow-y: hidden;
+  flex: 1;
 }
 
 .toolbar-spacer {
