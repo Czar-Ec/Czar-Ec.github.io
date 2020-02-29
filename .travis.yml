@@ -1,4 +1,4 @@
-sudo: required
+root: required
 dist: trusty
 addons:
   chrome: stable
@@ -30,7 +30,7 @@ after_success:
 
 deploy:
   provider: pages
-  skip-cleanup: true
+  cleanup: true
   github-token: $GITHUB_TOKEN
   keep-history: true
   local-dir: ./dist/
