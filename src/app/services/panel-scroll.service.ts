@@ -23,7 +23,7 @@ export class PanelScrollService {
     }
 
     this.lastScroll = id;
-    el.scrollIntoView({ behavior: scrollType });
+    el.scrollIntoView({ block: 'center', behavior: scrollType });
   }
 
   /**

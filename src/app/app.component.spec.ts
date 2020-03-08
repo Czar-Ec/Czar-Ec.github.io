@@ -77,7 +77,7 @@ describe('AppComponent', () => {
 
   describe('METHOD: ngOnInit', () => {
     it('should scroll to the info page if the url has info', () => {
-      component.ngOnInit();
+      component.ngAfterViewInit();
     });
   });
 });

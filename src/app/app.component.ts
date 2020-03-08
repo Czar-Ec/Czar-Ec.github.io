@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, AfterViewInit } from '@angular/core';
 import { ThemeService } from './services/theme.service';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { MatIconRegistry } from '@angular/material';
@@ -11,7 +11,7 @@ import { PanelScrollService } from './services/panel-scroll.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements AfterViewInit {
 
   title = 'CzarEc Portfolio';
 
@@ -56,7 +56,7 @@ export class AppComponent implements OnInit {
     );
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     // if the route has info, scroll to the anchor tag
     this.router.events.subscribe((res) => {
       // if it has info, scroll to info panel
