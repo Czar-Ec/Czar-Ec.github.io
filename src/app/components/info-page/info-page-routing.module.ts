@@ -4,15 +4,20 @@ import { IntroPageComponent } from './info-components/intro-page/intro-page.comp
 import { ProjectsPageComponent } from './info-components/projects-page/projects-page.component';
 
 const routes: Routes = [
-  { path: '', component: IntroPageComponent },
-  { path: 'info', component: ProjectsPageComponent },
-  { path: 'info/projects', component: ProjectsPageComponent },
-  { path: '**', redirectTo: '' }
+  { path: '', redirectTo: 'info' },
+  {
+    path: 'info',
+    children: [
+      { path: 'projects', component: ProjectsPageComponent },
+      { path: '', component: IntroPageComponent },
+    ]
+  },
+  { path: '**', redirectTo: 'info' }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes)
+    RouterModule.forChild(routes)
   ],
   exports: [RouterModule]
 })

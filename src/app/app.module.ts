@@ -6,31 +6,32 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MaterialModule } from './modules/material.module';
-import { HttpClientModule } from '@angular/common/http';
-import { APP_BASE_HREF } from '@angular/common';
 import { SplashPageComponent } from './components/splash-page/splash-page.component';
 import { LogoComponent } from './components/splash-page/logo/logo.component';
-import { InfoPageModule } from './components/info-page/info-page.module';
 import { ConfigurationService } from './services/configuration.service';
 import { SharedModule } from './modules/shared.module';
 
 import { EXTERNAL_URLS, PROJECT_PREVIEW } from './app.tokens';
 import { externalUrlFactory, projectsPreviewFactory } from './app.factories';
+import { InfoPageComponent } from './components/info-page/info-page.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     SplashPageComponent,
     LogoComponent,
+    InfoPageComponent
   ],
   imports: [
+    AppRoutingModule,
+    BrowserModule,
+    BrowserAnimationsModule,
     MaterialModule,
-    InfoPageModule,
     SharedModule
   ],
   providers: [
     ConfigurationService,
-    { provide: APP_BASE_HREF, useValue: './' },
     {
       provide: APP_INITIALIZER, deps: [ConfigurationService], multi: true,
       useFactory: (configurationService: ConfigurationService) => () => configurationService.loadConfig('assets/config.json').toPromise(),
