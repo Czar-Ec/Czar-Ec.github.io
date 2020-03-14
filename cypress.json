@@ -1,5 +1,6 @@
 {
   "baseUrl": "http://localhost:8080",
+  "ignoreTestFiles": "**/*.{js,ts}",
   "supportFile": "cypress/support/index.js",
   "pluginsFile": "cypress/plugins/index.js",
   "env": {
