@@ -1,31 +1,69 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add("login", (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This is will overwrite an existing command --
-// Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+/**************************************************************
+ * CYPRESS NAMESPACE
+ **************************************************************/
 export { };
 declare global {
   namespace Cypress {
+    interface Chainable {
+      /**************************************************************
+       * COMMON
+       **************************************************************/
+      getCypressElement: typeof getCypressElement;
 
+      /**************************************************************
+       * ELEMENT ASSERTIONS
+       **************************************************************/
+      elementShouldBeVisible: typeof elementShouldBeVisible;
+
+      /**************************************************************
+       * USER INTERACTION
+       **************************************************************/
+    }
   }
+}
+
+/**************************************************************
+ * ADDING COMMANDS TO CYPRESS
+ **************************************************************/
+Cypress.Commands.add('getCypressElement', getCypressElement);
+Cypress.Commands.add('elementShouldBeVisible', elementShouldBeVisible);
+
+/**************************************************************
+ * CUSTOM COMMAND DEFINITIONS
+ **************************************************************/
+
+/**
+ * Get elements with the cypress tag
+ * @param elementRef
+ */
+export function getCypressElement(elementRef: string) {
+  return cy.get(cyTag(elementRef));
+}
+
+/**
+ * Click specified element
+ * @param elementRef
+ */
+export function clickElement(elementRef: string) {
+  return getCypressElement(elementRef).click();
+}
+
+/**
+ * Element should be visible
+ * @param elementRef
+ */
+export function elementShouldBeVisible(elementRef: string) {
+  return getCypressElement(elementRef).should('be.visible');
+}
+
+/**************************************************************
+ * HELPER FUNCTIONS
+ **************************************************************/
+
+/**
+ * Convert the element reference to the correct tag
+ * @param elRef
+ */
+function cyTag(elRef: string) {
+  return `[${Cypress.env('cypress-tag')}=${elRef}]`;
 }

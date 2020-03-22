@@ -1,11 +1,5 @@
-import { Given, Then } from 'cypress-cucumber-preprocessor/steps';
-
-Given('I open the page', () => {
-  cy.visit('/');
-});
+import { Then } from 'cypress-cucumber-preprocessor/steps';
 
 Then(`I see the logo`, () => {
-  cy
-  .get('.logo-svg')
-  .should('be.visible');
+  cy.elementShouldBeVisible('czarec-logo');
 });
