@@ -22,7 +22,7 @@ before_script:
 script:
 - ng lint
 - yarn test:ci
-- yarn test:ci:e2e
+- yarn cy:ci:e2e
 - yarn build:prod
 
 after_success:

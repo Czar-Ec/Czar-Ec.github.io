@@ -2,7 +2,7 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".js"]
   },
-  node: { fs: "empty", child_process: "empty", readline: "empty" },
+  node: { fs: "empty", child_process: "empty", readline: "empty", browser: "empty" },
   module: {
     rules: [
       {
