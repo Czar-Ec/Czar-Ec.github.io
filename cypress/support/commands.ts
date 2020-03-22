@@ -14,6 +14,7 @@ declare global {
        * ELEMENT ASSERTIONS
        **************************************************************/
       elementShouldBeVisible: typeof elementShouldBeVisible;
+      elementShouldNotBeVisible: typeof elementShouldNotBeVisible;
 
       /**************************************************************
        * USER INTERACTION
@@ -28,6 +29,7 @@ declare global {
  **************************************************************/
 Cypress.Commands.add('getCypressElement', getCypressElement);
 Cypress.Commands.add('elementShouldBeVisible', elementShouldBeVisible);
+Cypress.Commands.add('elementShouldNotBeVisible', elementShouldNotBeVisible);
 Cypress.Commands.add('clickElement', clickElement);
 
 /**************************************************************
@@ -56,6 +58,14 @@ export function clickElement(elementRef: string) {
  */
 export function elementShouldBeVisible(elementRef: string) {
   return getCypressElement(elementRef).should('be.visible');
+}
+
+/**
+ * Element should not be visible
+ * @param elementRef
+ */
+export function elementShouldNotBeVisible(elementRef: string) {
+  return getCypressElement(elementRef).should('not.be.visible');
 }
 
 /**************************************************************
