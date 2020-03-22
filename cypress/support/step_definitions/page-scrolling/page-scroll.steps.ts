@@ -1,14 +1,11 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 
-Given('I see the scroll down button', () => {
-  cy
-  .get('.see-more')
-  .should('be.visible');
+Given('I see the see more button', () => {
+  cy.elementShouldBeVisible('see-more-button');
 });
 
-When(`I click on the scroll down button`, () => {
-  cy
-  .get('.see-more button')
+When(`I click on the see more button`, () => {
+  cy.getCypressElement('see-more-button')
   .click();
 });
 
@@ -22,16 +19,14 @@ Given('I open the info page', () => {
   cy.visit('/home#info');
 });
 
-Given('I see the scroll up button', () => {
+Given('I see the see splash page button', () => {
   cy
   .get('.see-splash')
   .should('be.visible');
 });
 
-When(`I click on the scroll up button`, () => {
+When(`I click on the see splash page button`, () => {
   cy
-  .get('.see-splash button')
-  .click();
 });
 
 Then('I see the splash page', () => {

@@ -18,6 +18,7 @@ declare global {
       /**************************************************************
        * USER INTERACTION
        **************************************************************/
+      clickElement: typeof clickElement;
     }
   }
 }
@@ -27,6 +28,7 @@ declare global {
  **************************************************************/
 Cypress.Commands.add('getCypressElement', getCypressElement);
 Cypress.Commands.add('elementShouldBeVisible', elementShouldBeVisible);
+Cypress.Commands.add('clickElement', clickElement);
 
 /**************************************************************
  * CUSTOM COMMAND DEFINITIONS
@@ -66,4 +68,14 @@ export function elementShouldBeVisible(elementRef: string) {
  */
 function cyTag(elRef: string) {
   return `[${Cypress.env('cypress-tag')}=${elRef}]`;
+}
+
+/**
+ * Convert string to kebab case
+ * @param str
+ */
+export function kebabCase(str: string) {
+  return str.replace(/([a-z])([A-Z])/g, '$1-$2')
+    .replace(/\s+/g, '-')
+    .toLowerCase();
 }
