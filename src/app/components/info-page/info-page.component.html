@@ -7,9 +7,7 @@
 
   <mat-card>
     <mat-card-header>
-      <button mat-icon-button [matMenuTriggerFor]="cardMenu" class="menu-button">
-        <mat-icon>more_vert</mat-icon>
-      </button>
+      <app-info-page-navigation></app-info-page-navigation>
       <span class="toolbar-spacer"></span>
 
       <div class="info-link-buttons">
@@ -31,9 +29,3 @@
 
   </mat-card>
 </div>
-
-<mat-menu #cardMenu='matMenu'>
-  <button mat-menu-item>
-    <span>ass</span>
-  </button>
-</mat-menu>

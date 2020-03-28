@@ -15,13 +15,15 @@ import { EXTERNAL_URLS, PROJECT_PREVIEW } from './app.tokens';
 import { externalUrlFactory, projectsPreviewFactory } from './app.factories';
 import { InfoPageComponent } from './components/info-page/info-page.component';
 import { AppRoutingModule } from './app-routing.module';
+import { InfoPageNavigationComponent } from './components/info-page/info-components/info-page-navigation/info-page-navigation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SplashPageComponent,
     LogoComponent,
-    InfoPageComponent
+    InfoPageComponent,
+    InfoPageNavigationComponent
   ],
   imports: [
     AppRoutingModule,
