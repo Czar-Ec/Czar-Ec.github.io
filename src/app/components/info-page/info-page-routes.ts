@@ -7,8 +7,20 @@ const routes: any = [
   {
     path: 'info',
     children: [
-      { path: '', component: IntroPageComponent, label: 'Home', data: { state: 'info' } },
-      { path: 'projects', component: ProjectsPageComponent, label: 'Projects', data: { state: 'projects' } },
+      {
+        path: '',
+        component: IntroPageComponent,
+        label: 'Home',
+        icon: 'home',
+        data: { state: 'info' }
+      },
+      {
+        path: 'projects',
+        component: ProjectsPageComponent,
+        label: 'Projects',
+        icon: 'projects',
+        data: { state: 'projects' }
+      },
     ]
   },
   { path: '**', redirectTo: 'info' }

@@ -10,5 +10,38 @@
     "pageLengthOptions": [5, 10, 20],
     "travisBadgeUrl": "https://travis-ci.com/",
     "codeCovBadgeUrl": "https://codecov.io/gh/"
-  }
+  },
+  "icons": [{
+      "label": "crescent",
+      "path": "assets/img/icons/crescent.svg"
+    },
+    {
+      "label": "cv",
+      "path": "assets/img/icons/cv.svg"
+    },
+    {
+      "label": "github",
+      "path": "assets/img/icons/github.svg"
+    },
+    {
+      "label": "linkedin",
+      "path": "assets/img/icons/linkedin.svg"
+    },
+    {
+      "label": "sun",
+      "path": "assets/img/icons/sun.svg"
+    },
+    {
+      "label": "moon",
+      "path": "assets/img/icons/moon.svg"
+    },
+    {
+      "label": "home",
+      "path": "assets/img/icons/home.svg"
+    },
+    {
+      "label": "projects",
+      "path": "assets/img/icons/project.svg"
+    }
+  ]
 }
