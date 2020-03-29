@@ -39,11 +39,6 @@ import { InfoPageNavigationComponent } from './components/info-page/info-compone
       useFactory: (configurationService: ConfigurationService) => () => configurationService.loadConfig('assets/config.json').toPromise(),
     },
     {
-      provide: ICON_CONFIG,
-      useFactory: iconConfigFactory,
-      deps: [ConfigurationService]
-    },
-    {
       provide: EXTERNAL_URLS,
       useFactory: externalUrlFactory,
       deps: [ConfigurationService]
@@ -52,7 +47,12 @@ import { InfoPageNavigationComponent } from './components/info-page/info-compone
       provide: PROJECT_PREVIEW,
       useFactory: projectsPreviewFactory,
       deps: [ConfigurationService]
-    }
+    },
+    {
+      provide: ICON_CONFIG,
+      useFactory: iconConfigFactory,
+      deps: [ConfigurationService]
+    },
   ],
   bootstrap: [AppComponent]
 })

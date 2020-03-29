@@ -5,6 +5,9 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatMenuModule } from '@angular/material';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ExternalLinkService } from '../../services/external-link.service';
+import { RouterTestingModule } from '@angular/router/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ICON_CONFIG } from 'src/app/app.tokens';
 
 describe('InfoPageComponent', () => {
   let component: InfoPageComponent;
@@ -17,12 +20,15 @@ describe('InfoPageComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        BrowserAnimationsModule,
         HttpClientTestingModule,
-        MatMenuModule
+        MatMenuModule,
+        RouterTestingModule
       ],
       declarations: [InfoPageComponent],
       providers: [
-        { provide: ExternalLinkService, useValue: stubExternalLinkService }
+        { provide: ExternalLinkService, useValue: stubExternalLinkService },
+        { provide: ICON_CONFIG, useValue: [] }
       ],
       schemas: [
         CUSTOM_ELEMENTS_SCHEMA

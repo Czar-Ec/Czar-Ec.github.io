@@ -14,6 +14,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ThemeService } from './services/theme.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { of } from 'rxjs';
+import { ICON_CONFIG } from './app.tokens';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -27,6 +28,8 @@ describe('AppComponent', () => {
     events: of(new NavigationEnd(0, '/info/', '/info/')),
     navigate: () => null
   };
+
+  const stubIconConfig = [];
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -46,7 +49,8 @@ describe('AppComponent', () => {
       providers: [
         OverlayContainer,
         { provide: ThemeService, useValue: stubThemeService },
-        { provide: Router, useValue: stubRouter }
+        { provide: Router, useValue: stubRouter },
+        { provide: ICON_CONFIG, useValue: stubIconConfig }
       ],
       schemas: [
         CUSTOM_ELEMENTS_SCHEMA

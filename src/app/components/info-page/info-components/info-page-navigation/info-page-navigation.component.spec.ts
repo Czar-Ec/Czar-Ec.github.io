@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { InfoPageNavigationComponent } from './info-page-navigation.component';
+import { SharedModule } from 'src/app/modules/shared.module';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('InfoPageNavigationComponent', () => {
   let component: InfoPageNavigationComponent;
@@ -8,9 +11,20 @@ describe('InfoPageNavigationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InfoPageNavigationComponent ]
+      providers: [
+      ],
+      declarations: [
+        InfoPageNavigationComponent
+      ],
+      imports: [
+        RouterTestingModule,
+        SharedModule
+      ],
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

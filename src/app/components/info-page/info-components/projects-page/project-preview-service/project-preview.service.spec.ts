@@ -19,6 +19,7 @@ describe('ProjectsPreviewService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
+        ProjectsPreviewService,
         { provide: PROJECT_PREVIEW, useValue: stubConfig },
         { provide: HttpClient, useValue: stubHttp }
       ]
