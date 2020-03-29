@@ -20,7 +20,6 @@ before_script:
 - yarn global add codecov
 
 script:
-- ng lint
 - yarn test:ci
 - yarn cy:ci:e2e
 - yarn build:prod
