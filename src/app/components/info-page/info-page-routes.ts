@@ -37,7 +37,7 @@ export function getInfoRoutes(): Routes {
  * Function that returns routes for a given path
  * @param path
  */
-export function getRoutesAtPath(path: string): { path: string, label: string }[] {
+export function getRoutesAtPath(path: string, routesArray?: any): { path: string, label: string }[] {
   if (path == null) {
     return [];
   }
@@ -47,14 +47,14 @@ export function getRoutesAtPath(path: string): { path: string, label: string }[]
     path = '';
   }
 
-  return getChildRoutesAtPath(path.split('/'), routes);
+  return getChildRoutesAtPath(path.split('/'), routesArray ? routesArray : routes);
 }
 
 /**
  * Returns routes in a provided path
  * @param path
  */
-function getChildRoutesAtPath(path: string[], routesArray: any): { path: string, label: string }[] {
+export function getChildRoutesAtPath(path: string[], routesArray: any): { path: string, label: string }[] {
   if (!path || path.length < 1) {
     return [];
   }
