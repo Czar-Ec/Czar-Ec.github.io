@@ -1,0 +1,10 @@
+<button mat-icon-button [matMenuTriggerFor]="cardMenu" class="menu-button">
+  <mat-icon>more_vert</mat-icon>
+</button>
+
+<mat-menu #cardMenu='matMenu'>
+  <button mat-menu-item *ngFor="let route of infoRoutes" [routerLink]="route.path">
+    <mat-icon [svgIcon]="route.icon"></mat-icon>
+    <span>{{route.label}}</span>
+  </button>
+</mat-menu>

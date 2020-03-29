@@ -11,17 +11,19 @@ import { LogoComponent } from './components/splash-page/logo/logo.component';
 import { ConfigurationService } from './services/configuration.service';
 import { SharedModule } from './modules/shared.module';
 
-import { EXTERNAL_URLS, PROJECT_PREVIEW } from './app.tokens';
-import { externalUrlFactory, projectsPreviewFactory } from './app.factories';
+import { EXTERNAL_URLS, PROJECT_PREVIEW, ICON_CONFIG } from './app.tokens';
+import { externalUrlFactory, projectsPreviewFactory, iconConfigFactory } from './app.factories';
 import { InfoPageComponent } from './components/info-page/info-page.component';
 import { AppRoutingModule } from './app-routing.module';
+import { InfoPageNavigationComponent } from './components/info-page/info-components/info-page-navigation/info-page-navigation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SplashPageComponent,
     LogoComponent,
-    InfoPageComponent
+    InfoPageComponent,
+    InfoPageNavigationComponent
   ],
   imports: [
     AppRoutingModule,
@@ -45,7 +47,12 @@ import { AppRoutingModule } from './app-routing.module';
       provide: PROJECT_PREVIEW,
       useFactory: projectsPreviewFactory,
       deps: [ConfigurationService]
-    }
+    },
+    {
+      provide: ICON_CONFIG,
+      useFactory: iconConfigFactory,
+      deps: [ConfigurationService]
+    },
   ],
   bootstrap: [AppComponent]
 })

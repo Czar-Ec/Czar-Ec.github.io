@@ -8,7 +8,7 @@
 
 </div>
 
-<div align="center" style="display:flex;flex-direction:row;justify-content:space-evenly;">
+<div align="center" style="display: flex; flex-direction: row;justify-content: space-evenly;">
   <div>
 
   [![Build Status](https://travis-ci.com/Czar-Ec/Czar-Ec.github.io.svg?branch=develop)](https://travis-ci.com/Czar-Ec/Czar-Ec.github.io)
@@ -18,6 +18,12 @@
   <div>
 
   [![codecov](https://codecov.io/gh/Czar-Ec/Czar-Ec.github.io/branch/develop/graph/badge.svg)](https://codecov.io/gh/Czar-Ec/Czar-Ec.github.io)
+
+  </div>
+
+  <div>
+  
+  [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
 
   </div>
 </div>
@@ -35,7 +41,7 @@ If you have any ideas of features I could add or to report any bugs (because _ca
 </div>
 
 
-<a style="
+<a align="center" style="
 cursor: pointer;
 border: none;
 background-color: #660000;

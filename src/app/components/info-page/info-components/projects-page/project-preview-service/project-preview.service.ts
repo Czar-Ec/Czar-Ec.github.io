@@ -4,9 +4,7 @@ import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { ProjectDetails, CIBadge } from '../project-object';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ProjectsPreviewService {
 
   // request in progress
