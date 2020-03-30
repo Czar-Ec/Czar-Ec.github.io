@@ -3,14 +3,16 @@ import { InfoPageRoutingModule } from './info-page-routing.module';
 import { IntroPageComponent } from './info-components/intro-page/intro-page.component';
 import { SharedModule } from '../../modules/shared.module';
 import { ProjectsPageModule } from './info-components/projects-page/projects-page.module';
-import { InfoPageNavigationComponent } from './info-components/info-page-navigation/info-page-navigation.component';
+import { ToolsPageComponent } from './info-components/tools-page/tools-page.component';
 
 @NgModule({
   declarations: [
-    IntroPageComponent
+    IntroPageComponent,
+    ToolsPageComponent
   ],
   exports: [
-    IntroPageComponent
+    IntroPageComponent,
+    ToolsPageComponent
   ],
   imports: [
     InfoPageRoutingModule,
