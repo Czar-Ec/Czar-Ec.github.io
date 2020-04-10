@@ -23,3 +23,7 @@ export function projectsPreviewFactory(configurationService: ConfigurationServic
 export function iconConfigFactory(configurationService: ConfigurationService) {
   return configurationService.config.icons;
 }
+
+export function toolsConfigFactory(configurationService: ConfigurationService) {
+  return configurationService.config.tools;
+}

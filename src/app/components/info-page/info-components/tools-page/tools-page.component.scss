@@ -1,0 +1,86 @@
+.tools-page-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+}
+
+.tools-container {
+  flex: 1 1 auto;
+  overflow-y: auto;
+}
+
+.tool-detail {
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto;
+  height: 300px;
+  width: 90%;
+
+  .mat-card-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+  }
+
+  .tool-header {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .left-container {
+    flex: 3;
+    padding-right: 15px;
+  }
+
+  .right-container {
+    flex: 1;
+    max-width: 300px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    button {
+      margin-top: 10px;
+      transform: scale(0.6);
+      justify-self: flex-end;
+      width: 100%;
+    }
+
+    .tool-preview-image-container {
+      flex: 1 1 auto;
+      display: flex;
+      max-width: 200px;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        display: block;
+        cursor: pointer;
+        max-height: 125px;
+        max-width: 125px;
+      }
+
+      app-logo {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+
+  .tool-tags {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}
