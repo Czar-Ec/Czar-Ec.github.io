@@ -8,6 +8,9 @@
       <mat-card-title>
         <div class="tool-header">
           <div class="left-container">{{tool.name}}</div>
+          <div class="middle-container">
+            <div class="projectsLabel">Example Projects</div>
+          </div>
           <div class="right-container">
             <star-rating labelText="Skill Confidence" labelPosition="top" [numOfStars]="starsToDisplay"
               [showHalfStars]="true" [readOnly]="true" [hoverEnabled]="false" [rating]="starDisplay(tool.confidence)">
@@ -18,6 +21,12 @@
       <mat-card-content>
         <div class="left-container">
           <div class="tool-description">{{tool.description}}</div>
+        </div>
+        <div class="middle-container">
+          <mat-chip-list *ngIf="tool.exampleProjects?.length > 0">
+            <mat-chip *ngFor="let project of tool.exampleProjects" color="primary" class="projectChip"
+              (click)="externalLinkService.openLink(project.url)">{{project.name}}</mat-chip>
+          </mat-chip-list>
         </div>
         <div class="right-container">
           <div class="tool-preview-image-container" *ngIf="tool.reference || tool.previewImage; else toolPreviewDefault"
