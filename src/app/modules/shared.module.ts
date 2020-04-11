@@ -1,8 +1,10 @@
-import { PanelComponent } from '../components/panel/panel.component';
 import { NgModule } from '@angular/core';
-import { MaterialModule } from './material.module';
-import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { StarRatingModule, StarRatingConfigService } from 'angular-star-rating';
+
+import { PanelComponent } from '../components/panel/panel.component';
+import { MaterialModule } from './material.module';
 import { LogoComponent } from '../components/splash-page/logo/logo.component';
 
 @NgModule({
@@ -15,12 +17,14 @@ import { LogoComponent } from '../components/splash-page/logo/logo.component';
     HttpClientModule,
     PanelComponent,
     LogoComponent,
-    MaterialModule
+    MaterialModule,
+    StarRatingModule
   ],
   imports: [
     CommonModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    StarRatingModule.forRoot()
   ]
 })
 

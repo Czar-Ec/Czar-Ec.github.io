@@ -1775,6 +1775,13 @@ amdefine@>=0.0.4:
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
   integrity sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=
 
+angular-star-rating@^4.0.0-beta.3:
+  version "4.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/angular-star-rating/-/angular-star-rating-4.0.0-beta.3.tgz#b814a2eae02f9670428e1512d513fed44db7b492"
+  integrity sha512-2GAaWvmRjKiQovN5lRvK9u24Ksv2mZupYvwij6ShAKuojxm0VB1d3/O9nBeoID0gmthYK+NXaskrJAW+RmStEg==
+  dependencies:
+    tslib "^1.7.1"
+
 animejs@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/animejs/-/animejs-3.1.0.tgz#748a90fc1d4bef3efed64508af9a6a82babf5c47"
@@ -3576,6 +3583,11 @@ css-selector-tokenizer@^0.7.0:
     cssesc "^3.0.0"
     fastparse "^1.1.2"
     regexpu-core "^4.6.0"
+
+css-star-rating@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/css-star-rating/-/css-star-rating-1.2.4.tgz#521c4da46f723d8562f46ce1c019607d08904799"
+  integrity sha512-AIlU8JmssE0qQFzPt9AptB4/804v5SPxxFewq4KcovRrkNmxmoAY1kKjwCgM+cSk09mNywk0nCW95+3k3pbDVQ==
 
 cssauron@^1.4.0:
   version "1.4.0"

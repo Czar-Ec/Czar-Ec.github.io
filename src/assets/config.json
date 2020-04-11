@@ -52,5 +52,8 @@
   "tools": {
     "favIconsUrl": "https://api.faviconkit.com/",
     "toolsUrl": "https://raw.githubusercontent.com/Czar-Ec/XP-Share/master/tools.json"
+  },
+  "confidenceRating": {
+    "starsToDisplay": 5
   }
 }

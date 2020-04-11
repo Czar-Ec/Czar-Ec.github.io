@@ -1,18 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
-
 import { AppComponent } from './app.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MaterialModule } from './modules/material.module';
 import { SplashPageComponent } from './components/splash-page/splash-page.component';
-import { LogoComponent } from './components/splash-page/logo/logo.component';
 import { ConfigurationService } from './services/configuration.service';
 import { SharedModule } from './modules/shared.module';
 
-import { EXTERNAL_URLS, PROJECT_PREVIEW, ICON_CONFIG, TOOLS_CONFIG } from './app.tokens';
-import { externalUrlFactory, projectsPreviewFactory, iconConfigFactory, toolsConfigFactory } from './app.factories';
+import { EXTERNAL_URLS, PROJECT_PREVIEW, ICON_CONFIG, TOOLS_CONFIG, CONFIDENCE_RATING_CONFIG } from './app.tokens';
+import {
+  externalUrlFactory, projectsPreviewFactory, iconConfigFactory, toolsConfigFactory, confidenceRatingConfigFactory
+} from './app.factories';
 import { InfoPageComponent } from './components/info-page/info-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import { InfoPageNavigationComponent } from './components/info-page/info-components/info-page-navigation/info-page-navigation.component';
@@ -55,6 +55,11 @@ import { InfoPageNavigationComponent } from './components/info-page/info-compone
     {
       provide: TOOLS_CONFIG,
       useFactory: toolsConfigFactory,
+      deps: [ConfigurationService]
+    },
+    {
+      provide: CONFIDENCE_RATING_CONFIG,
+      useFactory: confidenceRatingConfigFactory,
       deps: [ConfigurationService]
     }
   ],

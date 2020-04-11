@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Share+Tech');
+@import '~css-star-rating/scss/star-rating';
 
 html,
 body {
@@ -33,4 +34,8 @@ body {
 
 .mat-tooltip {
   text-align: center;
+}
+
+.label-value {
+  transform: scale(0.75);
 }

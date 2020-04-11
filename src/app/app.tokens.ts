@@ -11,3 +11,6 @@ export const ICON_CONFIG = new InjectionToken<any>('ICON_CONFIG');
 
 // tools config
 export const TOOLS_CONFIG = new InjectionToken<any>('TOOLS_CONFIG');
+
+// confidence rating config
+export const CONFIDENCE_RATING_CONFIG = new InjectionToken<any>('CONFIDENCE_RATING_CONFIG');

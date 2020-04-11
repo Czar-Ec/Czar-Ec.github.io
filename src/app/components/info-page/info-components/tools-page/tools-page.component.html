@@ -8,7 +8,11 @@
       <mat-card-title>
         <div class="tool-header">
           <div class="left-container">{{tool.name}}</div>
-          <div class="right-container">confidence</div>
+          <div class="right-container">
+            <star-rating labelText="Skill Confidence" labelPosition="top" [numOfStars]="starsToDisplay"
+              [showHalfStars]="true" [readOnly]="true" [hoverEnabled]="false" [rating]="starDisplay(tool.confidence)">
+            </star-rating>
+          </div>
         </div>
       </mat-card-title>
       <mat-card-content>
@@ -16,10 +20,13 @@
           <div class="tool-description">{{tool.description}}</div>
         </div>
         <div class="right-container">
-          <div class="tool-preview-image-container" *ngIf="tool.reference || tool.previewImage; else toolPreviewDefault" (click)="externalLinkService.openLink(tool.reference)">
-            <img [src]="toolsInfoService.retrieveFavIconUrl(tool.reference, tool.previewImage)" class="tool-preview-image">
+          <div class="tool-preview-image-container" *ngIf="tool.reference || tool.previewImage; else toolPreviewDefault"
+            (click)="externalLinkService.openLink(tool.reference)">
+            <img [src]="toolsInfoService.retrieveFavIconUrl(tool.reference, tool.previewImage)"
+              class="tool-preview-image">
           </div>
-          <button mat-flat-button color="primary" (click)="externalLinkService.openLink(tool.reference)">Find out more</button>
+          <button mat-flat-button color="primary" (click)="externalLinkService.openLink(tool.reference)">Find out
+            more</button>
         </div>
       </mat-card-content>
       <mat-card-actions>
