@@ -47,6 +47,10 @@
     {
       "label": "tools",
       "path": "assets/img/icons/hammer.svg"
+    },
+    {
+      "label": "search",
+      "path": "assets/img/icons/search.svg"
     }
   ],
   "tools": {

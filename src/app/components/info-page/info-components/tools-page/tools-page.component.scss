@@ -16,6 +16,20 @@
   overflow-y: auto;
 }
 
+.tools-search-bar {
+  .search-form-field {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  ::ng-deep .mat-form-field-wrapper {
+    width: 100%;
+  }
+}
+
 .tool-detail {
   display: flex;
   flex-direction: column;

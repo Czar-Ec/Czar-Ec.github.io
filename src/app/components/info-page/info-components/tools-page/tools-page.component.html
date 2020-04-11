@@ -1,6 +1,12 @@
 <div class="tools-page-container">
   <div class="tools-search-bar container">
-    search
+    <mat-form-field class="search-form-field">
+      <mat-label>Search</mat-label>
+      <input matInput>
+      <button matSuffix mat-icon-button>
+        <mat-icon svgIcon="search"></mat-icon>
+      </button>
+    </mat-form-field>
   </div>
   <div class="tools-container container">
     <mat-card class="tool-detail mat-elevation-z8" *ngFor="let tool of toolsInfoService.tools"
