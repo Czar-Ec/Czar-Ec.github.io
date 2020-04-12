@@ -2,7 +2,7 @@
   <div class="tools-search-bar container">
     <mat-form-field class="search-form-field">
       <mat-label>Search</mat-label>
-      <input matInput>
+      <input matInput [formControl]="searchInput">
       <button matSuffix mat-icon-button>
         <mat-icon svgIcon="search"></mat-icon>
       </button>
