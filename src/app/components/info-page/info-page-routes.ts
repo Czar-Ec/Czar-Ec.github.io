@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { ProjectsPageComponent } from './info-components/projects-page/projects-page.component';
 import { IntroPageComponent } from './info-components/intro-page/intro-page.component';
+import { ToolsPageComponent } from './info-components/tools-page/tools-page.component';
 
 const routes: any = [
   { path: '', redirectTo: 'info' },
@@ -21,6 +22,13 @@ const routes: any = [
         icon: 'projects',
         data: { state: 'projects' }
       },
+      {
+        path: 'tools',
+        component: ToolsPageComponent,
+        label: 'Languages & Tools',
+        icon: 'tools',
+        data: { state: 'tools' }
+      }
     ]
   },
   { path: '**', redirectTo: 'info' }

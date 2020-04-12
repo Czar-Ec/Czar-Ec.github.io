@@ -11,7 +11,8 @@
     "travisBadgeUrl": "https://travis-ci.com/",
     "codeCovBadgeUrl": "https://codecov.io/gh/"
   },
-  "icons": [{
+  "icons": [
+    {
       "label": "crescent",
       "path": "assets/img/icons/crescent.svg"
     },
@@ -42,6 +43,21 @@
     {
       "label": "projects",
       "path": "assets/img/icons/project.svg"
+    },
+    {
+      "label": "tools",
+      "path": "assets/img/icons/hammer.svg"
+    },
+    {
+      "label": "search",
+      "path": "assets/img/icons/search.svg"
     }
-  ]
+  ],
+  "tools": {
+    "favIconsUrl": "https://api.faviconkit.com/",
+    "toolsUrl": "https://raw.githubusercontent.com/Czar-Ec/XP-Share/master/tools.json"
+  },
+  "confidenceRating": {
+    "starsToDisplay": 5
+  }
 }

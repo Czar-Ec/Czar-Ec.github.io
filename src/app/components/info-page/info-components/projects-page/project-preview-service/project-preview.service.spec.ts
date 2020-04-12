@@ -32,6 +32,24 @@ describe('ProjectsPreviewService', () => {
     expect(service).toBeTruthy();
   });
 
+  describe('METHOD: setupProjectDetails', () => {
+    it('should return an empty aray if no valid response', () => {
+      spyOn(service['httpClient'], 'get').and.returnValue(of(null));
+
+      service.setupProjectDetails();
+      expect(service['_projectDetails']).toEqual([]);
+    });
+  });
+
+  describe('METHOD: getNextDetail', () => {
+    it('should append the response to the project details', () => {
+      spyOn(service['httpClient'], 'get').and.returnValue(of());
+
+      service.getNextDetail();
+      expect(service['_projectDetails']).toEqual([]);
+    });
+  });
+
   describe('METHOD: getDetailsFromResponse', () => {
     it('should return correct details from response', () => {
       const stubBody = {
@@ -63,7 +81,7 @@ describe('ProjectsPreviewService', () => {
     it('should return description if length is less than length', () => {
       expect(service['summariseDescription']('desc', 5)).toBe('desc');
     });
-    
+
     it('should shorten description if length is more than length', () => {
       expect(service['summariseDescription']('description', 5)).toBe('descr...');
     });

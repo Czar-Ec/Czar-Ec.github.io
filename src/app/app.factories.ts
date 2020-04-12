@@ -23,3 +23,19 @@ export function projectsPreviewFactory(configurationService: ConfigurationServic
 export function iconConfigFactory(configurationService: ConfigurationService) {
   return configurationService.config.icons;
 }
+
+/**
+ * Return the tools config
+ * @param configurationService
+ */
+export function toolsConfigFactory(configurationService: ConfigurationService) {
+  return configurationService.config.tools;
+}
+
+/**
+ * Return the confidence rating config
+ * @param configurationService
+ */
+export function confidenceRatingConfigFactory(configurationService: ConfigurationService) {
+  return configurationService.config.confidenceRating;
+}

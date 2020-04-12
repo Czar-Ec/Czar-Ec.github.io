@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Share+Tech');
+@import '~css-star-rating/scss/star-rating';
 
 html,
 body {
   min-height: 100vh;
   height: auto;
   margin: 0;
-  overflow: hidden;
+  // overflow: hidden;
 }
 
 .particles-js-canvas-el {
@@ -33,4 +34,8 @@ body {
 
 .mat-tooltip {
   text-align: center;
+}
+
+.label-value {
+  transform: scale(0.6);
 }
