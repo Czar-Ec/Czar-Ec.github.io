@@ -28,11 +28,20 @@ after_success:
 - codecov
 
 deploy:
-  provider: pages
-  cleanup: true
-  token: $GITHUB_TOKEN
-  keep_history: true
-  local_dir: ./dist/
-  target_branch: master
-  on:
-    branch: pre-deploy
+  - provider: pages
+    skip-cleanup: true
+    token: $GITHUB_TOKEN
+    keep_history: true
+    local_dir: ./dist/
+    target_branch: master
+    on:
+      branch: pre-deploy
+  - provider: pages
+    skip-cleanup: true
+    token: $CD_PORTFOLIO
+    keep_history: true
+    local_dir: ./dist/
+    target_branch: master
+    repo: $TARGET_REPOSITORY
+    on:
+      branch: develop
