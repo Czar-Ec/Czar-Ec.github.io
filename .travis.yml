@@ -29,7 +29,7 @@ after_success:
 
 deploy:
   - provider: pages
-    skip-cleanup: true
+    cleanup: true
     token: $GITHUB_TOKEN
     keep_history: true
     local_dir: ./dist/
@@ -37,7 +37,7 @@ deploy:
     on:
       branch: pre-deploy
   - provider: pages
-    skip-cleanup: true
+    cleanup: true
     token: $CD_PORTFOLIO
     keep_history: true
     local_dir: ./dist/
