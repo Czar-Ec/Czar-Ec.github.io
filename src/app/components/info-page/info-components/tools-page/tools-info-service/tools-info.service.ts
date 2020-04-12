@@ -4,9 +4,7 @@ import { ToolInfoItem } from '../tools-and-languages';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ToolsInfoService {
 
   // complete list of tools

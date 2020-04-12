@@ -31,6 +31,8 @@ export class ToolsPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.toolsInfoService.filterList('');
+
     // listen to search input then update the filter
     this.searchInput.valueChanges
     .pipe(debounceTime(250)) // debounce so it doesn't spam service filter
