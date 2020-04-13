@@ -5,7 +5,7 @@ When('I open the splash page', () => {
 });
 
 When('I open the info page', () => {
-  cy.visit('/info');
+  cy.visit('#/info');
 });
 
 When('I open the projects page', () => {
@@ -23,7 +23,7 @@ When('I open the projects page', () => {
   });
 
 
-  cy.visit('/info/projects');
+  cy.visit('#/info/projects');
   cy.wait('@stubGHRes').its('response').its('body').then(res => {
     expect(res).to.have.length(1);
   });
