@@ -7,4 +7,9 @@
     <mat-icon [svgIcon]="route.icon"></mat-icon>
     <span>{{route.label}}</span>
   </button>
+  <mat-divider></mat-divider>
+  <button mat-menu-item (click)="openBugReportPage()">
+    <mat-icon svgIcon="bug"></mat-icon>
+    <span>Report Bug</span>
+  </button>
 </mat-menu>
