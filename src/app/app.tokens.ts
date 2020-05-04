@@ -14,3 +14,5 @@ export const TOOLS_CONFIG = new InjectionToken<any>('TOOLS_CONFIG');
 
 // confidence rating config
 export const CONFIDENCE_RATING_CONFIG = new InjectionToken<any>('CONFIDENCE_RATING_CONFIG');
+
+export const CD_PORTFOLIO_PATH = new InjectionToken<any>('CD_PORTFOLIO_PATH');

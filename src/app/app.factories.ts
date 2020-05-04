@@ -39,3 +39,7 @@ export function toolsConfigFactory(configurationService: ConfigurationService) {
 export function confidenceRatingConfigFactory(configurationService: ConfigurationService) {
   return configurationService.config.confidenceRating;
 }
+
+export function cdPortfolioPathConfigFactory(configurationService: ConfigurationService) {
+  return configurationService.config.cdPortfolioPath;
+}

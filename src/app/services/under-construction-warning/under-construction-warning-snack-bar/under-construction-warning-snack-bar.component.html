@@ -1,0 +1,21 @@
+<mat-card class="snack-bar-warning-container">
+  <mat-card-header>
+    <mat-card-title>
+      Continuously Deployed
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="warning-text">
+      This is the continuously deployed version of the develop branch. This may be incomplete and/or broken,
+      if so, feel free to report a bug, otherwise feel free to explore
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="warningSnackBarService.dismissSnackbar()">
+      Report Bug
+    </button>
+    <button color="warn" mat-raised-button (click)="warningSnackBarService.dismissSnackbar()">
+      Dismiss
+    </button>
+  </mat-card-actions>
+</mat-card>

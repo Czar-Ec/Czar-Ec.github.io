@@ -9,20 +9,33 @@ import { SplashPageComponent } from './components/splash-page/splash-page.compon
 import { ConfigurationService } from './services/configuration.service';
 import { SharedModule } from './modules/shared.module';
 
-import { EXTERNAL_URLS, PROJECT_PREVIEW, ICON_CONFIG, TOOLS_CONFIG, CONFIDENCE_RATING_CONFIG } from './app.tokens';
+import { EXTERNAL_URLS, PROJECT_PREVIEW, ICON_CONFIG, TOOLS_CONFIG, CONFIDENCE_RATING_CONFIG, CD_PORTFOLIO_PATH } from './app.tokens';
 import {
-  externalUrlFactory, projectsPreviewFactory, iconConfigFactory, toolsConfigFactory, confidenceRatingConfigFactory
+  externalUrlFactory,
+  projectsPreviewFactory,
+  iconConfigFactory,
+  toolsConfigFactory,
+  confidenceRatingConfigFactory,
+  cdPortfolioPathConfigFactory
 } from './app.factories';
 import { InfoPageComponent } from './components/info-page/info-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import { InfoPageNavigationComponent } from './components/info-page/info-components/info-page-navigation/info-page-navigation.component';
+import {
+  UnderConstructionWarningSnackBarComponent
+} from './services/under-construction-warning/under-construction-warning-snack-bar/under-construction-warning-snack-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SplashPageComponent,
     InfoPageComponent,
-    InfoPageNavigationComponent
+    InfoPageNavigationComponent,
+    UnderConstructionWarningSnackBarComponent
+  ],
+  entryComponents: [
+    UnderConstructionWarningSnackBarComponent
+
   ],
   imports: [
     AppRoutingModule,
@@ -33,6 +46,10 @@ import { InfoPageNavigationComponent } from './components/info-page/info-compone
   ],
   providers: [
     ConfigurationService,
+    {
+      provide: Window,
+      useFactory: () => window
+    },
     {
       provide: APP_INITIALIZER, deps: [ConfigurationService], multi: true,
       useFactory: (configurationService: ConfigurationService) => () => configurationService.loadConfig('assets/config.json').toPromise(),
@@ -60,6 +77,11 @@ import { InfoPageNavigationComponent } from './components/info-page/info-compone
     {
       provide: CONFIDENCE_RATING_CONFIG,
       useFactory: confidenceRatingConfigFactory,
+      deps: [ConfigurationService]
+    },
+    {
+      provide: CD_PORTFOLIO_PATH,
+      useFactory: cdPortfolioPathConfigFactory,
       deps: [ConfigurationService]
     }
   ],
