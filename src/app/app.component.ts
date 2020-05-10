@@ -5,7 +5,9 @@ import { Router, NavigationEnd } from '@angular/router';
 import { PanelScrollService } from './services/panel-scroll.service';
 import { IconService } from './services/icon.service';
 import { UnderConstructionWarningService } from './services/under-construction-warning/under-construction-warning.service';
-import { UnderConstructionWarningSnackBarComponent } from './services/under-construction-warning/under-construction-warning-snack-bar/under-construction-warning-snack-bar.component';
+import {
+  UnderConstructionWarningSnackBarComponent
+} from './services/under-construction-warning/under-construction-warning-snack-bar/under-construction-warning-snack-bar.component';
 import { MatSnackBar } from '@angular/material';
 
 @Component({

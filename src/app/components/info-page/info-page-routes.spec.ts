@@ -1,7 +1,7 @@
 import * as functions from './info-page-routes';
 
 
-describe('InfoPageRoutes', ()=> {
+describe('InfoPageRoutes', () => {
   describe('METHOD: getRoutesAtPath', () => {
     it('should return an empty array if no path is given', () => {
       expect(functions.getRoutesAtPath(null)).toEqual([]);
@@ -20,7 +20,7 @@ describe('InfoPageRoutes', ()=> {
     it('should return an empty array if the path does not return routes', () => {
       expect(functions.getChildRoutesAtPath(['not_test'], [{
         path: 'test',
-        children: [ { child: true } ] as any
+        children: [{ child: true }] as any
       }])).toEqual([]);
     });
 

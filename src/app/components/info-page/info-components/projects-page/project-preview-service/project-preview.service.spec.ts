@@ -43,8 +43,8 @@ describe('ProjectsPreviewService', () => {
     it('should set next page link', () => {
       spyOn(service['httpClient'], 'get').and.returnValue(of({
         body: ['test'],
-        headers: new HttpHeaders().set('link', 
-        '<.../repos?page=2&per_page=10>; rel="next", <.../repos?page=2&per_page=10>; rel="last"')
+        headers: new HttpHeaders().set('link',
+          '<.../repos?page=2&per_page=10>; rel="next", <.../repos?page=2&per_page=10>; rel="last"')
       }));
 
       service.setupProjectDetails();
@@ -63,8 +63,8 @@ describe('ProjectsPreviewService', () => {
     it('should set next page link', () => {
       spyOn(service['httpClient'], 'get').and.returnValue(of({
         body: ['test'],
-        headers: new HttpHeaders().set('link', 
-        '<.../repos?page=2&per_page=10>; rel="next", <.../repos?page=2&per_page=10>; rel="last"')
+        headers: new HttpHeaders().set('link',
+          '<.../repos?page=2&per_page=10>; rel="next", <.../repos?page=2&per_page=10>; rel="last"')
       }));
 
       service.getNextDetail();

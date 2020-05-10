@@ -14,14 +14,14 @@ export class UnderConstructionWarningService {
     return this._dismissed;
   }
 
-  set dismissed(dismissSnackbar :boolean) {
+  set dismissed(dismissSnackbar: boolean) {
     this._dismissed = dismissSnackbar;
   }
 
   private _snackBarRef: MatSnackBarRef<any>;
 
   set snackBarRef(sbRef: MatSnackBarRef<any>) {
-    if(!sbRef) {
+    if (!sbRef) {
       return;
     }
 
