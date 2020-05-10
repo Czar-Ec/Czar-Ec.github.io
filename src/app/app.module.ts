@@ -47,10 +47,6 @@ import {
   providers: [
     ConfigurationService,
     {
-      provide: Window,
-      useFactory: () => window
-    },
-    {
       provide: APP_INITIALIZER, deps: [ConfigurationService], multi: true,
       useFactory: (configurationService: ConfigurationService) => () => configurationService.loadConfig('assets/config.json').toPromise(),
     },
