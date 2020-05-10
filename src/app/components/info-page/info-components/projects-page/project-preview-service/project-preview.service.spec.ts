@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { ProjectsPreviewService } from './project-preview.service';
 import { PROJECT_PREVIEW } from '../../../../../app.tokens';
 import { of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 describe('ProjectsPreviewService', () => {
   let service: ProjectsPreviewService;
@@ -39,14 +39,36 @@ describe('ProjectsPreviewService', () => {
       service.setupProjectDetails();
       expect(service['_projectDetails']).toEqual([]);
     });
+
+    it('should set next page link', () => {
+      spyOn(service['httpClient'], 'get').and.returnValue(of({
+        body: ['test'],
+        headers: new HttpHeaders().set('link', 
+        '<.../repos?page=2&per_page=10>; rel="next", <.../repos?page=2&per_page=10>; rel="last"')
+      }));
+
+      service.setupProjectDetails();
+      expect(service['_projectDetails'].length).toEqual(1);
+    });
   });
 
   describe('METHOD: getNextDetail', () => {
     it('should append the response to the project details', () => {
-      spyOn(service['httpClient'], 'get').and.returnValue(of());
+      spyOn(service['httpClient'], 'get').and.returnValue(of(null));
 
       service.getNextDetail();
       expect(service['_projectDetails']).toEqual([]);
+    });
+
+    it('should set next page link', () => {
+      spyOn(service['httpClient'], 'get').and.returnValue(of({
+        body: ['test'],
+        headers: new HttpHeaders().set('link', 
+        '<.../repos?page=2&per_page=10>; rel="next", <.../repos?page=2&per_page=10>; rel="last"')
+      }));
+
+      service.getNextDetail();
+      expect(service['_projectDetails'].length).toEqual(1);
     });
   });
 

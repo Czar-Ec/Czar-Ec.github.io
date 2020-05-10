@@ -52,7 +52,6 @@ export class UnderConstructionWarningService {
       return;
     }
 
-    this._dismissed = true;
     this._snackBarRef.dismiss();
   }
 }

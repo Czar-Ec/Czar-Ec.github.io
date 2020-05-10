@@ -6,7 +6,8 @@ import {
   MatIconModule,
   MatMenuModule,
   MatSlideToggleModule,
-  MatTabsModule
+  MatTabsModule,
+  MatSnackBar
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OverlayContainer } from '@angular/cdk/overlay';
@@ -14,7 +15,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ThemeService } from './services/theme.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { of } from 'rxjs';
-import { ICON_CONFIG } from './app.tokens';
+import { ICON_CONFIG, CD_PORTFOLIO_PATH } from './app.tokens';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -30,6 +31,12 @@ describe('AppComponent', () => {
   };
 
   const stubIconConfig = [];
+
+  const stubPortfolioPath = 'path';
+
+  const stubSnackBar = {
+    openFromComponent: () => { }
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -50,7 +57,9 @@ describe('AppComponent', () => {
         OverlayContainer,
         { provide: ThemeService, useValue: stubThemeService },
         { provide: Router, useValue: stubRouter },
-        { provide: ICON_CONFIG, useValue: stubIconConfig }
+        { provide: MatSnackBar, useValue: stubSnackBar },
+        { provide: ICON_CONFIG, useValue: stubIconConfig },
+        { provide: CD_PORTFOLIO_PATH, useValue: stubPortfolioPath }
       ],
       schemas: [
         CUSTOM_ELEMENTS_SCHEMA

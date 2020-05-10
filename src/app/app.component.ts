@@ -61,8 +61,9 @@ export class AppComponent implements AfterViewInit {
    * Function that displays the warning snackbar for the develop branch version of the app
    */
   private displaySnackbar() {
-    // dont display if already displayed
-    if (this.underConstructionWarningService.dismissed) {
+    // dont display if not cd redeploy or already displayed
+    if (!this.underConstructionWarningService.isCDDeploy() ||
+      this.underConstructionWarningService.dismissed) {
       return;
     }
 
