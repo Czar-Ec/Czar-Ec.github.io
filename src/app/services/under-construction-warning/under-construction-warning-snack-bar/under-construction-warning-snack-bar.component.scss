@@ -1,0 +1,16 @@
+.snack-bar-warning-container {
+  font-family: Quicksand, Lato;
+
+  .warning-text {
+    margin-left: 16px;
+  }
+}
+
+.mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    margin: 0 5px;
+  }
+}

@@ -1,0 +1,7 @@
+@mixin under-construction-warning-snack-bar-mixin($theme) {
+  .mat-snack-bar-container {
+    background: rgba(0, 0, 0, 0);
+    box-shadow: none;
+    max-width: 400px;
+  }
+}

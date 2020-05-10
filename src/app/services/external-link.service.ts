@@ -32,6 +32,17 @@ export class ExternalLinkService {
     window.open(this.config.linkedin, '_blank');
   }
 
+  /**
+   * Function that opens the bug report page
+   */
+  public openBugReportPage() {
+    window.open(this.config.bugReport, '_blank');
+  }
+
+  /**
+   * Function that opens a given link on another tab
+   * @param link
+   */
   public openLink(link: string) {
     window.open(link, '_blank');
   }

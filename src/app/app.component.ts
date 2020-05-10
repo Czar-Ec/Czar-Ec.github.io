@@ -4,6 +4,11 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 import { Router, NavigationEnd } from '@angular/router';
 import { PanelScrollService } from './services/panel-scroll.service';
 import { IconService } from './services/icon.service';
+import { UnderConstructionWarningService } from './services/under-construction-warning/under-construction-warning.service';
+import {
+  UnderConstructionWarningSnackBarComponent
+} from './services/under-construction-warning/under-construction-warning-snack-bar/under-construction-warning-snack-bar.component';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +26,9 @@ export class AppComponent implements AfterViewInit {
     public theme: ThemeService,
     private router: Router,
     private panelScrollService: PanelScrollService,
-    private iconService: IconService
+    private iconService: IconService,
+    private underConstructionWarningService: UnderConstructionWarningService,
+    private warningSnackBar: MatSnackBar
   ) {
     // pass the container element to theme service
     this.overlay = this.overlayContainer.getContainerElement();
@@ -42,11 +49,30 @@ export class AppComponent implements AfterViewInit {
         this.panelScrollService.lastScroll = 'info';
       }
     });
+
+    this.displaySnackbar();
   }
 
   @HostListener('window:resize')
   OnWindowResize() {
     this.theme.applyParticles(this.theme.configLocation);
     this.panelScrollService.windowResized();
+  }
+
+  /**
+   * Function that displays the warning snackbar for the develop branch version of the app
+   */
+  private displaySnackbar() {
+    // dont display if not cd redeploy or already displayed
+    if (!this.underConstructionWarningService.isCDDeploy() ||
+      this.underConstructionWarningService.dismissed) {
+      return;
+    }
+
+    this.underConstructionWarningService.snackBarRef = this.warningSnackBar.openFromComponent(
+      UnderConstructionWarningSnackBarComponent, {
+      duration: undefined,
+      horizontalPosition: 'end'
+    });
   }
 }

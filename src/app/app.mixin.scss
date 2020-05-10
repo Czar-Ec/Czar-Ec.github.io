@@ -1,5 +1,6 @@
 @import '../app/components/splash-page/splash-page.mixin.scss';
 @import '../app/components/splash-page/logo/logo-mixin.scss';
+@import '../app/services/under-construction-warning/under-construction-warning-snack-bar/under-construction-warning-snack-bar.mixin.scss';
 
 @mixin app-mixins($theme) {
   $primary: map-get($theme, primary);
@@ -18,4 +19,5 @@
 
   @include splash-page-mixin($theme);
   @include logo-mixin($theme);
+  @include under-construction-warning-snack-bar-mixin($theme);
 }

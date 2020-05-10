@@ -5,15 +5,15 @@
 
 @font-face {
   font-family: 'Quicksand';
-  src: url('https://fonts.googleapis.com/css?family=Quicksand') format('woff')
+  src: url('assets/fonts/Quicksand-Regular.ttf') format('ttf')
 }
 
 @font-face {
   font-family: 'Lato';
-  src: url('https://fonts.googleapis.com/css?family=Lato') format('woff')
+  src: url('assets/fonts/Lato-Regular.ttf') format('ttf')
 }
 
-/* plateia font */
+/* font */
 $custom-typography: mat-typography-config($font-family: 'Quicksand, Lato');
 
 @include mat-core($custom-typography);

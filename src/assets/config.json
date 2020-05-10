@@ -1,8 +1,10 @@
 {
+  "cdPortfolioPath": "cd-portfolio",
   "externalLinks": {
     "cv": "assets/docs/CzarEchavezCV.pdf",
     "github": "https://github.com/Czar-Ec/",
-    "linkedin": "https://www.linkedin.com/in/czarec"
+    "linkedin": "https://www.linkedin.com/in/czarec",
+    "bugReport": "https://github.com/Czar-Ec/Czar-Ec.github.io/issues/new"
   },
   "projectsPreview": {
     "url": "https://api.github.com/users/Czar-Ec/repos",
@@ -51,6 +53,10 @@
     {
       "label": "search",
       "path": "assets/img/icons/search.svg"
+    },
+    {
+      "label": "bug",
+      "path": "assets/img/icons/bug.svg"
     }
   ],
   "tools": {

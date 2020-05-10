@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { getRoutesAtPath } from '../../info-page-routes';
+import { ExternalLinkService } from '../../../../services/external-link.service';
 
 @Component({
   selector: 'app-info-page-navigation',
@@ -12,10 +13,19 @@ export class InfoPageNavigationComponent implements OnInit {
 
   private infoPath = 'info';
 
-  constructor() { }
+  constructor(
+    private externalLinkService: ExternalLinkService
+  ) { }
 
   ngOnInit() {
     // get the info routes
     this.infoRoutes = getRoutesAtPath(this.infoPath);
+  }
+
+  /**
+   * Opens the bug report page
+   */
+  public openBugReportPage() {
+    this.externalLinkService.openBugReportPage();
   }
 }
