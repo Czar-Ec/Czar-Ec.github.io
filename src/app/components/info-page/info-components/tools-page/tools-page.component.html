@@ -1,12 +1,17 @@
 <div class="tools-page-container">
   <div class="tools-search-bar container">
-    <mat-form-field class="search-form-field">
-      <mat-label>Search</mat-label>
-      <input matInput [formControl]="searchInput">
-      <button matSuffix mat-icon-button>
-        <mat-icon svgIcon="search"></mat-icon>
-      </button>
-    </mat-form-field>
+    <div class="search-bar">
+      <mat-form-field class="search-form-field">
+        <mat-label>Search</mat-label>
+        <input matInput [formControl]="searchInput">
+        <button matSuffix mat-icon-button>
+          <mat-icon svgIcon="search"></mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <div class="sort-buttons">
+      <mat-chip class="sort-button" (click)="toolsInfoService.toggleSortingSystem()">Sort by {{toolsInfoService.currentSort}}</mat-chip>
+    </div>
   </div>
   <div class="tools-container container">
     <mat-card class="tool-detail mat-elevation-z8" *ngFor="let tool of toolsInfoService.tools"

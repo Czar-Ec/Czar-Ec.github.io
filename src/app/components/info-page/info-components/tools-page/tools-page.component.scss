@@ -17,16 +17,35 @@
 }
 
 .tools-search-bar {
-  .search-form-field {
-    display: flex;
-    justify-content: center;
-    width: 80%;
-    max-width: 800px;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+
+  .search-bar {
+    flex: 5;
+
+    .search-form-field {
+      display: flex;
+      justify-content: center;
+      width: 80%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    ::ng-deep .mat-form-field-wrapper {
+      width: 100%;
+    }
   }
 
-  ::ng-deep .mat-form-field-wrapper {
-    width: 100%;
+  .sort-buttons {
+    max-width: 200px;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .sort-button {
+      width: 90%;
+    }
   }
 }
 

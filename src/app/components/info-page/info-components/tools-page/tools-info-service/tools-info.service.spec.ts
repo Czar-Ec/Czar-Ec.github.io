@@ -92,6 +92,7 @@ describe('ToolsInfoService', () => {
   describe('METHOD: getTools', () => {
     it('should set the tools list', fakeAsync(() => {
       spyOn<any>(service['httpClient'], 'get').and.returnValue(of({ tools: 'test' } as any));
+      spyOn<any>(service, 'sortList').and.returnValue(null);
 
       service['getTools']();
       expect(service['toolsList']).toEqual('test' as any);
