@@ -4,6 +4,11 @@ import { ToolInfoItem } from '../tools-and-languages';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
+enum SortingSystem {
+  Alphabetical = 'name',
+  Confidence = 'confidence'
+}
+
 @Injectable()
 export class ToolsInfoService {
 
@@ -19,6 +24,18 @@ export class ToolsInfoService {
   get tools(): ToolInfoItem[] {
     return this.filteredToolsList;
   }
+
+  /**
+   * Return the sorting system used to display the tools
+   */
+  get currentSort() {
+    return this.sortingSystem;
+  }
+
+  /**
+   * Sort by either alphabetical or confidence
+   */
+  private sortingSystem = SortingSystem.Confidence;
 
   constructor(
     @Inject(TOOLS_CONFIG) private config,
@@ -87,6 +104,7 @@ export class ToolsInfoService {
       .subscribe((res: any) => {
         this.toolsList = res;
         this.filteredToolsList = res;
+        this.sortList();
       }, (err) => this.toolsList = []);
   }
 
@@ -111,4 +129,63 @@ export class ToolsInfoService {
     return domain;
   }
 
+  /**
+   * Toggle between alphabetical or confidence level sorting
+   */
+  public toggleSortingSystem() {
+    switch (this.sortingSystem) {
+      case SortingSystem.Alphabetical: {
+        this.sortingSystem = SortingSystem.Confidence;
+        break;
+      }
+
+      case SortingSystem.Confidence: {
+        this.sortingSystem = SortingSystem.Alphabetical;
+        break;
+      }
+
+      default:
+        this.sortingSystem = SortingSystem.Confidence;
+        break;
+    }
+
+    this.sortList();
+  }
+
+  /**
+   * Function used to sort the list of tools
+   */
+  private sortList() {
+    // do nothing if the list is empty
+    if (!this.filteredToolsList && !this.filteredToolsList.length) {
+      return;
+    }
+
+    let returnVal1;
+    let returnVal2;
+
+    this.filteredToolsList.sort((a, b) => {
+
+      // check f the item to be compared exists
+    if (!a[`${this.sortingSystem}`] || !b[`${this.sortingSystem}`]) {
+      return 0;
+    }
+
+    // check the type if the item to be compared is number, then flip return vals
+    if (typeof a[`${this.sortingSystem}`] === 'number' && typeof a[`${this.sortingSystem}`] === 'number') {
+      returnVal1 = -1;
+      returnVal2 = 1;
+    } else {
+      returnVal1 = 1;
+      returnVal2 = -1;
+    }
+
+      const aVal = a[`${this.sortingSystem}`]
+      const bVal = b[`${this.sortingSystem}`]
+
+      if (aVal > bVal) { return returnVal1; }
+      if (bVal > aVal) { return returnVal2; }
+      return 0;
+    });
+  }
 }
