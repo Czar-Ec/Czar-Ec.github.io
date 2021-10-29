@@ -16,6 +16,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - uses: codecov/codecov-action@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
@@ -24,9 +25,6 @@ jobs:
 
       # set up tests
       - run: yarn install
-      - run: export DISPLAY=:99.0
-      - run: sh -e /etc/init.d/xvfb start
-      - run: yarn global add codecov
 
       # run tests
       - run: yarn test:ci
