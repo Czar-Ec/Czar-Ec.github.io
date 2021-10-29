@@ -21,6 +21,14 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "yarn"
+
+      # set up tests
+      - run: yarn install
+      - run: export DISPLAY=:99.0
+      - run: sh -e /etc/init.d/xvfb start
+      - run: yarn global add codecov
+
+      # run tests
       - run: yarn test:ci
       - run: cy:ci:e2e
       - run: build:prod
