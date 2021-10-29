@@ -12,7 +12,7 @@
     "build": "ng build",
     "build:prod": "ng build --prod",
     "test": "ng test --watch",
-    "test:ci": "ng test --watch=false --codeCoverage=true",
+    "test:ci": "ng test --watch=false --karma-config \"./src/karma.conf-ci.js\"",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "cy:open": "start-server-and-test start:ci \"http-get://localhost:8080/\" cypress-open",
