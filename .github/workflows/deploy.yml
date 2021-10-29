@@ -16,7 +16,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: codecov/codecov-action@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
@@ -28,5 +27,24 @@ jobs:
 
       # run tests
       - run: npm run test:ci
-      - run: npm run cy:ci:e2e
+
+      # run cypress
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+
+      # build
       - run: npm run build:prod
+
+      # run code coverage
+      - uses: codecov/codecov-action@v2
+
+      - name: Pushes to another repository
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source-directory: "dist"
+          destination-github-username: "czar-ec"
+          destination-repository-name: "cd-portfolio"
+          user-email: "czar.echavez@yahoo.co.uk"
+          target-branch: master
