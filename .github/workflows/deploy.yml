@@ -15,6 +15,11 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
+      # install ubuntu deps
+      - run: apt-get install -y xvfb
+      - run: DISPLAY=:99.0
+      - run: sh -e /etc/init.d/xvfb start
+
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
