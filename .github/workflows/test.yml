@@ -1,7 +1,10 @@
-name: Deploy to live CD portfolio
+name: Feature build
 on:
   push:
-    branches: [develop]
+    branches-ignore:
+      - master
+      - pre-deploy
+      - develop
 
   workflow_dispatch:
 
@@ -45,14 +48,3 @@ jobs:
         uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-
-      - name: Pushes to another repository
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-        with:
-          source-directory: "dist"
-          destination-github-username: "czar-ec"
-          destination-repository-name: "cd-portfolio"
-          user-email: "czar.echavez@yahoo.co.uk"
-          target-branch: master
