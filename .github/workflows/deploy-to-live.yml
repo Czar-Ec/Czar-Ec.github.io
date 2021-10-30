@@ -24,6 +24,9 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "yarn"
 
+      # install deps
+      - run: yarn install
+
       # build
       - run: yarn build:prod
 
