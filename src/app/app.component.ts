@@ -1,105 +1,78 @@
-import { Component } from '@angular/core';
-import { MatIconRegistry } from '@angular/material';
-import { DomSanitizer } from '@angular/platform-browser';
+import { Component, HostListener, OnInit, AfterViewInit } from '@angular/core';
+import { ThemeService } from './services/theme.service';
 import { OverlayContainer } from '@angular/cdk/overlay';
+import { Router, NavigationEnd } from '@angular/router';
+import { PanelScrollService } from './services/panel-scroll.service';
+import { IconService } from './services/icon.service';
+import { UnderConstructionWarningService } from './services/under-construction-warning/under-construction-warning.service';
+import {
+  UnderConstructionWarningSnackBarComponent
+} from './services/under-construction-warning/under-construction-warning-snack-bar/under-construction-warning-snack-bar.component';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-
-  setDarkTheme = true;
+export class AppComponent implements AfterViewInit {
 
   title = 'CzarEc Portfolio';
 
-  private overlay;
+  private overlay: HTMLElement;
 
   constructor(
-    private iconReg: MatIconRegistry,
-    sanitise: DomSanitizer,
-    private overlayContainer: OverlayContainer
+    private overlayContainer: OverlayContainer,
+    public theme: ThemeService,
+    private router: Router,
+    private panelScrollService: PanelScrollService,
+    private iconService: IconService,
+    private underConstructionWarningService: UnderConstructionWarningService,
+    private warningSnackBar: MatSnackBar
   ) {
+    // pass the container element to theme service
     this.overlay = this.overlayContainer.getContainerElement();
-    this.applyTheme();
-    this.iconReg.addSvgIcon(
-      'cog',
-      sanitise.bypassSecurityTrustResourceUrl('assets/img/cog.svg')
-    );
-    this.iconReg.addSvgIcon(
-      'cv',
-      sanitise.bypassSecurityTrustResourceUrl('assets/img/cv.svg')
-    );
-    this.iconReg.addSvgIcon(
-      'crescent',
-      sanitise.bypassSecurityTrustResourceUrl('assets/img/crescent.svg')
-    );
-    this.iconReg.addSvgIcon(
-      'extra',
-      sanitise.bypassSecurityTrustResourceUrl('assets/img/extra.svg')
-    );
-    this.iconReg.addSvgIcon(
-      'github',
-      sanitise.bypassSecurityTrustResourceUrl('assets/img/github.svg')
-    );
-    this.iconReg.addSvgIcon(
-      'linkedin',
-      sanitise.bypassSecurityTrustResourceUrl('assets/img/linkedin.svg')
-    );
-    this.iconReg.addSvgIcon(
-      'logo',
-      sanitise.bypassSecurityTrustResourceUrl('assets/img/logo.svg')
-    );
-    this.iconReg.addSvgIcon(
-      'logotext',
-      sanitise.bypassSecurityTrustResourceUrl('assets/img/logotext.svg')
-    );
-    this.iconReg.addSvgIcon(
-      'menu',
-      sanitise.bypassSecurityTrustResourceUrl('assets/img/menu.svg')
-    );
-
-    this.iconReg.addSvgIcon(
-      'pepe',
-      sanitise.bypassSecurityTrustResourceUrl('assets/img/404/common_rarity_pepe.svg')
-    );
-    this.iconReg.addSvgIcon(
-      'feels',
-      sanitise.bypassSecurityTrustResourceUrl('assets/img/404/feels_bad.svg')
-    );
-    this.iconReg.addSvgIcon(
-      'okay',
-      sanitise.bypassSecurityTrustResourceUrl('assets/img/404/okay.svg')
-    );
-    this.iconReg.addSvgIcon(
-      'rukidding',
-      sanitise.bypassSecurityTrustResourceUrl('assets/img/404/r_u_kidding.svg')
-    );
-    this.iconReg.addSvgIcon(
-      'udaman',
-      sanitise.bypassSecurityTrustResourceUrl('assets/img/404/youre_the_man.svg')
-    );
-
+    this.theme.init(this.overlay);
   }
 
   /**
-   * Function that toggles the theme
+   * Listens to router events and makes sure that the second panel is shown if info page
    */
-  public toggleDarkTheme() {
-    this.setDarkTheme = !this.setDarkTheme;
+  ngAfterViewInit() {
+    // if the route has info, scroll to the anchor tag
+    this.router.events.subscribe((res) => {
+      // if it has info, scroll to info panel
+      if (res instanceof NavigationEnd && res.url.match(/\/info\/*/g) && !res.urlAfterRedirects.match(/#info/g)) {
+        this.panelScrollService.scroll('info', 'auto');
 
-    this.applyTheme();
+        // set up scroll
+        this.panelScrollService.lastScroll = 'info';
+      }
+    });
+
+    this.displaySnackbar();
+  }
+
+  @HostListener('window:resize')
+  OnWindowResize() {
+    this.theme.applyParticles(this.theme.configLocation);
+    this.panelScrollService.windowResized();
   }
 
   /**
-   * Function that applies the theme set
+   * Function that displays the warning snackbar for the develop branch version of the app
    */
-  private applyTheme() {
-    if (this.setDarkTheme) {
-      this.overlay.classList.add('dark-theme');
-    } else {
-      this.overlay.classList.remove('dark-theme');
+  private displaySnackbar() {
+    // dont display if not cd redeploy or already displayed
+    if (!this.underConstructionWarningService.isCDDeploy() ||
+      this.underConstructionWarningService.dismissed) {
+      return;
     }
+
+    this.underConstructionWarningService.snackBarRef = this.warningSnackBar.openFromComponent(
+      UnderConstructionWarningSnackBarComponent, {
+      duration: undefined,
+      horizontalPosition: 'end'
+    });
   }
 }

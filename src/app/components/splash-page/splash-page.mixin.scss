@@ -1,0 +1,25 @@
+@mixin splash-page-mixin($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, accent);
+
+  .dark-theme {
+    .link-icon svg path {
+      fill: mat-color($primary, 300);
+    }
+
+    .logo-svg svg path {
+      fill: mat-color($primary, 400) !important;
+    }
+
+  }
+
+  .link-icon svg path {
+    fill: mat-color($primary, 600);
+  }
+
+  .logo-svg svg path {
+    fill: mat-color($primary, 500) !important;
+  }
+
+}

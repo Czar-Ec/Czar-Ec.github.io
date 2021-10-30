@@ -1,46 +1,86 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './modules/app-routing.module';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { AppComponent } from './app.component';
 
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MaterialModule } from './modules/material.module';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { ContentComponent } from './components/content/content.component';
-import { HomeContentComponent } from './components/content/home-content/home-content.component';
-import { PageNotFoundComponent } from './components/content/page-not-found/page-not-found.component';
-import { WorkExpContentComponent } from './components/content/work-exp-content/work-exp-content.component';
-import { EducationContentComponent } from './components/content/education-content/education-content.component';
-import { ExtraContentComponent } from './components/content/extra-content/extra-content.component';
-import { ContactComponent } from './components/content/contact/contact.component';
-import { HttpClientModule } from '@angular/common/http';
-import { APP_BASE_HREF } from '@angular/common';
+import { SplashPageComponent } from './components/splash-page/splash-page.component';
+import { ConfigurationService } from './services/configuration.service';
+import { SharedModule } from './modules/shared.module';
+
+import { EXTERNAL_URLS, PROJECT_PREVIEW, ICON_CONFIG, TOOLS_CONFIG, CONFIDENCE_RATING_CONFIG, CD_PORTFOLIO_PATH } from './app.tokens';
+import {
+  externalUrlFactory,
+  projectsPreviewFactory,
+  iconConfigFactory,
+  toolsConfigFactory,
+  confidenceRatingConfigFactory,
+  cdPortfolioPathConfigFactory
+} from './app.factories';
+import { InfoPageComponent } from './components/info-page/info-page.component';
+import { AppRoutingModule } from './app-routing.module';
+import { InfoPageNavigationComponent } from './components/info-page/info-components/info-page-navigation/info-page-navigation.component';
+import {
+  UnderConstructionWarningSnackBarComponent
+} from './services/under-construction-warning/under-construction-warning-snack-bar/under-construction-warning-snack-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ToolbarComponent,
-    ContentComponent,
-    HomeContentComponent,
-    PageNotFoundComponent,
-    WorkExpContentComponent,
-    EducationContentComponent,
-    ExtraContentComponent,
-    ContactComponent
+    SplashPageComponent,
+    InfoPageComponent,
+    InfoPageNavigationComponent,
+    UnderConstructionWarningSnackBarComponent
+  ],
+  entryComponents: [
+    UnderConstructionWarningSnackBarComponent
+
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    HttpClientModule,
-    AppRoutingModule,
-    MaterialModule
+    MaterialModule,
+    SharedModule
   ],
-  providers: [{
-    provide: APP_BASE_HREF,
-    useValue: './'
-  }],
+  providers: [
+    ConfigurationService,
+    {
+      provide: APP_INITIALIZER, deps: [ConfigurationService], multi: true,
+      useFactory: (configurationService: ConfigurationService) => () => configurationService.loadConfig('assets/config.json').toPromise(),
+    },
+    {
+      provide: EXTERNAL_URLS,
+      useFactory: externalUrlFactory,
+      deps: [ConfigurationService]
+    },
+    {
+      provide: PROJECT_PREVIEW,
+      useFactory: projectsPreviewFactory,
+      deps: [ConfigurationService]
+    },
+    {
+      provide: ICON_CONFIG,
+      useFactory: iconConfigFactory,
+      deps: [ConfigurationService]
+    },
+    {
+      provide: TOOLS_CONFIG,
+      useFactory: toolsConfigFactory,
+      deps: [ConfigurationService]
+    },
+    {
+      provide: CONFIDENCE_RATING_CONFIG,
+      useFactory: confidenceRatingConfigFactory,
+      deps: [ConfigurationService]
+    },
+    {
+      provide: CD_PORTFOLIO_PATH,
+      useFactory: cdPortfolioPathConfigFactory,
+      deps: [ConfigurationService]
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

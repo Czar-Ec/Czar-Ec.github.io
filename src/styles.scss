@@ -1,21 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Share+Tech');
+@import '~css-star-rating/scss/star-rating';
 
 html,
 body {
   min-height: 100vh;
   height: auto;
   margin: 0;
+  overflow: hidden;
 }
 
-h1,
-h2,
-h3 {
-  font-family: 'Plateia';
-  text-align: center;
-}
-
-p {
-  font-family: Share Tech;
+.particles-js-canvas-el {
+  position: absolute !important;
+  z-index: 0;
 }
 
 /* Scrollbar */
@@ -34,4 +30,12 @@ p {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #e40000;
+}
+
+.mat-tooltip {
+  text-align: center;
+}
+
+.label-value {
+  transform: scale(0.6);
 }

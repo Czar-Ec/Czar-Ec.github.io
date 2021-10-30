@@ -1,0 +1,33 @@
+<div class="info-page">
+  <div class="see-splash">
+    <button mat-icon-button (click)="panelScrollService.scroll('splash')" data-cy="see-splash-button">
+      <mat-icon class="info-page-icon">keyboard_arrow_up</mat-icon>
+    </button>
+  </div>
+
+  <mat-card>
+    <mat-card-header>
+      <app-info-page-navigation></app-info-page-navigation>
+      <span class="toolbar-spacer"></span>
+
+      <div class="info-link-buttons">
+        <button mat-icon-button (click)="externalLinkService.openCV()">
+          <mat-icon svgIcon="cv"></mat-icon>
+        </button>
+        <button mat-icon-button (click)="externalLinkService.openGithub()">
+          <mat-icon svgIcon="github"></mat-icon>
+        </button>
+        <button mat-icon-button (click)="externalLinkService.openLinkedIn()">
+          <mat-icon class="icon" svgIcon="linkedin"></mat-icon>
+        </button>
+      </div>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="info-page-content-container" [@routerAnimations]="prepareRoute(outlet)">
+        <router-outlet #outlet="outlet"></router-outlet>
+      </div>
+    </mat-card-content>
+
+  </mat-card>
+</div>

@@ -6,23 +6,36 @@ import {
   MatIconModule,
   MatMenuModule,
   MatSlideToggleModule,
-  MatTabsModule
+  MatTabsModule,
+  MatSnackBar
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { ContentComponent } from './components/content/content.component';
 import { OverlayContainer } from '@angular/cdk/overlay';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ThemeService } from './services/theme.service';
+import { NavigationEnd, Router } from '@angular/router';
+import { of } from 'rxjs';
+import { ICON_CONFIG, CD_PORTFOLIO_PATH } from './app.tokens';
 
 describe('AppComponent', () => {
   let component: AppComponent;
 
-  const cList = {
-    add: () => { },
-    remove: () => { }
+  const stubThemeService = {
+    init: () => { },
+    applyParticles: () => { }
   };
 
-  const stubOverlay = {
-    classList: cList
+  const stubRouter = {
+    events: of(new NavigationEnd(0, '/info/', '/info/')),
+    navigate: () => null
+  };
+
+  const stubIconConfig = [];
+
+  const stubPortfolioPath = 'path';
+
+  const stubSnackBar = {
+    openFromComponent: () => { }
   };
 
   beforeEach(async(() => {
@@ -39,11 +52,17 @@ describe('AppComponent', () => {
       ],
       declarations: [
         AppComponent,
-        ContentComponent,
-        ToolbarComponent,
       ],
       providers: [
-        OverlayContainer
+        OverlayContainer,
+        { provide: ThemeService, useValue: stubThemeService },
+        { provide: Router, useValue: stubRouter },
+        { provide: MatSnackBar, useValue: stubSnackBar },
+        { provide: ICON_CONFIG, useValue: stubIconConfig },
+        { provide: CD_PORTFOLIO_PATH, useValue: stubPortfolioPath }
+      ],
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
       ]
     }).compileComponents();
   }));
@@ -61,37 +80,17 @@ describe('AppComponent', () => {
     expect(component.title).toEqual('CzarEc Portfolio');
   });
 
-  describe('METHOD: toggleDarkTheme', () => {
-    it('should toggle the dark theme', () => {
-      component.setDarkTheme = true;
-      component.toggleDarkTheme();
-      expect(component.setDarkTheme).toBeFalsy();
-    });
-
-    it('should call applyTheme', () => {
-      const spy = spyOn<any>(component, 'applyTheme');
-      component.toggleDarkTheme();
-      expect(spy).toHaveBeenCalled();
+  describe('METHOD: OnWindowResize', () => {
+    it('should reapply particles JS on window resize', () => {
+      const applyTheme = spyOn(component.theme, 'applyParticles');
+      component.OnWindowResize();
+      expect(applyTheme).toHaveBeenCalled();
     });
   });
 
-  describe('METHOD: applyTheme', () => {
-    it('should add the dark theme if setDarkTheme is true', () => {
-      component.setDarkTheme = true;
-      component['overlay'] = stubOverlay;
-      const spy = spyOn<any>(component['overlay'].classList, 'add');
-
-      component['applyTheme']();
-      expect(spy).toHaveBeenCalled();
-    });
-
-    it('should remove the dark theme if setDarkTheme is false', () => {
-      component.setDarkTheme = false;
-      component['overlay'] = stubOverlay;
-      const spy = spyOn<any>(component['overlay'].classList, 'remove');
-
-      component['applyTheme']();
-      expect(spy).toHaveBeenCalled();
+  describe('METHOD: ngOnInit', () => {
+    it('should scroll to the info page if the url has info', () => {
+      component.ngAfterViewInit();
     });
   });
 });

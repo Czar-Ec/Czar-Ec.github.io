@@ -1,0 +1,67 @@
+<div class="tools-page-container">
+  <div class="tools-search-bar container">
+    <div class="search-bar">
+      <mat-form-field class="search-form-field">
+        <mat-label>Search</mat-label>
+        <input matInput [formControl]="searchInput">
+        <button matSuffix mat-icon-button>
+          <mat-icon svgIcon="search"></mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <div class="sort-buttons">
+      <mat-chip class="sort-button" (click)="toolsInfoService.toggleSortingSystem()">Sort by {{toolsInfoService.currentSort}}</mat-chip>
+    </div>
+  </div>
+  <div class="tools-container container">
+    <mat-card class="tool-detail mat-elevation-z8" *ngFor="let tool of toolsInfoService.tools"
+      [attr.data-cy]="tool.name">
+      <mat-card-title>
+        <div class="tool-header">
+          <div class="left-container">{{tool.name}}</div>
+          <div class="middle-container">
+            <div class="projectsLabel">Example Projects</div>
+          </div>
+          <div class="right-container">
+            <star-rating labelText="Skill Confidence" labelPosition="top" [numOfStars]="starsToDisplay"
+              [showHalfStars]="true" [readOnly]="true" [hoverEnabled]="false" [rating]="starDisplay(tool.confidence)">
+            </star-rating>
+          </div>
+        </div>
+      </mat-card-title>
+      <mat-card-content>
+        <div class="left-container">
+          <div class="tool-description">{{tool.description}}</div>
+        </div>
+        <div class="middle-container">
+          <mat-chip-list *ngIf="tool.exampleProjects?.length > 0">
+            <mat-chip *ngFor="let project of tool.exampleProjects" color="primary" class="projectChip"
+              (click)="externalLinkService.openLink(project.url)">{{project.name}}</mat-chip>
+          </mat-chip-list>
+        </div>
+        <div class="right-container">
+          <div class="tool-preview-image-container" *ngIf="tool.reference || tool.previewImage; else toolPreviewDefault"
+            (click)="externalLinkService.openLink(tool.reference)">
+            <img [src]="toolsInfoService.retrieveFavIconUrl(tool.reference, tool.previewImage)"
+              class="tool-preview-image">
+          </div>
+          <button mat-flat-button color="primary" (click)="externalLinkService.openLink(tool.reference)">Find out
+            more</button>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="tool-tags">
+          <mat-chip-list>
+            <mat-chip *ngFor="let tag of tool.tags" color="primary">{{tag}}</mat-chip>
+          </mat-chip-list>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
+<ng-template #toolPreviewDefault>
+  <div class="tool-preview-image-container">
+    <app-logo></app-logo>
+  </div>
+</ng-template>

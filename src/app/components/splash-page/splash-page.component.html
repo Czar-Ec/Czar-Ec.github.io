@@ -1,0 +1,42 @@
+<div id="particles" class="splash-page">
+  <app-logo></app-logo>
+  <div class="links-container">
+    <div class="link cv-container" matTooltip="Download my CV">
+      <button mat-icon-button (mouseenter)="animateLinkButton($event, 2)" class="icon-button"
+        (click)="externalLinkService.openCV()" data-cy="cv-external-link-button">
+        <mat-icon svgIcon="cv" class="link-icon cv-icon"></mat-icon>
+      </button>
+    </div>
+    <div class="link github-container" matTooltip="Check my other projects on Github"
+      (click)="externalLinkService.openGithub()">
+      <button mat-icon-button (mouseenter)="animateLinkButton($event, 2)" class="icon-button"
+        data-cy="github-external-link-button">
+        <mat-icon svgIcon="github" class="link-icon github-icon"></mat-icon>
+      </button>
+    </div>
+    <div class="link linkedin-container" matTooltip="Connect with me on LinkedIn"
+      (click)="externalLinkService.openLinkedIn()">
+      <button mat-icon-button (mouseenter)="animateLinkButton($event, 2)" class="icon-button"
+        data-cy="linked-in-external-link-button">
+        <mat-icon svgIcon="linkedin" class="link-icon linkedin-icon"></mat-icon>
+      </button>
+    </div>
+    <div class="link dark-mode-container" matTooltip="Toggle Dark Mode">
+      <button mat-icon-button (mouseenter)="animateLinkButton($event, 2)" (click)="toggleDarkMode()"
+        class="dark-mode-icon icon-button" data-cy="dark-mode-toggle-button">
+        <mat-icon svgIcon="moon" *ngIf="themeService.darkTheme; else day" class="link-icon"></mat-icon>
+        <ng-template #day>
+          <mat-icon svgIcon="sun" class="link-icon"></mat-icon>
+        </ng-template>
+      </button>
+    </div>
+
+
+
+  </div>
+  <div class="see-more">
+    <button mat-icon-button (click)="panelScrollService.scroll('info')" data-cy="see-more-button">
+      <mat-icon class="info-page-icon">keyboard_arrow_down</mat-icon>
+    </button>
+  </div>
+</div>

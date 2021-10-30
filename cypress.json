@@ -1,1 +1,11 @@
-{}
+{
+  "baseUrl": "http://localhost:8080",
+  "testFiles": "**/*.{feature,features}",
+  "supportFile": "cypress/support/index.js",
+  "pluginsFile": "cypress/plugins/index.js",
+  "env": {
+    "cypress-tag": "data-cy",
+    "RETRIES": 3
+  },
+  "video": false
+}
