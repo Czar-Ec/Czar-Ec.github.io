@@ -17,7 +17,6 @@ jobs:
     steps:
       # install ubuntu deps
       - run: sudo apt-get install xvfb
-      
 
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
@@ -42,7 +41,10 @@ jobs:
       - run: yarn build:prod
 
       # run code coverage
-      - uses: codecov/codecov-action@v2
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Pushes to another repository
         uses: cpina/github-action-push-to-another-repository@main

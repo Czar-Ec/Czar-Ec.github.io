@@ -1,10 +1,10 @@
 name: Feature build
 on:
   push:
-    branches-ignore: 
-    - master
-    - pre-deploy
-    - develop
+    branches-ignore:
+      - master
+      - pre-deploy
+      - develop
 
   workflow_dispatch:
 
@@ -20,7 +20,6 @@ jobs:
     steps:
       # install ubuntu deps
       - run: sudo apt-get install xvfb
-      
 
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
@@ -45,4 +44,7 @@ jobs:
       - run: yarn build:prod
 
       # run code coverage
-      - uses: codecov/codecov-action@v2
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
