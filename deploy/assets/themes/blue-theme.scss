@@ -1,0 +1,28 @@
+@import '~@angular/material/theming';
+
+/* mixin imports */
+@import '../../app/app.mixin.scss';
+
+@include mat-core();
+
+$blue-theme-primary: mat-palette($mat-blue);
+$blue-theme-accent: mat-palette($mat-light-blue);
+
+$blue-theme-warn: mat-palette($mat-red);
+
+$blue-theme-light: mat-light-theme($blue-theme-primary, $blue-theme-accent, $blue-theme-warn);
+$blue-theme-dark: mat-dark-theme($blue-theme-primary, $blue-theme-accent, $blue-theme-warn);
+
+@include angular-material-theme($blue-theme-dark);
+
+/*Dark theme*/
+.dark-theme {
+  $blue-theme-dark: mat-dark-theme($blue-theme-primary, $blue-theme-accent, $blue-theme-warn);
+  @include angular-material-theme($blue-theme-dark);
+  @include app-mixins($blue-theme-dark);
+}
+
+/*Light theme*/
+$blue-theme-light: mat-light-theme($blue-theme-primary, $blue-theme-accent, $blue-theme-warn);
+@include angular-material-theme($blue-theme-light);
+@include app-mixins($blue-theme-light);
