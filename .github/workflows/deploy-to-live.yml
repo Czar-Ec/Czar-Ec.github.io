@@ -33,6 +33,3 @@ jobs:
           add: "dist"
           author_name: "cd"
           branch: master
-
-      # run code coverage
-      - uses: codecov/codecov-action@v2

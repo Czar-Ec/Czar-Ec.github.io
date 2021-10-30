@@ -43,3 +43,6 @@ jobs:
 
       # build
       - run: yarn build:prod
+
+      # run code coverage
+      - uses: codecov/codecov-action@v2
