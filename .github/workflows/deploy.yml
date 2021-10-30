@@ -16,9 +16,9 @@ jobs:
 
     steps:
       # install ubuntu deps
-      - run: apt-get install -y xvfb
+      - run: sudo apt-get install -y xvfb
       - run: DISPLAY=:99.0
-      - run: sh -e /etc/init.d/xvfb start
+      - run: sudo sh -e /etc/init.d/xvfb start
 
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
