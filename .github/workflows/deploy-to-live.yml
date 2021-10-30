@@ -31,8 +31,8 @@ jobs:
       - run: yarn build:prod --output-path deploy
 
       # push to master
-      - uses: EndBug/add-and-commit@v7
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
-          add: "deploy"
-          author_name: "cd"
-          branch: master
+          branch: master # The branch the action should deploy to.
+          folder: deploy # The folder the action should deploy.
