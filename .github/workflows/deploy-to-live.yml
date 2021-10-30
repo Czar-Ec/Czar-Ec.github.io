@@ -28,11 +28,11 @@ jobs:
       - run: yarn install
 
       # build
-      - run: yarn build:prod
+      - run: yarn build:prod --output-path deploy
 
       # push to master
       - uses: EndBug/add-and-commit@v7
         with:
-          add: "dist"
+          add: "deploy"
           author_name: "cd"
           branch: master
