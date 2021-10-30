@@ -5,11 +5,21 @@ module.exports = function (config) {
   config.set({
     basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
-    browsers: ['Chrome', 'ChromeHeadless', 'ChromeHeadlessCI'],
+    browsers: ['HeadlessChromium'],
     customLaunchers: {
-      ChromeHeadlessCI: {
-        base: 'ChromeHeadless',
-        flags: ['--no-sandbox']
+      HeadlessChromium: {
+        base: 'ChromiumHeadless',
+        flags: [
+          '--no-sandbox',
+          '--remote-debugging-port=9222',
+          '--enable-logging',
+          '--user-data-dir=./karma-chrome',
+          '--v=1',
+          '--disable-background-timer-throttling',
+          '--disable-renderer-backgrounding',
+          '--proxy-bypass-list=*',
+          '--proxy-server=\'direct://\''
+       ]
       }
     },
     plugins: [
