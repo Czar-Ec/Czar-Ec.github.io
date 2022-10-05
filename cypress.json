@@ -6,5 +6,6 @@
   "env": {
     "cypress-tag": "data-cy",
     "RETRIES": 3
-  }
+  },
+  "video": false
 }

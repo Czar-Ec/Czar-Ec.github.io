@@ -1,0 +1,58 @@
+name: Deploy to live CD portfolio
+on:
+  push:
+    branches: [develop]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      # install ubuntu deps
+      - run: sudo apt-get install xvfb
+
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "yarn"
+
+      # set up tests
+      - run: yarn install
+
+      # run tests
+      - run: xvfb-run --auto-servernum yarn test:ci
+
+      # run cypress
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          command: yarn cy:ci:e2e
+
+      # build
+      - run: yarn build:prod
+
+      # run code coverage
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Pushes to another repository
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source-directory: "dist"
+          destination-github-username: "czar-ec"
+          destination-repository-name: "cd-portfolio"
+          user-email: "czar.echavez@yahoo.co.uk"
+          target-branch: master
