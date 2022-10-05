@@ -4,14 +4,14 @@
 
 <div align="center">
 
-  # [CzarEc Portfolio](https://czar-ec.github.io/)
+  # [CzarEc Portfolio]($$PREVIEW_URL$$)
 
 </div>
 
 <div align="center" style="display: flex; flex-direction: row;justify-content: space-evenly;">
   <div>
 
-  [![Build Status](https://travis-ci.com/Czar-Ec/Czar-Ec.github.io.svg?branch=develop)](https://travis-ci.com/Czar-Ec/Czar-Ec.github.io)
+  [![Build Status]($$BUILD_STATUS_URL$$)]($$BUILD_STATUS_URL$$)
 
   </div>
 
@@ -23,7 +23,7 @@
 
   <div>
   
-  [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
+  [![MIT License](https://img.shields.io/github/license/czar-ec/czar-ec.github.io)](https://img.shields.io/github/license/czar-ec/czar-ec.github.io)
 
   </div>
 </div>
@@ -34,7 +34,7 @@
 
 The website was initially created as a way for possible employers to judge whether or not I am a perfect fit for the company, however it now functions as a feature testing environment i.e. for DevOps, End to End Testing tools and various Engineering Quality Assurance practices (and/or even more tools).
 
-There are a lot of planned future additions to this website, listed underneath the [projects](https://github.com/Czar-Ec/Czar-Ec.github.io/projects) tab.
+There are a lot of planned future additions to this website, listed underneath the [projects](https://github.com/users/Czar-Ec/projects/1) tab.
 
 If you have any ideas of features I could add or to report any bugs (because _can confirm am big noob_), then feel free to raise an issue
 
