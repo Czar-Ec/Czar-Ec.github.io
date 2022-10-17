@@ -43,6 +43,21 @@ jobs:
       # build
       - run: yarn build:prod
 
+      # replace readme items
+      - name: Find and Replace preview url
+        uses: jacobtomlinson/gha-find-replace@v2
+        with:
+          find: "$$PREVIEW_URL$$"
+          replace: "https://czar-ec.github.io/cd-portfolio"
+          include: "**README.md"
+
+      - name: Find and Replace build status badge
+        uses: jacobtomlinson/gha-find-replace@v2
+        with:
+          find: "$$BUILD_STATUS_URL$$"
+          replace: "https://github.com/czar-ec/czar-ec.github.io/actions/workflows/test.yml/badge.svg"
+          include: "**README.md"
+
       # run code coverage
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
