@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import '~@angular/material/theming';
 
 /* mixin imports */
@@ -19,9 +20,9 @@
 }
 
 /* font */
-$custom-typography: mat-typography-config($font-family: 'Quicksand, Lato');
+$custom-typography: mat.define-typography-config($font-family: 'Quicksand, Lato');
 
-@include mat-core($custom-typography);
+@include mat.core($custom-typography);
 
 /* Primary colour palette */
 $mat-czarecredprimary: (50 : #ff7070,
@@ -86,19 +87,19 @@ A700 : #ffffff,
 ));
 
 /*Palette colours*/
-$czarec-red-theme-primary: mat-palette($mat-czarecredprimary);
-$czarec-red-theme-accent: mat-palette($mat-czarecredaccent);
-$czarec-red-theme-warn: mat-palette($mat-amber);
+$czarec-red-theme-primary: mat.define-palette($mat-czarecredprimary);
+$czarec-red-theme-accent: mat.define-palette($mat-czarecredaccent);
+$czarec-red-theme-warn: mat.define-palette(mat.$amber-palette);
 
 
 /*Dark theme*/
 .dark-theme {
-  $czarec-red-theme-dark: mat-dark-theme($czarec-red-theme-primary, $czarec-red-theme-accent, $czarec-red-theme-warn);
-  @include angular-material-theme($czarec-red-theme-dark);
+  $czarec-red-theme-dark: mat.define-dark-theme($czarec-red-theme-primary, $czarec-red-theme-accent, $czarec-red-theme-warn);
+  @include mat.all-component-themes($czarec-red-theme-dark);
   @include app-mixins($czarec-red-theme-dark);
 }
 
 /*Light theme*/
-$czarec-red-theme-light: mat-light-theme($czarec-red-theme-primary, $czarec-red-theme-accent, $czarec-red-theme-warn);
-@include angular-material-theme($czarec-red-theme-light);
+$czarec-red-theme-light: mat.define-light-theme($czarec-red-theme-primary, $czarec-red-theme-accent, $czarec-red-theme-warn);
+@include mat.all-component-themes($czarec-red-theme-light);
 @include app-mixins($czarec-red-theme-light);
