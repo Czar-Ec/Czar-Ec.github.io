@@ -6,10 +6,10 @@
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
-    "module": "es2015",
+    "module": "es2022",
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    "target": "ES2022",
+    "target": "es2022",
     "types": [
       "node",
       "cypress"

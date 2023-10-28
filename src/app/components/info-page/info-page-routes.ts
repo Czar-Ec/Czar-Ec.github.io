@@ -4,7 +4,7 @@ import { IntroPageComponent } from './info-components/intro-page/intro-page.comp
 import { ToolsPageComponent } from './info-components/tools-page/tools-page.component';
 
 const routes: any = [
-  { path: '', redirectTo: 'info' },
+  { path: '', redirectTo: 'info', pathMatch: 'full' },
   {
     path: 'info',
     children: [
@@ -31,7 +31,7 @@ const routes: any = [
       }
     ]
   },
-  { path: '**', redirectTo: 'info' }
+  { path: '**', redirectTo: 'info', pathMatch: 'full' }
 ];
 
 /**
