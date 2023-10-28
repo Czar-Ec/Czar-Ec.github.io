@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { UnderConstructionWarningSnackBarComponent } from './under-construction-warning-snack-bar.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -17,7 +17,7 @@ describe('UnderConstructionWarningSnackBarComponent', () => {
     openBugReportPage: () => { }
   };
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ UnderConstructionWarningSnackBarComponent ],
       imports: [

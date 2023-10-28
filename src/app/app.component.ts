@@ -8,7 +8,7 @@ import { UnderConstructionWarningService } from './services/under-construction-w
 import {
   UnderConstructionWarningSnackBarComponent
 } from './services/under-construction-warning/under-construction-warning-snack-bar/under-construction-warning-snack-bar.component';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',

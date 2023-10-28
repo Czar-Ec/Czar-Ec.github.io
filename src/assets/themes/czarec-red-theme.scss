@@ -1,27 +1,37 @@
-@import '~@angular/material/theming';
+@use '@angular/material' as mat;
+@import '@angular/material/theming';
 
 /* mixin imports */
 @import '../../app/app.mixin.scss';
 
 @font-face {
   font-family: 'Quicksand';
-  src: url('assets/fonts/Quicksand-Regular.ttf') format('ttf')
+  src: url('../fonts/Quicksand-Regular.ttf') format('ttf')
 }
 
 @font-face {
   font-family: 'Share Tech';
-  src: url('assets/fonts/ShareTech-Regular.ttf') format('ttf')
+  src: url('../fonts/ShareTech-Regular.ttf') format('ttf')
 }
 
 @font-face {
   font-family: 'Lato';
-  src: url('assets/fonts/Lato-Regular.ttf') format('ttf')
+  src: url('../fonts/Lato-Regular.ttf') format('ttf')
 }
 
 /* font */
-$custom-typography: mat-typography-config($font-family: 'Quicksand, Lato');
+$custom-typography: mat.define-legacy-typography-config($font-family: 'Quicksand, Lato');
 
-@include mat-core($custom-typography);
+// TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
+//  The following line adds:
+//    1. Default typography styles for all components
+//    2. Styles for typography hierarchy classes (e.g. .mat-headline-1)
+//  If you specify typography styles for the components you use elsewhere, you should delete this line.
+//  If you don't need the default component typographies but still want the hierarchy styles,
+//  you can delete this line and instead use:
+//    `@include mat.legacy-typography-hierarchy($custom-typography);`
+@include mat.all-legacy-component-typographies($custom-typography);
+@include mat.legacy-core();
 
 /* Primary colour palette */
 $mat-czarecredprimary: (50 : #ff7070,
@@ -86,19 +96,19 @@ A700 : #ffffff,
 ));
 
 /*Palette colours*/
-$czarec-red-theme-primary: mat-palette($mat-czarecredprimary);
-$czarec-red-theme-accent: mat-palette($mat-czarecredaccent);
-$czarec-red-theme-warn: mat-palette($mat-amber);
+$czarec-red-theme-primary: mat.define-palette($mat-czarecredprimary);
+$czarec-red-theme-accent: mat.define-palette($mat-czarecredaccent);
+$czarec-red-theme-warn: mat.define-palette(mat.$amber-palette);
 
 
 /*Dark theme*/
 .dark-theme {
-  $czarec-red-theme-dark: mat-dark-theme($czarec-red-theme-primary, $czarec-red-theme-accent, $czarec-red-theme-warn);
-  @include angular-material-theme($czarec-red-theme-dark);
+  $czarec-red-theme-dark: mat.define-dark-theme($czarec-red-theme-primary, $czarec-red-theme-accent, $czarec-red-theme-warn);
+  @include mat.all-legacy-component-themes($czarec-red-theme-dark);
   @include app-mixins($czarec-red-theme-dark);
 }
 
 /*Light theme*/
-$czarec-red-theme-light: mat-light-theme($czarec-red-theme-primary, $czarec-red-theme-accent, $czarec-red-theme-warn);
-@include angular-material-theme($czarec-red-theme-light);
+$czarec-red-theme-light: mat.define-light-theme($czarec-red-theme-primary, $czarec-red-theme-accent, $czarec-red-theme-warn);
+@include mat.all-legacy-component-themes($czarec-red-theme-light);
 @include app-mixins($czarec-red-theme-light);

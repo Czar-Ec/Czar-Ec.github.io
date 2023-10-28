@@ -26,62 +26,58 @@ import {
 } from './services/under-construction-warning/under-construction-warning-snack-bar/under-construction-warning-snack-bar.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SplashPageComponent,
-    InfoPageComponent,
-    InfoPageNavigationComponent,
-    UnderConstructionWarningSnackBarComponent
-  ],
-  entryComponents: [
-    UnderConstructionWarningSnackBarComponent
-
-  ],
-  imports: [
-    AppRoutingModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    SharedModule
-  ],
-  providers: [
-    ConfigurationService,
-    {
-      provide: APP_INITIALIZER, deps: [ConfigurationService], multi: true,
-      useFactory: (configurationService: ConfigurationService) => () => configurationService.loadConfig('assets/config.json').toPromise(),
-    },
-    {
-      provide: EXTERNAL_URLS,
-      useFactory: externalUrlFactory,
-      deps: [ConfigurationService]
-    },
-    {
-      provide: PROJECT_PREVIEW,
-      useFactory: projectsPreviewFactory,
-      deps: [ConfigurationService]
-    },
-    {
-      provide: ICON_CONFIG,
-      useFactory: iconConfigFactory,
-      deps: [ConfigurationService]
-    },
-    {
-      provide: TOOLS_CONFIG,
-      useFactory: toolsConfigFactory,
-      deps: [ConfigurationService]
-    },
-    {
-      provide: CONFIDENCE_RATING_CONFIG,
-      useFactory: confidenceRatingConfigFactory,
-      deps: [ConfigurationService]
-    },
-    {
-      provide: CD_PORTFOLIO_PATH,
-      useFactory: cdPortfolioPathConfigFactory,
-      deps: [ConfigurationService]
-    }
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        SplashPageComponent,
+        InfoPageComponent,
+        InfoPageNavigationComponent,
+        UnderConstructionWarningSnackBarComponent
+    ],
+    imports: [
+        AppRoutingModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        MaterialModule,
+        SharedModule
+    ],
+    providers: [
+        ConfigurationService,
+        {
+            provide: APP_INITIALIZER, deps: [ConfigurationService], multi: true,
+            useFactory: (configurationService: ConfigurationService) => () => configurationService.loadConfig('assets/config.json').toPromise(),
+        },
+        {
+            provide: EXTERNAL_URLS,
+            useFactory: externalUrlFactory,
+            deps: [ConfigurationService]
+        },
+        {
+            provide: PROJECT_PREVIEW,
+            useFactory: projectsPreviewFactory,
+            deps: [ConfigurationService]
+        },
+        {
+            provide: ICON_CONFIG,
+            useFactory: iconConfigFactory,
+            deps: [ConfigurationService]
+        },
+        {
+            provide: TOOLS_CONFIG,
+            useFactory: toolsConfigFactory,
+            deps: [ConfigurationService]
+        },
+        {
+            provide: CONFIDENCE_RATING_CONFIG,
+            useFactory: confidenceRatingConfigFactory,
+            deps: [ConfigurationService]
+        },
+        {
+            provide: CD_PORTFOLIO_PATH,
+            useFactory: cdPortfolioPathConfigFactory,
+            deps: [ConfigurationService]
+        }
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor() {

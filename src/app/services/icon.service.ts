@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { ICON_CONFIG } from '../app.tokens';
-import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material/icon';
 
 interface Icon {
   label: string;
