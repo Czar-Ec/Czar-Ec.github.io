@@ -11,6 +11,7 @@ import { ToolsPageModule } from './info-components/tools-page/tools-page.module'
   ],
   exports: [
     IntroPageComponent,
+    InfoPageRoutingModule
   ],
   imports: [
     InfoPageRoutingModule,
