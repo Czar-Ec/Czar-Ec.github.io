@@ -29,7 +29,8 @@
             ],
             "styles": [
               {
-                "input": "./src/assets/themes/czarec-red-theme.scss"
+                "input": "./src/assets/themes/czarec-red-theme.scss",
+                "inject": true
               },
               "./src/styles.scss"
             ],
@@ -48,7 +49,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,

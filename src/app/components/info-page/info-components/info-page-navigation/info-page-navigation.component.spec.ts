@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { InfoPageNavigationComponent } from './info-page-navigation.component';
 import { SharedModule } from 'src/app/modules/shared.module';
@@ -14,7 +14,7 @@ describe('InfoPageNavigationComponent', () => {
     openBugReportPage: () => { }
   };
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       providers: [
         { provide: ExternalLinkService, useValue: stubExternalLinkService }
