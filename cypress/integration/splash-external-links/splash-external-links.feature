@@ -5,14 +5,14 @@ Feature: Splash page links
   Scenario: I open the CV
     Given I open the splash page
     Then I see the splash logo
-    When I click on the CV external link
+    And I see the CV external link
 
   Scenario: I open the Github link
     Given I open the splash page
     Then I see the splash logo
-    When I click on the Github external link
+    When I see the Github external link
 
   Scenario: I open the LinkedIn link
     Given I open the splash page
     Then I see the splash logo
-    When I click on the LinkedIn external link
+    When I see the LinkedIn external link

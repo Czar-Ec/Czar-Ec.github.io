@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, FormGroup } from '@angular/forms';
 
 import { ToolsInfoService } from './tools-info-service/tools-info.service';
 import { ExternalLinkService } from '../../../../services/external-link.service';
@@ -17,7 +17,7 @@ export class ToolsPageComponent implements OnInit {
   public starsToDisplay: number;
 
   // form control for search input field
-  public searchInput: FormControl;
+  public searchInput: UntypedFormControl;
 
   constructor(
     @Inject(CONFIDENCE_RATING_CONFIG) private config,
@@ -27,7 +27,7 @@ export class ToolsPageComponent implements OnInit {
     // update stars to display with config value
     this.starsToDisplay = this.config.starsToDisplay ? this.config.starsToDisplay : 5;
 
-    this.searchInput = new FormControl();
+    this.searchInput = new UntypedFormControl();
   }
 
   ngOnInit() {

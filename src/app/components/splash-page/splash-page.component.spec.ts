@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, tick, fakeAsync, waitForAsync } from '@angular/core/testing';
 
 import { SplashPageComponent } from './splash-page.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -27,7 +27,7 @@ describe('SplashPageComponent', () => {
     openLink: () => { }
   };
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [SplashPageComponent],
       imports: [

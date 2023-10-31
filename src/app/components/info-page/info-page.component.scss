@@ -19,7 +19,7 @@
   z-index: 5;
   flex-grow: 1;
 
-  ::ng-deep .mat-icon {
+  ::ng-deep .mat-mdc-icon {
     width: 40px !important;
     height: 40px !important;
     font-size: 40px !important;
@@ -27,7 +27,7 @@
   }
 }
 
-.mat-card {
+.mat-mdc-card {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -36,7 +36,7 @@
   position: relative;
 }
 
-.mat-card-header {
+.mat-mdc-card-header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,11 +48,11 @@
   }
 }
 
-::ng-deep .mat-card-header-text {
+::ng-deep .mat-mdc-card-header-text {
   margin: 16px;
 }
 
-.mat-card-content {
+.mat-mdc-card-content {
   padding: 20px;
   overflow-y: hidden;
   flex: 1;
