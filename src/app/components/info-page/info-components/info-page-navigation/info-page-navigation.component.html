@@ -3,7 +3,7 @@
 </button>
 
 <mat-menu #cardMenu='matMenu'>
-  <button mat-menu-item *ngFor="let route of infoRoutes" [routerLink]="route.path">
+  <button mat-menu-item *ngFor="let route of infoRoutes" [routerLink]="['info', route.path]">
     <mat-icon [svgIcon]="route.icon"></mat-icon>
     <span>{{route.label}}</span>
   </button>
