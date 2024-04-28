@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @mixin splash-page-mixin($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -5,21 +6,21 @@
 
   .dark-theme {
     .link-icon svg path {
-      fill: mat-color($primary, 300);
+      fill: mat.get-color-from-palette($primary, 300);
     }
 
     .logo-svg svg path {
-      fill: mat-color($primary, 400) !important;
+      fill: mat.get-color-from-palette($primary, 400) !important;
     }
 
   }
 
   .link-icon svg path {
-    fill: mat-color($primary, 600);
+    fill: mat.get-color-from-palette($primary, 600);
   }
 
   .logo-svg svg path {
-    fill: mat-color($primary, 500) !important;
+    fill: mat.get-color-from-palette($primary, 500) !important;
   }
 
 }

@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { CD_PORTFOLIO_PATH } from '../../app.tokens';
-import { MatSnackBar, MatSnackBarRef } from '@angular/material';
+import { MatSnackBarRef } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'

@@ -39,12 +39,13 @@
   height: 25%;
   display: flex;
   flex-direction: column;
+    padding: 15px;
 
-  .mat-card-content {
+  .mat-mdc-card-content {
     flex: 1;
   }
 
-  .mat-card-title {
+  .mat-mdc-card-title {
     padding-bottom: 20px;
     word-break: break-all;
   }
@@ -53,10 +54,10 @@
     text-align: right;
     padding-top: 5px;
 
-    .mat-icon-button, .mat-icon {
-      height: 20px;
-      width: 20px;
-      line-height: 20px;
-    }
+    // .mat-icon-button, .mat-icon {
+    //   height: 20px;
+    //   width: 20px;
+    //   line-height: 20px;
+    // }
   }
 }

@@ -1,13 +1,13 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { InfoPageComponent } from './info-page.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { MatMenuModule } from '@angular/material';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ExternalLinkService } from '../../services/external-link.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ICON_CONFIG } from 'src/app/app.tokens';
+import { MatMenuModule } from '@angular/material/menu';
 
 describe('InfoPageComponent', () => {
   let component: InfoPageComponent;
@@ -17,7 +17,7 @@ describe('InfoPageComponent', () => {
     openLink: () => { }
   };
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         BrowserAnimationsModule,

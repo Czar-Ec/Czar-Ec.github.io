@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ProjectsPageComponent } from './projects-page.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
@@ -19,7 +19,7 @@ describe('ProjectsPageComponent', () => {
     setupProjectDetails: () => { }
   };
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ProjectsPageComponent],
       providers: [
