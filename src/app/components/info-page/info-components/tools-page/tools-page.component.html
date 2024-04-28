@@ -45,14 +45,14 @@
             <img [src]="toolsInfoService.retrieveFavIconUrl(tool.reference, tool.previewImage)"
               class="tool-preview-image">
           </div>
-          <button mat-flat-button color="primary" (click)="externalLinkService.openLink(tool.reference)">Find out
+          <button mat-flat-button color="primary" class="find-out-more-button" (click)="externalLinkService.openLink(tool.reference)">Find out
             more</button>
         </div>
       </mat-card-content>
       <mat-card-actions>
         <div class="tool-tags">
           <mat-chip-list>
-            <mat-chip *ngFor="let tag of tool.tags" color="primary">{{tag}}</mat-chip>
+            <mat-chip class="tool-chip-item" *ngFor="let tag of tool.tags" color="primary">{{tag}}</mat-chip>
           </mat-chip-list>
         </div>
       </mat-card-actions>
