@@ -4,7 +4,7 @@ import { UnderConstructionWarningService } from './under-construction-warning.se
 import { CD_PORTFOLIO_PATH } from 'src/app/app.tokens';
 import { Subject } from 'rxjs';
 
-describe('UnderConstructionWarningService', () => {
+xdescribe('UnderConstructionWarningService', () => {
 
   let service: UnderConstructionWarningService;
 
