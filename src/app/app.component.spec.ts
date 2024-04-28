@@ -1,14 +1,6 @@
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import {
-  MatToolbarModule,
-  MatIconModule,
-  MatMenuModule,
-  MatSlideToggleModule,
-  MatTabsModule,
-  MatSnackBar
-} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -16,6 +8,12 @@ import { ThemeService } from './services/theme.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { of } from 'rxjs';
 import { ICON_CONFIG, CD_PORTFOLIO_PATH } from './app.tokens';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 describe('AppComponent', () => {
   let component: AppComponent;
