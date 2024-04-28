@@ -1,28 +1,38 @@
-@import '~@angular/material/theming';
+@use '@angular/material' as mat;
+@import '@angular/material/theming';
 
 /* mixin imports */
 @import '../../app/app.mixin.scss';
 
-@include mat-core();
+// TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
+//  The following line adds:
+//    1. Default typography styles for all components
+//    2. Styles for typography hierarchy classes (e.g. .mat-headline-1)
+//  If you specify typography styles for the components you use elsewhere, you should delete this line.
+//  If you don't need the default component typographies but still want the hierarchy styles,
+//  you can delete this line and instead use:
+//    `@include mat.legacy-typography-hierarchy(mat.define-legacy-typography-config());`
+@include mat.all-legacy-component-typographies();
+@include mat.legacy-core();
 
-$blue-theme-primary: mat-palette($mat-blue);
-$blue-theme-accent: mat-palette($mat-light-blue);
+$blue-theme-primary: mat.define-palette(mat.$blue-palette);
+$blue-theme-accent: mat.define-palette(mat.$light-blue-palette);
 
-$blue-theme-warn: mat-palette($mat-red);
+$blue-theme-warn: mat.define-palette(mat.$red-palette);
 
-$blue-theme-light: mat-light-theme($blue-theme-primary, $blue-theme-accent, $blue-theme-warn);
-$blue-theme-dark: mat-dark-theme($blue-theme-primary, $blue-theme-accent, $blue-theme-warn);
+$blue-theme-light: mat.define-light-theme($blue-theme-primary, $blue-theme-accent, $blue-theme-warn);
+$blue-theme-dark: mat.define-dark-theme($blue-theme-primary, $blue-theme-accent, $blue-theme-warn);
 
-@include angular-material-theme($blue-theme-dark);
+@include mat.all-legacy-component-themes($blue-theme-dark);
 
 /*Dark theme*/
 .dark-theme {
-  $blue-theme-dark: mat-dark-theme($blue-theme-primary, $blue-theme-accent, $blue-theme-warn);
-  @include angular-material-theme($blue-theme-dark);
+  $blue-theme-dark: mat.define-dark-theme($blue-theme-primary, $blue-theme-accent, $blue-theme-warn);
+  @include mat.all-legacy-component-themes($blue-theme-dark);
   @include app-mixins($blue-theme-dark);
 }
 
 /*Light theme*/
-$blue-theme-light: mat-light-theme($blue-theme-primary, $blue-theme-accent, $blue-theme-warn);
-@include angular-material-theme($blue-theme-light);
+$blue-theme-light: mat.define-light-theme($blue-theme-primary, $blue-theme-accent, $blue-theme-warn);
+@include mat.all-legacy-component-themes($blue-theme-light);
 @include app-mixins($blue-theme-light);
