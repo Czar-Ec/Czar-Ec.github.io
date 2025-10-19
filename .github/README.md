@@ -56,3 +56,42 @@ width: 100%;
 border-radius: 10px" href="https://czar-ec.github.io">
   <span>Open the portfolio</span>
 </a>
+
+# Running the website locally
+
+## Prerequisites
+
+- Node.js (LTS 18.x — tested with 18.20.8)
+- npm (bundled with Node) or Yarn (classic v1 — this project uses Yarn v1 in CI; example: 1.22.22)
+- Angular CLI (global) — compatible with @angular/cli@16 (project uses ^16.2.8)
+- Git (to clone the repository)
+- Google Chrome (recommended for running Cypress end-to-end tests)
+
+Quick setup (macOS / Linux / Windows WSL with bash):
+
+```bash
+# Install Node (use your preferred manager; example with nvm):
+nvm install 18
+nvm use 18
+
+# Or on Windows download installer from https://nodejs.org
+
+# Install Angular CLI globally (optional but convenient):
+npm install -g @angular/cli@16
+
+# Install dependencies (use either npm or yarn):
+npm install
+# or
+yarn install
+
+# Start dev server (opens at http://localhost:8080):
+npm run start
+# or
+yarn start
+```
+
+Notes:
+
+- The project was developed and tested with Angular 16 and TypeScript ~4.9.3 (see `package.json`).
+- If you plan to run the CI/E2E flows, having Chrome installed and a global Angular CLI matching the project's major version (v16) helps avoid tooling mismatches.
+- If you prefer Yarn in CI locally, Yarn Classic (v1.x) is the version referenced in CI configurations.
