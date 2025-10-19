@@ -19,13 +19,13 @@ jobs:
 
     steps:
       # install ubuntu deps
-      - run: sudo apt-get install xvfb
+      # - run: sudo apt-get install xvfb
 
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
+      # - uses: actions/checkout@v2
+      # - name: Use Node.js ${{ matrix.node-version }}
+      #   uses: actions/setup-node@v2
+      #   with:
+      #     node-version: ${{ matrix.node-version }}
 
       # set up tests
       - run: yarn install
@@ -40,25 +40,25 @@ jobs:
           # command: yarn cy:ci:e2e
 
       # build
-      - run: yarn build:prod
+      # - run: yarn build:prod
 
       # replace readme items
-      - name: Find and Replace preview url
-        uses: jacobtomlinson/gha-find-replace@v2
-        with:
-          find: "$$PREVIEW_URL$$"
-          replace: "https://czar-ec.github.io/cd-portfolio"
-          include: "**README.md"
+      # - name: Find and Replace preview url
+      #   uses: jacobtomlinson/gha-find-replace@v2
+      #   with:
+      #     find: "$$PREVIEW_URL$$"
+      #     replace: "https://czar-ec.github.io/cd-portfolio"
+      #     include: "**README.md"
 
-      - name: Find and Replace build status badge
-        uses: jacobtomlinson/gha-find-replace@v2
-        with:
-          find: "$$BUILD_STATUS_URL$$"
-          replace: "https://github.com/czar-ec/czar-ec.github.io/actions/workflows/test.yml/badge.svg"
-          include: "**README.md"
+      # - name: Find and Replace build status badge
+      #   uses: jacobtomlinson/gha-find-replace@v2
+      #   with:
+      #     find: "$$BUILD_STATUS_URL$$"
+      #     replace: "https://github.com/czar-ec/czar-ec.github.io/actions/workflows/test.yml/badge.svg"
+      #     include: "**README.md"
 
       # run code coverage
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+      # - name: Upload coverage to Codecov
+      #   uses: codecov/codecov-action@v1
+      #   with:
+      #     token: ${{ secrets.CODECOV_TOKEN }}
