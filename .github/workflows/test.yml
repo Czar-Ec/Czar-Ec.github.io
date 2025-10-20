@@ -31,7 +31,7 @@ jobs:
       - run: yarn install
 
       # run tests
-      # - run: xvfb-run --auto-servernum yarn test:ci
+      - run: yarn test:ci
 
       # run cypress
       # - name: Cypress run
@@ -40,7 +40,7 @@ jobs:
           # command: yarn cy:ci:e2e
 
       # build
-      # - run: yarn build:prod
+      - run: yarn build:prod
 
       # replace readme items
       # - name: Find and Replace preview url
