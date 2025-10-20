@@ -18,20 +18,21 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
+      - uses: actions/checkout@v3
       # install ubuntu deps
-      # - run: sudo apt-get install xvfb
+      - name: Install Xvfb
+        run: sudo apt-get install -y xvfb
 
-      # - uses: actions/checkout@v2
-      # - name: Use Node.js ${{ matrix.node-version }}
-      #   uses: actions/setup-node@v2
-      #   with:
-      #     node-version: ${{ matrix.node-version }}
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
 
       # set up tests
       - run: yarn install
 
       # run tests
-      # - run: xvfb-run --auto-servernum yarn test:ci
+      - run: yarn test:ci
 
       # run cypress
       # - name: Cypress run
@@ -40,7 +41,7 @@ jobs:
           # command: yarn cy:ci:e2e
 
       # build
-      # - run: yarn build:prod
+      - run: yarn build:prod
 
       # replace readme items
       # - name: Find and Replace preview url
