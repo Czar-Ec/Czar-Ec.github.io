@@ -4,20 +4,20 @@
 
 <div align="center">
 
-  # [CzarEc Portfolio]($$PREVIEW_URL$$)
+  # [CzarEc Portfolio](https://czar-ec.github.io/)
 
 </div>
 
 <div align="center" style="display: flex; flex-direction: row;justify-content: space-evenly;">
   <div>
 
-  [![Build Status]($$BUILD_STATUS_URL$$)]($$BUILD_STATUS_URL$$)
+  [![Deploy to LIVE](https://github.com/Czar-Ec/Czar-Ec.github.io/actions/workflows/deploy-to-live.yml/badge.svg)](https://github.com/Czar-Ec/Czar-Ec.github.io/actions/workflows/deploy-to-live.yml)
 
   </div>
 
   <div>
 
-  [![codecov](https://codecov.io/gh/Czar-Ec/Czar-Ec.github.io/branch/develop/graph/badge.svg)](https://codecov.io/gh/Czar-Ec/Czar-Ec.github.io)
+  [![Coverage](https://raw.githubusercontent.com/Czar-Ec/Czar-Ec.github.io/main/badges/coverage.svg)
 
   </div>
 
@@ -60,28 +60,29 @@ border-radius: 10px" href="https://czar-ec.github.io">
 # Running the website locally
 
 ## Prerequisites
-
-- Node.js (LTS 18.x — tested with 18.20.8)
+- Node.js (LTS 18.x — tested with 22.12.0)
 - npm (bundled with Node) or Yarn (classic v1 — this project uses Yarn v1 in CI; example: 1.22.22)
-- Angular CLI (global) — compatible with @angular/cli@16 (project uses ^16.2.8)
+- Angular CLI (global) — compatible with @angular/cli@16 (project uses ^20.3.0)
 - Git (to clone the repository)
-- Google Chrome (recommended for running Cypress end-to-end tests)
 
-Quick setup (macOS / Linux / Windows WSL with bash):
+### Recommended
+- NVM [Node Version Manager](https://github.com/coreybutler/nvm-windows) - easier to switch between Node versions
+
+Quick setup:
 
 ```bash
 # Install Node (use your preferred manager; example with nvm):
-nvm install 18
-nvm use 18
+nvm install 22.12.0
+nvm use 22.12.0
 
 # Or on Windows download installer from https://nodejs.org
 
-# Install Angular CLI globally (optional but convenient):
-npm install -g @angular/cli@16
+# Install Angular CLI globally
+npm install -g @angular/cli@20
 
 # Install dependencies (use either npm or yarn):
 npm install
-# or
+# or (to use yarn: `npm install -g yarn`)
 yarn install
 
 # Start dev server (opens at http://localhost:8080):
@@ -92,6 +93,10 @@ yarn start
 
 Notes:
 
-- The project was developed and tested with Angular 16 and TypeScript ~4.9.3 (see `package.json`).
-- If you plan to run the CI/E2E flows, having Chrome installed and a global Angular CLI matching the project's major version (v16) helps avoid tooling mismatches.
-- If you prefer Yarn in CI locally, Yarn Classic (v1.x) is the version referenced in CI configurations.
+- The project was developed and tested with Angular 20 and TypeScript ~5.9.2 (see `package.json`).
+
+## Notes on how this website is built
+- This repository is where the main website is held
+- The develop branch is built and is then committed to [cd-portfolio](https://github.com/Czar-Ec/cd-portfolio)
+  - The cd-portfolio shows the currently developed website i.e. Work In Progress
+  - This can be viewed in https://czar-ec.github.io/cd-portfolio/

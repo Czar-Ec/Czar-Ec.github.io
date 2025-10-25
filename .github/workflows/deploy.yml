@@ -15,9 +15,6 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-      # install ubuntu deps
-      - run: sudo apt-get install xvfb
-
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
@@ -28,43 +25,45 @@ jobs:
       - run: yarn install
 
       # run tests
-      - run: xvfb-run --auto-servernum yarn test:ci
-
-      # run cypress
-      # - name: Cypress run
-      #   uses: cypress-io/github-action@v6.1.0
-      #   with:
-      #     command: yarn cy:ci:e2e
+      - run: yarn test:ci
 
       # build
       - run: yarn build:prod
 
-      - name: Find and Replace preview url
-        uses: jacobtomlinson/gha-find-replace@v2
-        with:
-          find: "$$PREVIEW_URL$$"
-          replace: "https://czar-ec.github.io/"
-          include: "**README.md"
+      # Extract overall coverage percentage from lcov
+      - name: Get coverage percentage
+        id: coverage
+        run: |
+          COVERAGE=$(grep -A 1 "TOTAL" coverage/lcov.info | grep -oP "(?<=\s)\d+(?=\.\d+%)" | tail -1)
+          echo "coverage=$COVERAGE" >> $GITHUB_OUTPUT
 
-      - name: Find and Replace build status badge
-        uses: jacobtomlinson/gha-find-replace@v2
-        with:
-          find: "$$BUILD_STATUS_URL$$"
-          replace: "https://github.com/czar-ec/czar-ec.github.io/actions/workflows/deploy.yml/badge.svg"
-          include: "**README.md"
+      # Generate a badge (using shields.io style SVG generator)
+      - name: Generate coverage badge
+        run: |
+          mkdir -p badges
+          COLOR=red
+          if [ ${{ steps.coverage.outputs.coverage }} -ge 90 ]; then COLOR=brightgreen; fi
+          if [ ${{ steps.coverage.outputs.coverage }} -ge 85 ] && [ ${{ steps.coverage.outputs.coverage }} -lt 90 ]; then COLOR=green; fi
+          if [ ${{ steps.coverage.outputs.coverage }} -ge 80 ] && [ ${{ steps.coverage.outputs.coverage }} -lt 85 ]; then COLOR=yellow; fi
+          echo "Generating badge for coverage ${{ steps.coverage.outputs.coverage }}% ($COLOR)"
+          curl -o badges/coverage.svg "https://img.shields.io/badge/coverage-${{ steps.coverage.outputs.coverage }}%25-$COLOR"
 
-      # run code coverage
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+      # Commit the badge to the repo
+      - name: Commit coverage badge
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add badges/coverage.svg
+          git commit -m "chore: update coverage badge [skip ci]" || echo "No changes to commit"
+          git push
 
+      # deploy to cd-portfolio repo
       - name: Pushes to another repository
         uses: cpina/github-action-push-to-another-repository@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source-directory: "dist"
+          source-directory: "dist/WebsitePortfolio/browser"
           destination-github-username: "czar-ec"
           destination-repository-name: "cd-portfolio"
           user-email: "czar.echavez@yahoo.co.uk"

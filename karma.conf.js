@@ -6,28 +6,23 @@ module.exports = function (config) {
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
-      require('karma-firefox-launcher'),
       require('karma-jasmine-html-reporter'),
-      require('karma-coverage'),
-      require('@angular-devkit/build-angular/plugins/karma')
+      require('karma-coverage')
     ],
     client: {
-      clearContext: false // leave Jasmine Spec Runner output visible in browser
+      clearContext: false
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage'),
-      subdir: '.',
+      dir: require('path').join(__dirname, 'coverage', 'websiteportfolio'),
       reporters: [
-        { type: 'html' },
-        { type: 'text-summary' }
-      ]
+        { type: 'html' },        // HTML coverage report
+        { type: 'lcovonly', subdir: '.', file: 'lcov.info' }, // lcov report for codecov
+        { type: 'text-summary', subdir: '.', file: 'text-summary.txt' } // console summary saved to file
+      ],
+      includeAllSources: true
     },
-    reporters: ['progress', 'kjhtml'],
-    port: 9876,
-    colors: true,
-    logLevel: config.LOG_INFO,
-    autoWatch: false,
-    browsers: ['ChromeHeadless', 'FirefoxHeadless'],
+    reporters: ['progress', 'kjhtml', 'coverage'],
+    browsers: ['ChromeHeadless'],
     singleRun: true,
     restartOnFileChange: false
   });

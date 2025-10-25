@@ -8,7 +8,7 @@
     "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "test:ci": "xvfb-run -a ng test --browsers=ChromeHeadless,FirefoxHeadless --watch=false --no-progress --code-coverage"
+    "test:ci": "ng test --watch=false --browsers=ChromeHeadless --karma-config=karma.conf.js --code-coverage"
   },
   "prettier": {
     "printWidth": 100,
@@ -42,6 +42,7 @@
     "karma": "~6.4.0",
     "karma-chrome-launcher": "^3.2.0",
     "karma-coverage": "~2.2.0",
+    "karma-detect-browsers": "^2.3.3",
     "karma-firefox-launcher": "^2.1.3",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
