@@ -1,0 +1,11 @@
+<div class="footer-container">
+  @if (isMobile$ | async) {
+  <div class="mobile-view-container">
+    <p>Mobile Footer Content</p>
+  </div>
+  } @else {
+  <div class="desktop-view-container">
+    <p>Desktop Footer Content</p>
+  </div>
+  }
+</div>
