@@ -32,7 +32,7 @@ export class ScreenService {
   constructor(private breakpointObserver: BreakpointObserver) {
 
     // Observe the "Handset" breakpoint (mobile screens)
-    this.isMobile$ = this.breakpointObserver.observe([Breakpoints.Handset])
+    this.isMobile$ = this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.XSmall, Breakpoints.Handset])
       .pipe(
         // Convert the BreakpointState object into a boolean (true = matches)
         map(result => result.matches),

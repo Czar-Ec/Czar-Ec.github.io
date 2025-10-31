@@ -1,6 +1,8 @@
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { App } from './app.component';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { provideHttpClient } from '@angular/common/http';
 
 describe('App', () => {
   let fixture: any; // will hold ComponentFixture<App>
@@ -9,7 +11,11 @@ describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App],
-      providers: [provideZonelessChangeDetection()],
+      providers: [
+        provideZonelessChangeDetection(),
+        provideHttpClientTesting(),
+        provideHttpClient(),
+      ],
     }).compileComponents(); // ✅ compileComponents does NOT return fixture
 
     // Create fixture AFTER compilation
