@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NgParticlesService, NgxParticlesModule } from '@tsparticles/angular';
@@ -23,7 +23,8 @@ export class App {
   constructor(
     private domSanitizer: DomSanitizer,
     private readonly ngParticlesService: NgParticlesService,
-    private readonly http: HttpClient
+    private readonly http: HttpClient,
+    private cdr: ChangeDetectorRef
   ) {
     // Register SVG icons
     this.matIconRegistry.addSvgIcon(
@@ -45,6 +46,9 @@ export class App {
       // Initialize tsParticles engine
       this.ngParticlesService.init(async (engine) => {
         await loadSlim(engine);
+      }).then(() => {
+        // Trigger change detection to update the view
+        this.cdr.detectChanges();
       });
     });
   }

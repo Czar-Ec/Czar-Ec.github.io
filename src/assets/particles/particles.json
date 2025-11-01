@@ -22,7 +22,7 @@
       "connect": {
         "distance": 500,
         "links": {
-          "opacity": 0.1
+          "opacity": 0.05
         },
         "radius": 200
       }
@@ -36,7 +36,7 @@
       "color": "#f00",
       "distance": 150,
       "enable": true,
-      "opacity": 0.5,
+      "opacity": 0.2,
       "width": 1
     },
     "move": {
@@ -57,7 +57,7 @@
       "value": 160
     },
     "opacity": {
-      "value": 0.5
+      "value": 0.2
     },
     "shape": {
       "type": "circle"
