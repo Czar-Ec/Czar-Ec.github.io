@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "rm -rf .angular/ && ng serve",
+    "start": "rm -rf .angular/ && ng serve --host 0.0.0.0",
     "build": "ng build",
     "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
@@ -32,6 +32,9 @@
     "@angular/material": "^20.2.10",
     "@angular/platform-browser": "^20.3.0",
     "@angular/router": "^20.3.0",
+    "@tsparticles/angular": "^3.0.0",
+    "@tsparticles/engine": "^3.9.1",
+    "@tsparticles/slim": "^3.9.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },

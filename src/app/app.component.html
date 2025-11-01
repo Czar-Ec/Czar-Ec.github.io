@@ -1,4 +1,9 @@
-<div class="app-container">
+<ngx-particles
+  [id]="id"
+  [options]="particlesOptions"
+  (particlesLoaded)="particlesLoaded($event)"
+></ngx-particles>
+<div class="app-container" #tsparticles>
   <div class="app-content">
     <p>text</p>
   </div>
