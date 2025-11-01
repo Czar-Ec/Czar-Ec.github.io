@@ -39,18 +39,21 @@ export class App {
       this.domSanitizer.bypassSecurityTrustResourceUrl('assets/img/icons/instagram.svg')
     );
 
-    // Initialize tsParticles engine
-    this.ngParticlesService.init(async (engine) => {
-      await loadSlim(engine);
-    });
-
     // Load particles JSON from assets
-    this.http
-      .get<ISourceOptions>('assets/particles/particles.json')
-      .subscribe((options) => (this.particlesOptions = options));
+    this.http.get<ISourceOptions>('assets/particles/particles.json').subscribe((options) => {
+      this.particlesOptions = options;
+      // Initialize tsParticles engine
+      this.ngParticlesService.init(async (engine) => {
+        await loadSlim(engine);
+      });
+    });
   }
 
-  particlesLoaded(container: any): void {
+  /**
+   * Callback when particles are loaded
+   * @param container 
+   */
+  public particlesLoaded(container: any): void {
     console.log('Particles container loaded:', container);
   }
 }
