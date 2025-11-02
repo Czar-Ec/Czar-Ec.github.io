@@ -13,7 +13,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
   styleUrls: ['./footer.scss'],
 })
 export class Footer {
-  public darkMode: boolean = false;
+  public darkMode: boolean = true;
 
   public isMobile$: Observable<boolean> | null = null;
 
@@ -54,11 +54,11 @@ export class Footer {
    * @param checked
    */
   public toggleDarkMode(): void {
+    this.darkMode = !this.darkMode;
     if (this.darkMode) {
       document.body.classList.add('dark');
     } else {
       document.body.classList.remove('dark');
     }
-    this.darkMode = !this.darkMode;
   }
 }

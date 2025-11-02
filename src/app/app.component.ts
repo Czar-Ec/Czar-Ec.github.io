@@ -10,7 +10,7 @@ import { Footer } from './footer/footer';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [Footer, NgxParticlesModule], // ✅ include the module here
+  imports: [Footer, NgxParticlesModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
