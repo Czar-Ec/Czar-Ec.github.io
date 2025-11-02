@@ -1,0 +1,49 @@
+<div class="footer-container">
+  @if (isMobile$ | async) {
+  <div class="mobile-view-container">
+    <button matIconButton filled class="footer-button">
+      <mat-icon>file_download</mat-icon>
+    </button>
+    <button matIconButton filled class="footer-button" (click)="openGitHub()">
+      <mat-icon svgIcon="github"></mat-icon>
+    </button>
+    <button matIconButton filled class="footer-button" (click)="openLinkedIn()">
+      <mat-icon svgIcon="linkedin"></mat-icon>
+    </button>
+    <button matIconButton filled class="footer-button" (click)="openInstagram()">
+      <mat-icon svgIcon="instagram"></mat-icon>
+    </button>
+    <button matIconButton filled class="footer-button" (click)="toggleDarkMode()">
+      <mat-icon>dark_mode</mat-icon>
+      <!-- <mat-icon>light_mode</mat-icon> -->
+    </button>
+  </div>
+  } @else {
+  <div class="desktop-view-container">
+    <button matFab extended class="footer-button">
+      <mat-icon>file_download</mat-icon>
+      Download My CV
+    </button>
+    <button matFab extended class="footer-button" (click)="openGitHub()">
+      <mat-icon svgIcon="github"></mat-icon>
+      Github
+    </button>
+    <button matFab extended class="footer-button" (click)="openLinkedIn()">
+      <mat-icon svgIcon="linkedin"></mat-icon>
+      LinkedIn
+    </button>
+    <button matFab extended class="footer-button" (click)="openInstagram()">
+      <mat-icon svgIcon="instagram"></mat-icon>
+      Instagram
+    </button>
+    <button matFab extended class="footer-button" (click)="toggleDarkMode()">
+      @if (!darkMode) {
+        <mat-icon>light_mode</mat-icon>
+      } @else {
+        <mat-icon>dark_mode</mat-icon>
+      }
+      Toggle Theme
+    </button>
+  </div>
+  }
+</div>
