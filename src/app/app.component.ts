@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectorRef, Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, signal } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router, RouterModule } from '@angular/router';
 import { NgParticlesService, NgxParticlesModule } from '@tsparticles/angular';
 import type { ISourceOptions } from '@tsparticles/engine';
 import { loadSlim } from '@tsparticles/slim';
@@ -10,7 +11,7 @@ import { Footer } from './footer/footer';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [Footer, NgxParticlesModule],
+  imports: [RouterModule, Footer, NgxParticlesModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
@@ -19,6 +20,8 @@ export class App {
   public particlesOptions: ISourceOptions | undefined;
 
   private matIconRegistry = inject(MatIconRegistry);
+
+  currentRoute = signal<string>('');
 
   constructor(
     private domSanitizer: DomSanitizer,
@@ -58,6 +61,6 @@ export class App {
    * @param container 
    */
   public particlesLoaded(container: any): void {
-    console.log('Particles container loaded:', container);
+    // console.log('Particles container loaded:', container);
   }
 }

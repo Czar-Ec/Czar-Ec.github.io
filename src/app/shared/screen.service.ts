@@ -19,12 +19,6 @@ export class ScreenService {
   public isMobile$: Observable<boolean>;
 
   /**
-   * Emits `true` whenever the viewport matches the predefined desktop breakpoints.
-   * Emits `false` otherwise.
-   */
-  public isDesktop$: Observable<boolean>;
-
-  /**
    * The BreakpointObserver from Angular CDK observes viewport size changes
    * and emits values based on whether the current screen width matches
    * specified CSS media query breakpoints.
@@ -39,13 +33,6 @@ export class ScreenService {
 
         // shareReplay ensures all subscribers share the same latest value
         // and prevents the observable from re-running for each new subscriber.
-        shareReplay({ bufferSize: 1, refCount: true })
-      );
-
-    // Observe the "Web" breakpoint (desktop screens)
-    this.isDesktop$ = this.breakpointObserver.observe([Breakpoints.Web])
-      .pipe(
-        map(result => result.matches),
         shareReplay({ bufferSize: 1, refCount: true })
       );
   }
