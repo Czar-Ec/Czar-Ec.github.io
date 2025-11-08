@@ -31,78 +31,16 @@ jobs:
         run: |
           yarn build:prod
 
-      # -------------------------------
-      # Extract overall coverage
-      # -------------------------------
-      - name: Get coverage percentage
-        id: coverage
-        run: |
-          LCOV_PATH=$(find coverage -type f -name lcov.info | head -n 1)
-          if [ -z "$LCOV_PATH" ] || [ ! -f "$LCOV_PATH" ]; then
-            echo "No lcov.info found, setting coverage=0"
-            echo "coverage=0" >> $GITHUB_OUTPUT
-          else
-            COVERAGE=$(grep -A 1 TOTAL "$LCOV_PATH" | grep -oP '(?<=\s)\d+(?=\.\d+%)' | tail -1)
-            echo "coverage=$COVERAGE" >> $GITHUB_OUTPUT
-          fi
-
+      # Generate the badge
       - name: Generate coverage badge
-        run: |
-          mkdir -p badges
-          COVERAGE=${{ steps.coverage.outputs.coverage }}
-          if [ -z "$COVERAGE" ]; then
-            COVERAGE=0
-          fi
+        uses: ./.github/workflows/generate-coverage-badge.yml
+        id: generate
 
-          COLOR=red
-          if [ "$COVERAGE" -ge 90 ]; then
-            COLOR=brightgreen
-          elif [ "$COVERAGE" -ge 85 ]; then
-            COLOR=green
-          elif [ "$COVERAGE" -ge 80 ]; then
-            COLOR=yellow
-          fi
-
-          echo "Generating badge for coverage ${COVERAGE}% ($COLOR)"
-          curl -s -o badges/coverage.svg "https://img.shields.io/badge/coverage-${COVERAGE}%25-${COLOR}"
-
-      # -------------------------------
-      # Commit badge safely
-      # -------------------------------
-      - name: Commit coverage badge to coverage-badges branch
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          # Move badge to temp to avoid branch conflict
-          mkdir -p /tmp/badges
-          cp badges/coverage.svg /tmp/badges/coverage.svg
-
-          git fetch origin
-
-          if git rev-parse --verify origin/coverage-badges >/dev/null 2>&1; then
-            git fetch origin coverage-badges
-            git checkout -B coverage-badges origin/coverage-badges
-          else
-            git checkout --orphan coverage-badges
-            git rm -rf . >/dev/null 2>&1 || true
-          fi
-
-          mkdir -p badges
-          cp /tmp/badges/coverage.svg badges/coverage.svg
-
-          git add badges/coverage.svg
-          git commit -m "chore: update coverage badge [skip ci]" || echo "No changes to commit"
-          git push origin HEAD:coverage-badges --force
-
-      # -------------------------------
-      # Upload badge as artifact
-      # -------------------------------
-      - name: Upload coverage badge as artifact
-        uses: actions/upload-artifact@v4
+      # Push the badge
+      - name: Push coverage badge
+        uses: ./.github/workflows/push-coverage-badge.yml
         with:
-          name: coverage-badge
-          path: badges/coverage.svg
+          badge-path: ${{ steps.generate.outputs.badge-path }}
 
       # -------------------------------
       # Deploy Angular site to cd-portfolio

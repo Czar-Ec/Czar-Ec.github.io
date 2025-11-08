@@ -1,0 +1,46 @@
+name: Push Coverage Badge
+
+on:
+  workflow_call:
+    inputs:
+      badge-path:
+        required: true
+        type: string
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Download badge artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: coverage-badge
+          path: /tmp/badges
+
+      - name: Commit and push badge
+        run: |
+          mkdir -p badges
+          cp /tmp/badges/coverage.svg badges/coverage.svg
+
+          git fetch origin
+
+          if git rev-parse --verify origin/coverage-badges >/dev/null 2>&1; then
+            git checkout -B coverage-badges origin/coverage-badges
+          else
+            git checkout --orphan coverage-badges
+            git rm -rf . >/dev/null 2>&1 || true
+          fi
+
+          mkdir -p badges
+          cp /tmp/badges/coverage.svg badges/coverage.svg
+
+          git add badges/coverage.svg
+          git commit -m "chore: update coverage badge [skip ci]" || echo "No changes to commit"
+          git push origin HEAD:coverage-badges --force
