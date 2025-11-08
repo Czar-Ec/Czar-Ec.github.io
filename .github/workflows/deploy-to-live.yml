@@ -29,25 +29,6 @@ jobs:
       # build
       - run: yarn build:prod --output-path deploy
 
-      # generate coverage badge
-      - run: chmod +x ./scripts/coverage-generator.sh
-      - run: ./scripts/coverage-generator.sh ./coverage/websiteportfolio/lcov.info
-
-      # commit and push badge
-      - name: Commit and push badge
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          # Create coverage-badges branch if it doesn't exist
-          git fetch origin coverage-badges || true
-          git checkout -B coverage-badges
-
-          # Move the badge to branch
-          git add -f coverage-badge.svg
-          git commit -m "Update coverage badge [skip ci]" || echo "No changes to commit"
-          git push origin coverage-badges --force
-
-
       # push to master
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
