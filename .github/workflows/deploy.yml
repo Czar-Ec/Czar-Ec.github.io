@@ -66,11 +66,11 @@ jobs:
           git fetch origin
 
           # Switch to or create badges branch
-          if git rev-parse --verify origin/badges >/dev/null 2>&1; then
-            git checkout badges
-            git pull origin badges
+          if git rev-parse --verify origin/coverage-badges >/dev/null 2>&1; then
+            git checkout coverage-badges
+            git pull origin coverage-badges
           else
-            git checkout --orphan badges
+            git checkout --orphan coverage-badges
             git rm -rf .
           fi
 
