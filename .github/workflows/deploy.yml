@@ -41,12 +41,17 @@ jobs:
       - name: Generate coverage badge
         run: |
           mkdir -p badges
+          COVERAGE=${{ steps.coverage.outputs.coverage }}
+          if [ -z "$COVERAGE" ]; then COVERAGE=0; fi
+
           COLOR=red
-          if [ ${{ steps.coverage.outputs.coverage }} -ge 90 ]; then COLOR=brightgreen; fi
-          if [ ${{ steps.coverage.outputs.coverage }} -ge 85 ] && [ ${{ steps.coverage.outputs.coverage }} -lt 90 ]; then COLOR=green; fi
-          if [ ${{ steps.coverage.outputs.coverage }} -ge 80 ] && [ ${{ steps.coverage.outputs.coverage }} -lt 85 ]; then COLOR=yellow; fi
-          echo "Generating badge for coverage ${{ steps.coverage.outputs.coverage }}% ($COLOR)"
-          curl -o badges/coverage.svg "https://img.shields.io/badge/coverage-${{ steps.coverage.outputs.coverage }}%25-$COLOR"
+          if (( $(echo "$COVERAGE >= 90" | bc -l) )); then COLOR=brightgreen
+          elif (( $(echo "$COVERAGE >= 85" | bc -l) )); then COLOR=green
+          elif (( $(echo "$COVERAGE >= 80" | bc -l) )); then COLOR=yellow
+          fi
+
+          echo "Generating badge for coverage ${COVERAGE}% ($COLOR)"
+          curl -s -o badges/coverage.svg "https://img.shields.io/badge/coverage-${COVERAGE}%25-${COLOR}"
 
       # Commit the badge to the repo
       - name: Commit coverage badge to badges branch
