@@ -36,7 +36,6 @@ jobs:
 
 
       # generate coverage badge
-      - run: ls -lR
       - run: chmod +x ./scripts/coverage-generator.sh
       - run: ./scripts/coverage-generator.sh ./coverage/websiteportfolio/lcov.info
 
