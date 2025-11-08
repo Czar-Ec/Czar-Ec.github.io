@@ -23,8 +23,14 @@ jobs:
       # Install dependencies
       - run: yarn install
 
-      # Run tests with coverage
-      - run: yarn test:ci
+      # -------------------------------
+      # Call coverage badge workflow
+      # -------------------------------
+      # Generate the badge
+      - name: Generate coverage badge
+        uses: ./.github/actions/generate-coverage
+        with:
+          lcov_path: coverage/websiteportfolio/lcov.info
 
       # Build production with correct base href for GitHub Pages
       - name: Build production

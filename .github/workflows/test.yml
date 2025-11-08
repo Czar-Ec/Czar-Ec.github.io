@@ -28,12 +28,6 @@ jobs:
       # set up tests
       - run: yarn install
 
-      # run tests
-      - run: yarn test:ci
-
-      # build
-      - run: yarn build:prod
-
       # -------------------------------
       # Call coverage badge workflow
       # -------------------------------
@@ -42,3 +36,6 @@ jobs:
         uses: ./.github/actions/generate-coverage
         with:
           lcov_path: coverage/websiteportfolio/lcov.info
+
+      # build
+      - run: yarn build:prod
