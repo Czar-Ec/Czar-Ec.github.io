@@ -11,6 +11,18 @@ runs:
       with:
         node-version: 20.x
 
+    # -------------------------------
+    # Install dependencies
+    # -------------------------------
+    - name: Install dependencies
+      run: yarn install
+
+    # -------------------------------
+    # Run tests with coverage
+    # -------------------------------
+    - name: Run tests with coverage
+      run: yarn test:ci
+
     - name: Get coverage percentage
       id: coverage
       shell: bash
