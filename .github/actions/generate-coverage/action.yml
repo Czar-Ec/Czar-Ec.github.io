@@ -11,6 +11,10 @@ runs:
       with:
         node-version: 20.x
 
+    - name: Debug coverage folder
+      run: |
+        ls -R coverage
+
     - name: Get coverage percentage
       id: coverage
       shell: bash
