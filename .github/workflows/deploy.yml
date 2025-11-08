@@ -34,6 +34,8 @@ jobs:
       # Generate the badge
       - name: Generate coverage badge
         uses: ./.github/actions/generate-coverage
+        with:
+          lcov-path: coverage/websiteportfolio/lcov.info
 
       # Push the badge
       - name: Push coverage badge
