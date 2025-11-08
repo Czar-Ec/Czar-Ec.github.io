@@ -33,12 +33,11 @@ jobs:
 
       # Generate the badge
       - name: Generate coverage badge
-        uses: ./.github/workflows/generate-coverage-badge.yml
-        id: generate
+        uses: ./.github/actions/generate-coverage
 
       # Push the badge
       - name: Push coverage badge
-        uses: ./.github/workflows/push-coverage-badge.yml
+        uses: ./.github/actions/push-coverage-badge
         with:
           badge-path: ${{ steps.generate.outputs.badge-path }}
 

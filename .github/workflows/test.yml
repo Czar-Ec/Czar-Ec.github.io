@@ -39,4 +39,4 @@ jobs:
       # -------------------------------
       # Generate the badge
       - name: Generate coverage badge
-        uses: ./.github/workflows/generate-coverage-badge.yml
+        uses: ./.github/actions/generate-coverage
