@@ -15,7 +15,7 @@ runs:
       id: coverage
       shell: bash
       run: |
-        ls -R coverage
+        ls -R
         LCOV="${{ inputs.lcov_path }}"
         if [ -z "$LCOV" ]; then
           LCOV=$(find coverage -type f -name lcov.info | head -n1)
