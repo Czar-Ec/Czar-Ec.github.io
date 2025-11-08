@@ -1,33 +1,44 @@
 name: "Generate Coverage Badge"
-description: "Generates a coverage badge from lcov.info"
+description: "Installs dependencies, runs tests with coverage, and generates a coverage badge"
 runs:
   using: "composite"
   steps:
+    # -------------------------------
+    # Checkout repo
+    # -------------------------------
     - name: Checkout repository
       uses: actions/checkout@v3
+      shell: bash
 
+    # -------------------------------
+    # Setup Node.js
+    # -------------------------------
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
         node-version: 20.x
+      shell: bash
 
     # -------------------------------
     # Install dependencies
     # -------------------------------
     - name: Install dependencies
       run: yarn install
+      shell: bash
 
     # -------------------------------
     # Run tests with coverage
     # -------------------------------
     - name: Run tests with coverage
       run: yarn test:ci
+      shell: bash
 
+    # -------------------------------
+    # Get coverage percentage
+    # -------------------------------
     - name: Get coverage percentage
       id: coverage
-      shell: bash
       run: |
-        ls -R
         LCOV="${{ inputs.lcov_path }}"
         if [ -z "$LCOV" ]; then
           LCOV=$(find coverage -type f -name lcov.info | head -n1)
@@ -51,10 +62,13 @@ runs:
 
           echo "coverage=$COVERAGE" >> $GITHUB_OUTPUT
         fi
+      shell: bash
 
+    # -------------------------------
+    # Generate badge
+    # -------------------------------
     - name: Generate badge
       id: set-badge
-      shell: bash
       run: |
         mkdir -p badges
         COVERAGE=${{ steps.coverage.outputs.coverage }}
@@ -70,13 +84,8 @@ runs:
         curl -s -o badges/coverage.svg "https://img.shields.io/badge/coverage-${COVERAGE}%25-${COLOR}"
 
         echo "badge-path=badges/coverage.svg" >> $GITHUB_OUTPUT
+      shell: bash
 
 inputs:
   lcov_path:
-    description: "Optional path to lcov.info"
-    required: false
-
-outputs:
-  badge-path:
-    description: "Path to generated coverage badge"
-    value: ${{ steps.set-badge.outputs.badge-path }}
+    description: "Optional path
