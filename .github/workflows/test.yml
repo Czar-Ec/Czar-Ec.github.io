@@ -48,6 +48,6 @@ jobs:
           git checkout -B coverage-badges
 
           # Move the badge to branch
-          git add coverage-badge.svg
+          git add -f coverage-badge.svg
           git commit -m "Update coverage badge [skip ci]" || echo "No changes to commit"
           git push origin coverage-badges --force
