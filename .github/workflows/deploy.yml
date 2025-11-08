@@ -38,27 +38,29 @@ jobs:
         id: coverage
         run: |
           LCOV_PATH=$(find coverage -type f -name lcov.info | head -n 1)
-          if [ -z "$LCOV_PATH" ]; then
+          if [ -z "$LCOV_PATH" ] || [ ! -f "$LCOV_PATH" ]; then
             echo "No lcov.info found, setting coverage=0"
             echo "coverage=0" >> $GITHUB_OUTPUT
           else
-            COVERAGE=$(grep -A 1 "TOTAL" "$LCOV_PATH" | grep -oP "(?<=\s)\d+(?=\.\d+%)" | tail -1)
+            COVERAGE=$(grep -A 1 TOTAL "$LCOV_PATH" | grep -oP '(?<=\s)\d+(?=\.\d+%)' | tail -1)
             echo "coverage=$COVERAGE" >> $GITHUB_OUTPUT
+          fi
 
-      # -------------------------------
-      # Generate coverage badge
-      # -------------------------------
       - name: Generate coverage badge
         run: |
           mkdir -p badges
           COVERAGE=${{ steps.coverage.outputs.coverage }}
-          if [ -z "$COVERAGE" ]; then COVERAGE=0; fi
+          if [ -z "$COVERAGE" ]; then
+            COVERAGE=0
+          fi
 
           COLOR=red
-          if [ "$COVERAGE" -ge 90 ]; then COLOR=brightgreen
-          elif [ "$COVERAGE" -ge 85 ]; then COLOR=green
-          elif [ "$COVERAGE" -ge 80 ]; then COLOR=yellow
-          else COLOR=red
+          if [ "$COVERAGE" -ge 90 ]; then
+            COLOR=brightgreen
+          elif [ "$COVERAGE" -ge 85 ]; then
+            COLOR=green
+          elif [ "$COVERAGE" -ge 80 ]; then
+            COLOR=yellow
           fi
 
           echo "Generating badge for coverage ${COVERAGE}% ($COLOR)"
