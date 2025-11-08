@@ -35,13 +35,13 @@ jobs:
       - name: Generate coverage badge
         uses: ./.github/actions/generate-coverage
         with:
-          lcov-path: coverage/websiteportfolio/lcov.info
+          lcov_path: coverage/websiteportfolio/lcov.info
 
       # Push the badge
       - name: Push coverage badge
         uses: ./.github/actions/push-coverage-badge
         with:
-          badge-path: ${{ steps.generate.outputs.badge-path }}
+          badge_path: ${{ steps.generate.outputs.badge-path }}
 
       # -------------------------------
       # Deploy Angular site to cd-portfolio

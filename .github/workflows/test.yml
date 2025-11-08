@@ -41,4 +41,4 @@ jobs:
       - name: Generate coverage badge
         uses: ./.github/actions/generate-coverage
         with:
-          lcov-path: coverage/websiteportfolio/lcov.info
+          lcov_path: coverage/websiteportfolio/lcov.info
