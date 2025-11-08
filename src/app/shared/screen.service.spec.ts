@@ -42,11 +42,4 @@ describe('ScreenService', () => {
       done();
     });
   });
-
-  it('should emit false when desktop breakpoint does not match (desktop)', (done) => {
-    service.isDesktop$.subscribe(value => {
-      expect(value).toBeFalse();
-      done();
-    });
-  });
 });

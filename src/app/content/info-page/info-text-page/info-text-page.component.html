@@ -1,0 +1,28 @@
+<div class="info-text-page-container" animate.enter="fadeIn" animate.leave="fadeOut">
+  @if(isMobile$ | async) {
+  <mat-card-header class="mobile">
+    <mat-card-title>About</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="mobile">
+    <ng-container *ngTemplateOutlet="textContent"></ng-container>
+  </mat-card-content>
+  } @else {
+  <mat-card-header class="desktop">
+    <mat-card-title>About</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="desktop">
+    <ng-container *ngTemplateOutlet="textContent"></ng-container>
+  </mat-card-content>
+  }
+  <app-info-panel-navigation></app-info-panel-navigation>
+</div>
+
+<ng-template #textContent>
+  <p>Welcome to my portfolio page!</p>
+  <p>
+    Here, I experiment with the latest tools, techniques, and design patterns that I bring into
+    real-world projects.
+  </p>
+  <p>Feel free to explore the different pages and see my work in action.</p>
+  <p>Click the button at the bottom of the panel to dive in and discover more.</p>
+</ng-template>

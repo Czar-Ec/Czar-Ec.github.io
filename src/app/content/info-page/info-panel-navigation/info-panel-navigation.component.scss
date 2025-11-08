@@ -1,0 +1,20 @@
+@use '../info-page.component.scss' as *;
+
+:host {
+  display: flex;
+  flex-shrink: 1;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  max-height: 50px;
+}
+
+.menu-button {
+  width: 100%;
+}
+
+::ng-deep .mat-mdc-menu-panel {
+  min-width: unset !important;
+  max-width: none !important;
+}

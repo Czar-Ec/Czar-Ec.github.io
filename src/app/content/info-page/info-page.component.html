@@ -1,0 +1,16 @@
+<div class="info-page-container" animate.enter="fadeIn" animate.leave="fadeOut">
+  @if (isMobile$ | async) {
+  <mat-card class="info-page-panel-mobile">
+    <router-outlet></router-outlet>
+  </mat-card>
+  } @else {
+  <mat-card class="info-page-panel-desktop">
+    <router-outlet></router-outlet>
+  </mat-card>
+  <div class="back-button-container">
+    <button mat-raised-button color="primary" routerLink="/" class="back-button">
+      I want to play with the particles again
+    </button>
+  </div>
+  }
+</div>

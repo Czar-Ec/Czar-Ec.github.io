@@ -1,0 +1,62 @@
+:host,
+.info-page-container {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.info-page-panel-desktop {
+  display: flex;
+  flex: 1;
+  width: 80%;
+  margin: 30px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.info-page-panel-mobile {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  margin: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.back-button {
+  padding: 30px;
+}
+
+.mat-mdc-card.mdc-card {
+  opacity: 0.8;
+}
+
+.mat-mdc-card-header {
+  padding: 20px;
+  flex-shrink: 1;
+}
+
+.mat-mdc-card-header.desktop {
+  padding: 50px;
+}
+
+.mat-mdc-card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  flex: 1;
+}
+
+.mat-mdc-card-content.desktop {
+  padding: 30px;
+}
+
+.mat-mdc-card-actions {
+  display: flex;
+  width: 100%;
+}
