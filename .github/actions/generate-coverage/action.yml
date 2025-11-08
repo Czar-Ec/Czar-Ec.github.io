@@ -8,7 +8,6 @@ runs:
     # -------------------------------
     - name: Checkout repository
       uses: actions/checkout@v3
-      shell: bash
 
     # -------------------------------
     # Setup Node.js
@@ -17,7 +16,6 @@ runs:
       uses: actions/setup-node@v3
       with:
         node-version: 20.x
-      shell: bash
 
     # -------------------------------
     # Install dependencies
@@ -59,7 +57,6 @@ runs:
               }
             }
           ' "$LCOV")
-
           echo "coverage=$COVERAGE" >> $GITHUB_OUTPUT
         fi
       shell: bash
@@ -72,20 +69,3 @@ runs:
       run: |
         mkdir -p badges
         COVERAGE=${{ steps.coverage.outputs.coverage }}
-        [ -z "$COVERAGE" ] && COVERAGE=0
-
-        COLOR=red
-        if [ "$COVERAGE" -ge 90 ]; then COLOR=brightgreen
-        elif [ "$COVERAGE" -ge 85 ]; then COLOR=green
-        elif [ "$COVERAGE" -ge 80 ]; then COLOR=yellow
-        fi
-
-        echo "Generating badge for coverage ${COVERAGE}% ($COLOR)"
-        curl -s -o badges/coverage.svg "https://img.shields.io/badge/coverage-${COVERAGE}%25-${COLOR}"
-
-        echo "badge-path=badges/coverage.svg" >> $GITHUB_OUTPUT
-      shell: bash
-
-inputs:
-  lcov_path:
-    description: "Optional path
