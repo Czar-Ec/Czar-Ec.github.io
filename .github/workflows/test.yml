@@ -36,10 +36,7 @@ jobs:
 
 
       # generate coverage badge
-      - name: Make script executable
-        run: chmod +x ./scripts/coverage-generator.sh
-
-      - name: Run coverage script
+      - run: chmod +x ./scripts/coverage-generator.sh
       - run: ./scripts/coverage-generator.sh coverage/lcov.info
 
       # commit and push badge
