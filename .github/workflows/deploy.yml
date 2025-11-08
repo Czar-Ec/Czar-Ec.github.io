@@ -54,20 +54,25 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Fetch all branches
+          # Fetch remote branches
           git fetch origin
 
-          # Switch to or create the badges branch
-          git checkout badges || git checkout --orphan badges
+          # Switch to or create badges branch
+          if git rev-parse --verify origin/badges >/dev/null 2>&1; then
+            git checkout badges
+            git pull origin badges
+          else
+            git checkout --orphan badges
+            git rm -rf .
+          fi
 
-          # Copy the new badge
+          # Copy badge from build workspace to repo root
           mkdir -p badges
-          cp badges/coverage.svg badges/coverage.svg
+          cp ./badges/coverage.svg ./badges/coverage.svg
 
           git add badges/coverage.svg
           git commit -m "chore: update coverage badge [skip ci]" || echo "No changes to commit"
 
-          # Push the badge to the badges branch
           git push origin HEAD:badges --force
 
       # deploy to cd-portfolio repo
