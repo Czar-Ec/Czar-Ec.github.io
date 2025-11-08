@@ -28,14 +28,23 @@ jobs:
       # set up tests
       - run: yarn install
 
-      # -------------------------------
-      # Call coverage badge workflow
-      # -------------------------------
-      # Generate the badge
-      - name: Generate coverage badge
-        uses: ./.github/actions/generate-coverage
-        with:
-          lcov_path: coverage/websiteportfolio/lcov.info
+      # run tests
+      - run: yarn test:ci
 
       # build
       - run: yarn build:prod
+
+      # generate coverage badge
+      - run: ./scripts/coverage-generator.sh coverage/lcov.info
+
+      # commit and push badge
+      - name: Commit and push badge
+        run: |
+          # Create coverage-badges branch if it doesn't exist
+          git fetch origin coverage-badges || true
+          git checkout -B coverage-badges
+
+          # Move the badge to branch
+          git add coverage-badge.svg
+          git commit -m "Update coverage badge [skip ci]" || echo "No changes to commit"
+          git push origin coverage-badges --force
