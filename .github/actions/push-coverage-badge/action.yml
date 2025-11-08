@@ -1,46 +1,42 @@
-name: Push Coverage Badge
+name: "Push Coverage Badge"
+description: "Commits and pushes a coverage badge to coverage-badges branch"
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-on:
-  workflow_call:
-    inputs:
-      badge-path:
-        required: true
-        type: string
+    - name: Configure Git
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
 
-jobs:
-  push:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
+    - name: Copy badge
+      shell: bash
+      run: |
+        mkdir -p badges
+        cp "${{ inputs.badge_path }}" badges/coverage.svg
 
-      - name: Configure Git
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+    - name: Commit and push badge
+      shell: bash
+      run: |
+        git fetch origin
 
-      - name: Download badge artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: coverage-badge
-          path: /tmp/badges
+        if git rev-parse --verify origin/coverage-badges >/dev/null 2>&1; then
+          git checkout -B coverage-badges origin/coverage-badges
+        else
+          git checkout --orphan coverage-badges
+          git rm -rf . >/dev/null 2>&1 || true
+        fi
 
-      - name: Commit and push badge
-        run: |
-          mkdir -p badges
-          cp /tmp/badges/coverage.svg badges/coverage.svg
+        mkdir -p badges
+        cp "${{ inputs.badge_path }}" badges/coverage.svg
 
-          git fetch origin
+        git add badges/coverage.svg
+        git commit -m "chore: update coverage badge [skip ci]" || echo "No changes to commit"
+        git push origin HEAD:coverage-badges --force
 
-          if git rev-parse --verify origin/coverage-badges >/dev/null 2>&1; then
-            git checkout -B coverage-badges origin/coverage-badges
-          else
-            git checkout --orphan coverage-badges
-            git rm -rf . >/dev/null 2>&1 || true
-          fi
-
-          mkdir -p badges
-          cp /tmp/badges/coverage.svg badges/coverage.svg
-
-          git add badges/coverage.svg
-          git commit -m "chore: update coverage badge [skip ci]" || echo "No changes to commit"
-          git push origin HEAD:coverage-badges --force
+inputs:
+  badge_path:
+    description: "Path to the coverage badge to push"
+    required: true
