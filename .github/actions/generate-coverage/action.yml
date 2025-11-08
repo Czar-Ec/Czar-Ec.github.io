@@ -23,7 +23,19 @@ runs:
         if [ -z "$LCOV" ] || [ ! -f "$LCOV" ]; then
           echo "coverage=0" >> $GITHUB_OUTPUT
         else
-          COVERAGE=$(awk '/TOTAL/ {getline; match($0, /[0-9]+/); print substr($0, RSTART, RLENGTH)}' "$LCOV")
+          # Calculate overall line coverage from LH/LF in the LCOV
+          COVERAGE=$(awk '
+            /^LF:/ { total_lines += $2 }
+            /^LH:/ { covered_lines += $2 }
+            END {
+              if (total_lines > 0) {
+                printf("%d", covered_lines / total_lines * 100)
+              } else {
+                print 0
+              }
+            }
+          ' "$LCOV")
+
           echo "coverage=$COVERAGE" >> $GITHUB_OUTPUT
         fi
 
