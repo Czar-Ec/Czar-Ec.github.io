@@ -49,13 +49,6 @@ jobs:
           git commit -m "Update coverage badge [skip ci]" || echo "No changes to commit"
           git push origin coverage-badges --force
 
-
-      # Push the badge
-      - name: Push coverage badge
-        uses: ./.github/actions/push-coverage-badge
-        with:
-          badge_path: ${{ steps.generate.outputs.badge-path }}
-
       # -------------------------------
       # Deploy Angular site to cd-portfolio
       # -------------------------------
