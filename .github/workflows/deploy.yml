@@ -2,7 +2,6 @@ name: Deploy to live CD portfolio
 on:
   push:
     branches: [develop]
-
   workflow_dispatch:
 
 jobs:
@@ -12,25 +11,29 @@ jobs:
     strategy:
       matrix:
         node-version: [20.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
 
-      # set up tests
+      # Install dependencies
       - run: yarn install
 
-      # run tests
+      # Run tests with coverage
       - run: yarn test:ci
 
-      # build
-      - run: yarn build:prod
+      # Build production with correct base href for GitHub Pages
+      - name: Build production
+        run: |
+          yarn build:prod
 
-      # Extract overall coverage percentage from lcov
+      # -------------------------------
+      # Extract overall coverage
+      # -------------------------------
       - name: Get coverage percentage
         id: coverage
         run: |
@@ -41,9 +44,10 @@ jobs:
           else
             COVERAGE=$(grep -A 1 "TOTAL" "$LCOV_PATH" | grep -oP "(?<=\s)\d+(?=\.\d+%)" | tail -1)
             echo "coverage=$COVERAGE" >> $GITHUB_OUTPUT
-          fi
 
-      # Generate a badge (using shields.io style SVG generator)
+      # -------------------------------
+      # Generate coverage badge
+      # -------------------------------
       - name: Generate coverage badge
         run: |
           mkdir -p badges
@@ -60,44 +64,48 @@ jobs:
           echo "Generating badge for coverage ${COVERAGE}% ($COLOR)"
           curl -s -o badges/coverage.svg "https://img.shields.io/badge/coverage-${COVERAGE}%25-${COLOR}"
 
-      # Commit the badge to the repo
-      - name: Commit coverage badge to badges branch
+      # -------------------------------
+      # Commit badge safely
+      # -------------------------------
+      - name: Commit coverage badge to coverage-badges branch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Save the generated badge temporarily
+          # Move badge to temp to avoid branch conflict
           mkdir -p /tmp/badges
           cp badges/coverage.svg /tmp/badges/coverage.svg
 
           git fetch origin
 
-          # Switch to or create badges branch
           if git rev-parse --verify origin/coverage-badges >/dev/null 2>&1; then
-            git checkout coverage-badges
-            git pull origin coverage-badges
+            git fetch origin coverage-badges
+            git checkout -B coverage-badges origin/coverage-badges
           else
             git checkout --orphan coverage-badges
             git rm -rf . >/dev/null 2>&1 || true
           fi
 
-          # Restore the badge file from temp storage
           mkdir -p badges
           cp /tmp/badges/coverage.svg badges/coverage.svg
 
           git add badges/coverage.svg
           git commit -m "chore: update coverage badge [skip ci]" || echo "No changes to commit"
-
           git push origin HEAD:coverage-badges --force
 
+      # -------------------------------
+      # Upload badge as artifact
+      # -------------------------------
       - name: Upload coverage badge as artifact
         uses: actions/upload-artifact@v4
         with:
           name: coverage-badge
           path: badges/coverage.svg
 
-      # deploy to cd-portfolio repo
-      - name: Pushes to another repository
+      # -------------------------------
+      # Deploy Angular site to cd-portfolio
+      # -------------------------------
+      - name: Deploy to cd-portfolio
         uses: cpina/github-action-push-to-another-repository@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
