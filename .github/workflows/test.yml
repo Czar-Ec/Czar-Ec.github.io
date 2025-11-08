@@ -43,6 +43,8 @@ jobs:
       # commit and push badge
       - name: Commit and push badge
         run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           # Create coverage-badges branch if it doesn't exist
           git fetch origin coverage-badges || true
           git checkout -B coverage-badges
