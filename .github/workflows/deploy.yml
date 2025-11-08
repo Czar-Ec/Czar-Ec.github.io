@@ -34,8 +34,14 @@ jobs:
       - name: Get coverage percentage
         id: coverage
         run: |
-          COVERAGE=$(grep -A 1 "TOTAL" coverage/lcov.info | grep -oP "(?<=\s)\d+(?=\.\d+%)" | tail -1)
-          echo "coverage=$COVERAGE" >> $GITHUB_OUTPUT
+          LCOV_PATH=$(find coverage -type f -name lcov.info | head -n 1)
+          if [ -z "$LCOV_PATH" ]; then
+            echo "No lcov.info found, setting coverage=0"
+            echo "coverage=0" >> $GITHUB_OUTPUT
+          else
+            COVERAGE=$(grep -A 1 "TOTAL" "$LCOV_PATH" | grep -oP "(?<=\s)\d+(?=\.\d+%)" | tail -1)
+            echo "coverage=$COVERAGE" >> $GITHUB_OUTPUT
+          fi
 
       # Generate a badge (using shields.io style SVG generator)
       - name: Generate coverage badge
@@ -45,9 +51,10 @@ jobs:
           if [ -z "$COVERAGE" ]; then COVERAGE=0; fi
 
           COLOR=red
-          if (( $(echo "$COVERAGE >= 90" | bc -l) )); then COLOR=brightgreen
-          elif (( $(echo "$COVERAGE >= 85" | bc -l) )); then COLOR=green
-          elif (( $(echo "$COVERAGE >= 80" | bc -l) )); then COLOR=yellow
+          if [ "$COVERAGE" -ge 90 ]; then COLOR=brightgreen
+          elif [ "$COVERAGE" -ge 85 ]; then COLOR=green
+          elif [ "$COVERAGE" -ge 80 ]; then COLOR=yellow
+          else COLOR=red
           fi
 
           echo "Generating badge for coverage ${COVERAGE}% ($COLOR)"
@@ -66,12 +73,12 @@ jobs:
           git fetch origin
 
           # Switch to or create badges branch
-          if git rev-parse --verify origin/badges >/dev/null 2>&1; then
-            git checkout badges
-            git pull origin badges
+          if git rev-parse --verify origin/coverage-badges >/dev/null 2>&1; then
+            git checkout coverage-badges
+            git pull origin coverage-badges
           else
-            git checkout --orphan badges
-            git rm -rf .
+            git checkout --orphan coverage-badges
+            git rm -rf . >/dev/null 2>&1 || true
           fi
 
           # Restore the badge file from temp storage
@@ -81,7 +88,13 @@ jobs:
           git add badges/coverage.svg
           git commit -m "chore: update coverage badge [skip ci]" || echo "No changes to commit"
 
-          git push origin HEAD:badges --force
+          git push origin HEAD:coverage-badges --force
+
+      - name: Upload coverage badge as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-badge
+          path: badges/coverage.svg
 
       # deploy to cd-portfolio repo
       - name: Pushes to another repository

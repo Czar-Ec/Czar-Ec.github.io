@@ -17,7 +17,7 @@
 
   <div>
 
-  [![Coverage]](https://raw.githubusercontent.com/Czar-Ec/Czar-Ec.github.io/main/badges/coverage.svg)
+  ![Coverage](https://raw.githubusercontent.com/Czar-Ec/Czar-Ec.github.io/coverage-badges/badges/coverage.svg)
 
   </div>
 
