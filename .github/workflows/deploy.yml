@@ -54,7 +54,10 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Fetch remote branches
+          # Save the generated badge temporarily
+          mkdir -p /tmp/badges
+          cp badges/coverage.svg /tmp/badges/coverage.svg
+
           git fetch origin
 
           # Switch to or create badges branch
@@ -66,9 +69,9 @@ jobs:
             git rm -rf .
           fi
 
-          # Copy badge from build workspace to repo root
+          # Restore the badge file from temp storage
           mkdir -p badges
-          cp ./badges/coverage.svg ./badges/coverage.svg
+          cp /tmp/badges/coverage.svg badges/coverage.svg
 
           git add badges/coverage.svg
           git commit -m "chore: update coverage badge [skip ci]" || echo "No changes to commit"
