@@ -1,0 +1,218 @@
+
+// Include theming for Angular Material with `mat.theme()`.
+// This Sass mixin will define CSS variables that are used for styling Angular Material
+// components according to the Material 3 design spec.
+// Learn more about theming and how to use it for your application's
+// custom components at https://material.angular.dev/guide/theming
+@use '@angular/material' as mat;
+
+
+@font-face {
+  font-family: 'Custom';
+  src: url('/assets/fonts/Michroma-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  @include mat.theme((
+    color: (
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    typography: Custom,
+    density: 0,
+  ));
+}
+
+body {
+  // Default the application to a light color theme. This can be changed to
+  // `dark` to enable the dark color theme, or to `light dark` to defer to the
+  // user's system settings.
+  color-scheme: light dark;
+
+  // Set a default background, font and text colors for the application using
+  // Angular Material's system-level CSS variables. Learn more about these
+  // variables at https://material.angular.dev/guide/system-variables
+  background-color: var(--mat-sys-background);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+
+  // Reset the user agent margin.
+  margin: 0;
+}
+
+/* Light Theme */
+:root, :host {
+  @include mat.theme-overrides((
+    primary: #c00100,
+    on-primary: #ffffff,
+    primary-container: #ffdad4,
+    on-primary-container: #410000,
+    inverse-primary: #ffb4a8,
+    primary-fixed: #ffdad4,
+    primary-fixed-dim: #ffb4a8,
+    on-primary-fixed: #410000,
+    on-primary-fixed-variant: #930100,
+    secondary: #b02e20,
+    on-secondary: #ffffff,
+    secondary-container: #ffdad4,
+    on-secondary-container: #410000,
+    secondary-fixed: #ffdad4,
+    secondary-fixed-dim: #ffb4a8,
+    on-secondary-fixed: #410000,
+    on-secondary-fixed-variant: #8e140b,
+    tertiary: #a33d2f,
+    on-tertiary: #ffffff,
+    tertiary-container: #ffdad4,
+    on-tertiary-container: #410000,
+    tertiary-fixed: #ffdad4,
+    tertiary-fixed-dim: #ffb4a8,
+    on-tertiary-fixed: #410000,
+    on-tertiary-fixed-variant: #83251b,
+    
+    /* Update light theme background to something subtle and light */
+    background: #f5f5f5,  // Lighter background color for light theme
+    on-background: #201a19,
+    surface: #f5f5f5, // Same light color for surface
+    surface-dim: #e4d7d5,
+    surface-bright: #fff8f6,
+    surface-container-lowest: #ffffff,
+    surface-container-low: #fef1ee,
+    surface-container: #f8ebe9,
+    surface-container-high: #f3e5e3,
+    surface-container-highest: #ede0dd,
+    on-surface: #201a19,
+    shadow: #000000,
+    scrim: #000000,
+    surface-tint: #8c4d43,
+    inverse-surface: #362f2e,
+    inverse-on-surface: #fbeeec,
+    outline: #857370,
+    outline-variant: #ebbbb4,
+    neutral: #7f7573,
+    neutral10: #201a19,
+    error: #ba1a1a,
+    error-container: #ffdad6,
+    on-error: #ffffff,
+    on-error-container: #410002,
+    surface-variant: #ffdad4,
+    on-surface-variant: #603e39,
+    neutral-variant: #956d67,
+    neutral-variant20: #472824,
+    inverse-secondary: #ffb4a8,
+    inverse-tertiary: #ffb4a8,
+  ));
+}
+
+/* Dark Theme */
+.dark {
+  @include mat.theme-overrides((
+    primary: #ffb4a8,
+    on-primary: #690100,
+    primary-container: #930100,
+    on-primary-container: #ffdad4,
+    inverse-primary: #c00100,
+    primary-fixed: #ffdad4,
+    primary-fixed-dim: #ffb4a8,
+    on-primary-fixed: #410000,
+    on-primary-fixed-variant: #930100,
+    secondary: #ffb4a8,
+    on-secondary: #690000,
+    secondary-container: #8e140b,
+    on-secondary-container: #ffdad4,
+    secondary-fixed: #ffdad4,
+    secondary-fixed-dim: #ffb4a8,
+    on-secondary-fixed: #410000,
+    on-secondary-fixed-variant: #8e140b,
+    tertiary: #ffb4a8,
+    on-tertiary: #630e07,
+    tertiary-container: #83251b,
+    on-tertiary-container: #ffdad4,
+    tertiary-fixed: #ffdad4,
+    tertiary-fixed-dim: #ffb4a8,
+    on-tertiary-fixed: #410000,
+    on-tertiary-fixed-variant: #83251b,
+    
+    /* Keep the dark background color */
+    background: #120000,  // Even darker for better contrast in dark mode
+    on-background: #ede0dd,
+    surface: #121212, // Dark surface color
+    surface-dim: #181211,
+    surface-bright: #3f3736,
+    surface-container-lowest: #130d0c,
+    surface-container-low: #201a19,
+    surface-container: #251e1d,
+    surface-container-high: #2f2827,
+    surface-container-highest: #3b3332,
+    on-surface: #ede0dd,
+    shadow: #000000,
+    scrim: #000000,
+    surface-tint: #ffb4a8,
+    inverse-surface: #ede0dd,
+    inverse-on-surface: #362f2e,
+    outline: #a08c89,
+    outline-variant: #603e39,
+    neutral: #7f7573,
+    neutral10: #201a19,
+    error: #ffb4ab,
+    error-container: #93000a,
+    on-error: #690005,
+    on-error-container: #ffdad6,
+    surface-variant: #603e39,
+    on-surface-variant: #ebbbb4,
+    neutral-variant: #956d67,
+    neutral-variant20: #472824,
+    inverse-secondary: #b02e20,
+    inverse-tertiary: #a33d2f,
+  ));
+}
+
+
+/* Typography */
+:root, :host {
+  /* core typography tokens are not generating css variables, hence below */
+  --mat-sys-brand-font-family: Custom;
+  --mat-sys-plain-font-family: Custom;
+  --mat-sys-bold-font-weight: 700;
+  --mat-sys-medium-font-weight: 500;
+  --mat-sys-regular-font-weight: 400;
+
+  @include mat.theme-overrides((
+    brand-family: Custom,
+    plain-family: Custom,
+    bold-weight: 700,
+    medium-weight: 500,
+    regular-weight: 400,
+    body-large-font: var(--mat-sys-plain-font-family),
+    body-medium-font: var(--mat-sys-plain-font-family),
+    body-small-font: var(--mat-sys-plain-font-family),
+    label-large-font: var(--mat-sys-plain-font-family),
+    label-medium-font: var(--mat-sys-plain-font-family),
+    label-small-font: var(--mat-sys-plain-font-family),
+    title-medium-font: var(--mat-sys-plain-font-family),
+    title-small-font: var(--mat-sys-plain-font-family),
+    body-large: var(--mat-sys-body-large-weight) var(--mat-sys-body-large-size) / var(--mat-sys-body-large-line-height) var(--mat-sys-body-large-font),
+    body-medium: var(--mat-sys-body-medium-weight) var(--mat-sys-body-medium-size) / var(--mat-sys-body-medium-line-height) var(--mat-sys-body-medium-font),
+    body-small: var(--mat-sys-body-small-weight) var(--mat-sys-body-small-size) / var(--mat-sys-body-small-line-height) var(--mat-sys-body-small-font),
+    label-large: var(--mat-sys-label-large-weight) var(--mat-sys-label-large-size) / var(--mat-sys-label-large-line-height) var(--mat-sys-label-large-font),
+    label-medium: var(--mat-sys-label-medium-weight) var(--mat-sys-label-medium-size) / var(--mat-sys-label-medium-line-height) var(--mat-sys-label-medium-font),
+    label-small: var(--mat-sys-label-small-weight) var(--mat-sys-label-small-size) / var(--mat-sys-label-small-line-height) var(--mat-sys-label-small-font),
+    title-large: var(--mat-sys-title-large-weight) var(--mat-sys-title-large-size) / var(--mat-sys-title-large-line-height) var(--mat-sys-title-large-font),
+    title-medium: var(--mat-sys-title-medium-weight) var(--mat-sys-title-medium-size) / var(--mat-sys-title-medium-line-height) var(--mat-sys-title-medium-font),
+    title-small: var(--mat-sys-title-small-weight) var(--mat-sys-title-small-size) / var(--mat-sys-title-small-line-height) var(--mat-sys-title-small-font),
+    headline-large: var(--mat-sys-headline-large-weight) var(--mat-sys-headline-large-size) / var(--mat-sys-headline-large-line-height) var(--mat-sys-headline-large-font),
+    headline-medium: var(--mat-sys-headline-medium-weight) var(--mat-sys-headline-medium-size) / var(--mat-sys-headline-medium-line-height) var(--mat-sys-headline-medium-font),
+    headline-small: var(--mat-sys-headline-small-weight) var(--mat-sys-headline-small-size) / var(--mat-sys-headline-small-line-height) var(--mat-sys-headline-small-font),
+    display-large: var(--mat-sys-display-large-weight) var(--mat-sys-display-large-size) / var(--mat-sys-display-large-line-height) var(--mat-sys-display-large-font),
+    display-medium: var(--mat-sys-display-medium-weight) var(--mat-sys-display-medium-size) / var(--mat-sys-display-medium-line-height) var(--mat-sys-display-medium-font),
+    display-small: var(--mat-sys-display-small-weight) var(--mat-sys-display-small-size) / var(--mat-sys-display-small-line-height) var(--mat-sys-display-small-font),
+    headline-large-font: var(--mat-sys-brand-font-family),
+    headline-medium-font: var(--mat-sys-brand-font-family),
+    headline-small-font: var(--mat-sys-brand-font-family),
+    display-large-font: var(--mat-sys-brand-font-family),
+    display-medium-font: var(--mat-sys-brand-font-family),
+    display-small-font: var(--mat-sys-brand-font-family),
+    title-large-font: var(--mat-sys-brand-font-family),
+  ));
+}
