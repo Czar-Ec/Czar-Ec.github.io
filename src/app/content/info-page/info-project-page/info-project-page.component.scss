@@ -1,0 +1,16 @@
+@use '../info-page.component.scss' as *;
+
+:host, .info-project-page-container {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.project-page-content {
+  flex: 1;
+  width: 80%;
+  margin: 20px;
+}

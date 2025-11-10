@@ -1,78 +1,66 @@
-import { Component, HostListener, OnInit, AfterViewInit } from '@angular/core';
-import { ThemeService } from './services/theme.service';
-import { OverlayContainer } from '@angular/cdk/overlay';
-import { Router, NavigationEnd } from '@angular/router';
-import { PanelScrollService } from './services/panel-scroll.service';
-import { IconService } from './services/icon.service';
-import { UnderConstructionWarningService } from './services/under-construction-warning/under-construction-warning.service';
-import {
-  UnderConstructionWarningSnackBarComponent
-} from './services/under-construction-warning/under-construction-warning-snack-bar/under-construction-warning-snack-bar.component';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpClient } from '@angular/common/http';
+import { ChangeDetectorRef, Component, inject, signal } from '@angular/core';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Router, RouterModule } from '@angular/router';
+import { NgParticlesService, NgxParticlesModule } from '@tsparticles/angular';
+import type { ISourceOptions } from '@tsparticles/engine';
+import { loadSlim } from '@tsparticles/slim';
+import { Footer } from './footer/footer';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [RouterModule, Footer, NgxParticlesModule],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements AfterViewInit {
+export class App {
+  public id = 'tsparticles';
+  public particlesOptions: ISourceOptions | undefined;
 
-  title = 'CzarEc Portfolio';
+  private matIconRegistry = inject(MatIconRegistry);
 
-  private overlay: HTMLElement;
+  currentRoute = signal<string>('');
 
   constructor(
-    private overlayContainer: OverlayContainer,
-    public theme: ThemeService,
-    private router: Router,
-    private panelScrollService: PanelScrollService,
-    private iconService: IconService,
-    private underConstructionWarningService: UnderConstructionWarningService,
-    private warningSnackBar: MatSnackBar
+    private domSanitizer: DomSanitizer,
+    private readonly ngParticlesService: NgParticlesService,
+    private readonly http: HttpClient,
+    private cdr: ChangeDetectorRef
   ) {
-    // pass the container element to theme service
-    this.overlay = this.overlayContainer.getContainerElement();
-    this.theme.init(this.overlay);
+    // Register SVG icons
+    this.matIconRegistry.addSvgIcon(
+      'github',
+      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/img/icons/github.svg')
+    );
+    this.matIconRegistry.addSvgIcon(
+      'linkedin',
+      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/img/icons/linkedin.svg')
+    );
+    this.matIconRegistry.addSvgIcon(
+      'instagram',
+      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/img/icons/instagram.svg')
+    );
+
+    // Load particles JSON from assets
+    this.http.get<ISourceOptions>('assets/particles/particles.json').subscribe((options) => {
+      this.particlesOptions = options;
+      // Initialize tsParticles engine
+      this.ngParticlesService.init(async (engine) => {
+        await loadSlim(engine);
+      }).then(() => {
+        // Trigger change detection to update the view
+        this.cdr.detectChanges();
+      });
+    });
   }
 
   /**
-   * Listens to router events and makes sure that the second panel is shown if info page
+   * Callback when particles are loaded
+   * @param container 
    */
-  ngAfterViewInit() {
-    // if the route has info, scroll to the anchor tag
-    this.router.events.subscribe((res) => {
-      // if it has info, scroll to info panel
-      if (res instanceof NavigationEnd && res.url.match(/\/info\/*/g) && !res.urlAfterRedirects.match(/#info/g)) {
-        this.panelScrollService.scroll('info', 'auto');
-
-        // set up scroll
-        this.panelScrollService.lastScroll = 'info';
-      }
-    });
-
-    this.displaySnackbar();
-  }
-
-  @HostListener('window:resize')
-  OnWindowResize() {
-    this.theme.applyParticles(this.theme.configLocation);
-    this.panelScrollService.windowResized();
-  }
-
-  /**
-   * Function that displays the warning snackbar for the develop branch version of the app
-   */
-  private displaySnackbar() {
-    // dont display if not cd redeploy or already displayed
-    if (!this.underConstructionWarningService.isCDDeploy() ||
-      this.underConstructionWarningService.dismissed) {
-      return;
-    }
-
-    this.underConstructionWarningService.snackBarRef = this.warningSnackBar.openFromComponent(
-      UnderConstructionWarningSnackBarComponent, {
-      duration: undefined,
-      horizontalPosition: 'end'
-    });
+  public particlesLoaded(container: any): void {
+    // console.log('Particles container loaded:', container);
   }
 }

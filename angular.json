@@ -3,99 +3,89 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "WebsiteDevRepo": {
-      "root": "",
-      "sourceRoot": "src",
+    "WebsitePortfolio": {
       "projectType": "application",
-      "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
-          "styleext": "scss"
+          "style": "scss"
         }
       },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/",
-            "index": "./src/index.html",
-            "main": "./src/main.ts",
-            "polyfills": "./src/polyfills.ts",
-            "tsConfig": "./src/tsconfig.app.json",
+            "browser": "src/main.ts",
+            "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
             "assets": [
-              "./src/favicon.ico",
-              "./src/assets",
-              "./src/404.html"
+              "src/favicon.ico",
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
             ],
             "styles": [
-              {
-                "input": "./src/assets/themes/czarec-red-theme.scss",
-                "inject": true
-              },
-              "./src/styles.scss"
-            ],
-            "scripts": [
-              "node_modules/particles.js/particles.js"
-            ],
-            "aot": false,
-            "vendorChunk": true,
-            "extractLicenses": false,
-            "buildOptimizer": false,
-            "sourceMap": true,
-            "optimization": false,
-            "namedChunks": true
+              "src/assets/themes/czarec.theme.scss",
+              "src/styles.scss"
+            ]
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
+              "budgets": [
                 {
-                  "replace": "./src/environments/environment.ts",
-                  "with": "./src/environments/environment.prod.ts"
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
                 }
               ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
             }
           },
-          "defaultConfiguration": ""
+          "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "WebsiteDevRepo:build"
-          },
+          "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "WebsiteDevRepo:build:production"
+              "buildTarget": "WebsitePortfolio:build:production"
+            },
+            "development": {
+              "buildTarget": "WebsitePortfolio:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "WebsiteDevRepo:build"
-          }
+          "builder": "@angular/build:extract-i18n"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular/build:karma",
           "options": {
-            "main": "./src/test.ts",
-            "polyfills": "./src/polyfills.ts",
-            "tsConfig": "./src/tsconfig.spec.json",
-            "karmaConfig": "./src/karma.conf.js",
-            "styles": [
-              "./src/styles.scss"
-            ],
-            "scripts": [],
+            "tsConfig": "tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
             "assets": [
-              "./src/favicon.ico",
-              "./src/assets"
+              {
+                "glob": "**/*",
+                "input": "public"
+              },
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.scss"
             ]
           }
         }

@@ -1,8 +1,15 @@
-<div class="mat-typography app-frame mat-app-background" [class.dark-theme]="theme.darkTheme" data-cy="application-container">
-  <div class="splash-panel" id="splash">
-      <app-splash-page></app-splash-page>
+@if(particlesOptions) {
+  <ngx-particles
+  [id]="id"
+  [options]="particlesOptions"
+  (particlesLoaded)="particlesLoaded($event)"
+></ngx-particles>
+<div class="app-container" #tsparticles>
+  <div class="app-content">
+    <router-outlet></router-outlet>
   </div>
-  <div class="info-panel" id="info">
-      <app-info-page id="info"></app-info-page>
+  <div class="app-footer">
+    <app-footer></app-footer>
   </div>
 </div>
+}

@@ -1,0 +1,14 @@
+<mat-card-actions>
+  <button #menuButton matButton [matMenuTriggerFor]="menu" class="menu-button">
+    Menu
+  </button>
+</mat-card-actions>
+
+
+<mat-menu #menu="matMenu" yPosition="above">
+  <button mat-menu-item routerLink="/">Home</button>
+  <button mat-menu-item routerLink="/info/about">About</button>
+  <button mat-menu-item routerLink="/info/projects">Projects</button>
+  <button mat-menu-item routerLink="/info/tools">Tools & Languages</button>
+  <button mat-menu-item (click)="openBugReportPage()">Report Bugs</button>
+</mat-menu>

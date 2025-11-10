@@ -2,7 +2,6 @@ name: Deploy to live CD portfolio
 on:
   push:
     branches: [develop]
-
   workflow_dispatch:
 
 jobs:
@@ -11,61 +10,54 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        node-version: [20.x]
 
     steps:
-      # install ubuntu deps
-      - run: sudo apt-get install xvfb
+      - uses: actions/checkout@v3
 
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "yarn"
 
-      # set up tests
+      # Install dependencies
       - run: yarn install
 
-      # run tests
-      - run: xvfb-run --auto-servernum yarn test:ci
+      # Run tests with coverage
+      - run: yarn test:ci
 
-      # run cypress
-      # - name: Cypress run
-      #   uses: cypress-io/github-action@v6.1.0
-      #   with:
-      #     command: yarn cy:ci:e2e
+      # Build production with correct base href for GitHub Pages
+      - name: Build production
+        run: |
+          yarn build:prod
 
-      # build
-      - run: yarn build:prod
+      # generate coverage badge
+      - run: chmod +x ./scripts/coverage-generator.sh
+      - run: ./scripts/coverage-generator.sh ./coverage/websiteportfolio/lcov.info
 
-      - name: Find and Replace preview url
-        uses: jacobtomlinson/gha-find-replace@v2
-        with:
-          find: "$$PREVIEW_URL$$"
-          replace: "https://czar-ec.github.io/"
-          include: "**README.md"
+      # commit and push badge
+      - name: Commit and push badge
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # Create coverage-badges branch if it doesn't exist
+          git fetch origin coverage-badges || true
+          git checkout -B coverage-badges
 
-      - name: Find and Replace build status badge
-        uses: jacobtomlinson/gha-find-replace@v2
-        with:
-          find: "$$BUILD_STATUS_URL$$"
-          replace: "https://github.com/czar-ec/czar-ec.github.io/actions/workflows/deploy.yml/badge.svg"
-          include: "**README.md"
+          # Move the badge to branch
+          git add -f coverage-badge.svg
+          git commit -m "Update coverage badge [skip ci]" || echo "No changes to commit"
+          git push origin coverage-badges --force
 
-      # run code coverage
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-
-      - name: Pushes to another repository
+      # -------------------------------
+      # Deploy Angular site to cd-portfolio
+      # -------------------------------
+      - name: Deploy to cd-portfolio
         uses: cpina/github-action-push-to-another-repository@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source-directory: "dist"
+          source-directory: "dist/WebsitePortfolio/browser"
           destination-github-username: "czar-ec"
           destination-repository-name: "cd-portfolio"
           user-email: "czar.echavez@yahoo.co.uk"
