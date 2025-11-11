@@ -1,11 +1,17 @@
 <div class="info-page-container" animate.enter="fadeIn" animate.leave="fadeOut">
   @if (isMobile$ | async) {
   <mat-card class="info-page-panel-mobile">
-    <router-outlet></router-outlet>
+    <div class="info-page-content-wrapper">
+      <router-outlet></router-outlet>
+    </div>
+    <app-info-panel-navigation></app-info-panel-navigation>
   </mat-card>
   } @else {
   <mat-card class="info-page-panel-desktop">
-    <router-outlet></router-outlet>
+    <div class="info-page-content-wrapper">
+      <router-outlet></router-outlet>
+    </div>
+    <app-info-panel-navigation></app-info-panel-navigation>
   </mat-card>
   <div class="back-button-container">
     <button mat-raised-button color="primary" routerLink="/" class="back-button">
