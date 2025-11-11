@@ -3,14 +3,13 @@ import { Inject, Injectable, signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { TOOLS_URL } from '../../../app.tokens';
 import { ToolsConfig } from './tools.object';
-import { filter } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InfoToolsService {
   // Signal to hold the tools configuration
-  public tools = signal<ToolsConfig | null>(null);
+  public tools$ = signal<ToolsConfig | null>(null);
 
   private _toolsList: ToolsConfig | null = null;
 
@@ -27,7 +26,7 @@ export class InfoToolsService {
    */
   private async getTools() {
     const data = await firstValueFrom(this.http.get<ToolsConfig>(this.toolsUrl));
-    this.tools.set(data);
+    this.tools$.set(data);
     this._toolsList = data;
   }
 
@@ -60,10 +59,10 @@ export class InfoToolsService {
       ].filter(Boolean); // remove undefined/null
 
       // Match if any field includes the search text
-      return searchableValues.some((val) => val.toLowerCase().includes(filterValue));
+      return searchableValues.some((val) => val?.toLowerCase().includes(filterValue));
     });
 
-    this.tools.set({ tools: filtered || [] });
+    this.tools$.set({ tools: filtered || [] });
     console.log('Filtered tools:', filtered);
   }
 }
