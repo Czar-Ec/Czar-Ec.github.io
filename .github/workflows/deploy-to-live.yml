@@ -29,6 +29,11 @@ jobs:
       # build
       - run: yarn build:prod --output-path deploy
 
+      - name: Replace <base href="/"> with <base href=".">
+        run: |
+          echo "Replacing <base href=\"/\"> with <base href=\".\"> in dist folder..."
+          find dist -type f -name "index.html" -print -exec sed -i 's|<base href="/">|<base href=".">|' {} \;
+
       # push to master
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
