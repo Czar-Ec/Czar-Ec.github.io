@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  min-height: 0;
 }
 
 .info-page-panel-desktop {
@@ -16,6 +17,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  min-height: 0;
 }
 
 .info-page-panel-mobile {
@@ -26,6 +28,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  min-height: 0;
 }
 
 .back-button {
@@ -64,4 +67,6 @@
 .info-page-content-wrapper {
   display: flex;
   flex: 1;
+  min-height: 0;
+  width: 80%;
 }

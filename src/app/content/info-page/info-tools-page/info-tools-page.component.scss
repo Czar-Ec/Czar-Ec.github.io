@@ -7,10 +7,14 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  min-height: 0;
 }
 
 .tools-page-content {
+  display: flex;
   flex: 1;
   flex-direction: column;
   margin: 20px;
+  min-height: 0;
+  width: 100%;
 }

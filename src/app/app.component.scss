@@ -12,6 +12,7 @@
   background-color: var(--mat-sys-background);
   color: var(--mat-sys-on-surface);
   font: var(--mat-sys-brand-font-family);
+  min-height: 0;
 }
 
 .app-content {
@@ -22,6 +23,7 @@
   align-items: center;
   justify-content: center;
   padding-bottom: 0;
+  min-height: 0;
 }
 
 .app-footer {
