@@ -31,6 +31,12 @@ jobs:
         run: |
           yarn build:prod
 
+      - name: Replace <base href="/"> with <base href=".">
+        run: |
+          echo "Replacing <base href=\"/\"> with <base href=\".\"> in dist folder..."
+          find dist -type f -name "index.html" -print -exec sed -i 's|<base href="/">|<base href=".">|' {} \;
+
+
       # generate coverage badge
       - run: chmod +x ./scripts/coverage-generator.sh
       - run: ./scripts/coverage-generator.sh ./coverage/websiteportfolio/lcov.info

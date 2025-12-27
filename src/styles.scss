@@ -59,15 +59,9 @@
 body {
   display: flex;
   margin: 0;
-
+  overflow: hidden;
   background-color: var(--background-color) !important;
   color: var(--text-color) !important;
   height: 100vh;
-}
-
-body {
-  margin: 0;
-  background-color: var(--mat-sys-background);
-  color: var(--mat-sys-on-surface);
   font-family: 'Custom', 'Helvetica Neue', sans-serif;
 }

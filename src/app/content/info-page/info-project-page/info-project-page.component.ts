@@ -3,7 +3,7 @@ import { InfoPanelNavigationComponent } from '../info-panel-navigation/info-pane
 
 @Component({
   selector: 'app-info-project-page',
-  imports: [InfoPanelNavigationComponent],
+  imports: [],
   templateUrl: './info-project-page.component.html',
   styleUrl: './info-project-page.component.scss',
 })

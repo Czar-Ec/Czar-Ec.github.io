@@ -1,0 +1,54 @@
+<div class="info-tools-list-container">
+  @for(tool of tools$()?.tools ?? []; track tool.name) {
+  <mat-card class="tool-card" appearance="outlined">
+    <mat-card-header>
+      @if (isMobile$ | async) {
+      <div class="mobile-tool-title-container">
+        <mat-card-title class="mobile-tool-title">{{ tool.name }}</mat-card-title>
+        @if(tool.previewImage) {
+        <img
+          mat-card-image
+          class="mobile-tool-title-image"
+          [src]="tool.previewImage"
+          alt="{{ tool.name }} Preview Image"
+        />
+        }
+      </div>
+      } @else {
+      <mat-card-title class="desktop-tool-title">{{ tool.name }}</mat-card-title>
+      @if(tool.previewImage) {
+      <img mat-card-image [src]="tool.previewImage" alt="{{ tool.name }} Preview Image" />
+      } }
+    </mat-card-header>
+
+    <mat-card-content>
+      <p>{{ tool.description }}</p>
+
+      @if(tool.reference) {
+      <a mat-button color="primary" [href]="tool.reference" target="_blank"> More Info </a>
+      }
+
+      <p class="tool-confidence">How confident I am in using the tool: {{ tool.confidence }}%</p>
+
+      @if(tool.exampleProjects.length) {
+      <div class="example-projects">
+        <h3>Example Projects:</h3>
+        <ul>
+          @for(project of tool.exampleProjects; track project.name) {
+          <li>
+            <a [href]="project.url" target="_blank">{{ project.name }}</a>
+          </li>
+          }
+        </ul>
+      </div>
+      }
+
+      <div class="tool-tags">
+        @for(tag of tool.tags; track tag) {
+        <span class="tool-tag">{{ tag }}</span>
+        }
+      </div>
+    </mat-card-content>
+  </mat-card>
+  }
+</div>

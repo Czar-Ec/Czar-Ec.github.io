@@ -13,7 +13,6 @@ import { AsyncPipe, CommonModule } from '@angular/common';
     CommonModule,
     MatCardModule,
     MatButtonModule,
-    InfoPanelNavigationComponent
   ],
   templateUrl: './info-text-page.component.html',
   styleUrl: './info-text-page.component.scss',
