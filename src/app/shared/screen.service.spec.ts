@@ -1,8 +1,7 @@
-import { TestBed } from '@angular/core/testing';
-import { ScreenService } from './screen.service';
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
+import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
-import { provideZonelessChangeDetection } from '@angular/core';
+import { ScreenService } from './screen.service';
 
 describe('ScreenService', () => {
   let service: ScreenService;
@@ -23,7 +22,6 @@ describe('ScreenService', () => {
 
     TestBed.configureTestingModule({
       providers: [
-        provideZonelessChangeDetection(),
         ScreenService,
         { provide: BreakpointObserver, useValue: mockBreakpointObserver }
       ]

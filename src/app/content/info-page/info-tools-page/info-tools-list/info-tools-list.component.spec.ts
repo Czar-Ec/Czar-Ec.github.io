@@ -1,10 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InfoToolsList } from './info-tools-list.component';
-import { InfoToolsService } from '../info-tools.service';
-import { ScreenService } from '../../../../shared/screen.service';
-import { provideZonelessChangeDetection } from '@angular/core';
 import { of } from 'rxjs';
+import { ScreenService } from '../../../../shared/screen.service';
+import { InfoToolsService } from '../info-tools.service';
+import { InfoToolsList } from './info-tools-list.component';
 
 describe('InfoToolsList', () => {
   let component: InfoToolsList;
@@ -25,7 +24,6 @@ describe('InfoToolsList', () => {
     await TestBed.configureTestingModule({
       imports: [InfoToolsList],
       providers: [
-        provideZonelessChangeDetection(),
         {
           provide: InfoToolsService,
           useValue: infoToolsServiceStub,
