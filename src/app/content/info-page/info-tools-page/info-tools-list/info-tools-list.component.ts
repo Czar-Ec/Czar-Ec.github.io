@@ -4,6 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { InfoToolsService } from '../info-tools.service';
+import { Observable } from 'rxjs';
+import { ScreenService } from '../../../../shared/screen.service';
 
 @Component({
   selector: 'app-info-tools-list',
@@ -13,8 +15,13 @@ import { InfoToolsService } from '../info-tools.service';
 })
 export class InfoToolsList {
   public tools$;
+  public isMobile$: Observable<boolean> | null = null;
 
-  constructor(private readonly infoToolsService: InfoToolsService) {
+  constructor(
+    private readonly infoToolsService: InfoToolsService,
+    private screenService: ScreenService
+  ) {
+    this.isMobile$ = this.screenService.isMobile$;
     this.tools$ = this.infoToolsService.tools$;
   }
 }

@@ -32,8 +32,7 @@
 
 .tool-confidence {
   font-weight: 500;
-  color: rgba(0, 0, 0, 0.6);
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .mat-mdc-card-header {
@@ -41,16 +40,33 @@
   flex-direction: row;
 }
 
-::ng-deep .mat-mdc-card-header-text {
-  display: flex;
-  flex: 1;
-}
-
 .tool-card img[mat-card-image] {
   width: 100%;
   max-width: 100px;
   height: auto;
-  object-fit: cover; 
+  object-fit: cover;
+  border-radius: 0.5rem;
+  margin: 0.5rem;
+}
+
+.desktop-tool-title {
+  display: flex;
+  flex: 1;
+}
+
+.mobile-tool-title-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile-tool-title-image {
+  width: 100%;
+  max-width: 50px !important;
+  height: auto;
+  object-fit: cover;
   border-radius: 0.5rem;
   margin: 0.5rem;
 }
