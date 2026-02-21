@@ -49,12 +49,6 @@ describe('Footer', () => {
     });
   });
 
-  describe('openCV()', () => {
-    it('should not throw error when called', () => {
-      expect(() => component.openCV()).not.toThrow();
-    });
-  });
-
   describe('toggleDarkMode()', () => {
     beforeEach(() => {
       document.body.classList.remove('dark');

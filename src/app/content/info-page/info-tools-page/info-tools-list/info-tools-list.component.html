@@ -1,25 +1,25 @@
 <div class="info-tools-list-container">
   @for(tool of tools$()?.tools ?? []; track tool.name) {
   <mat-card class="tool-card" appearance="outlined">
-    <mat-card-header>
-      @if (isMobile$ | async) {
-      <div class="mobile-tool-title-container">
-        <mat-card-title class="mobile-tool-title">{{ tool.name }}</mat-card-title>
-        @if(tool.previewImage) {
-        <img
-          mat-card-image
-          class="mobile-tool-title-image"
-          [src]="tool.previewImage"
-          alt="{{ tool.name }} Preview Image"
-        />
-        }
-      </div>
-      } @else {
-      <mat-card-title class="desktop-tool-title">{{ tool.name }}</mat-card-title>
-      @if(tool.previewImage) {
-      <img mat-card-image [src]="tool.previewImage" alt="{{ tool.name }} Preview Image" />
-      } }
-    </mat-card-header>
+    @let isMobile = (isMobile$ | async);
+
+<mat-card-header>
+  <mat-card-title
+    [class.mobile-tool-title]="isMobile"
+    [class.desktop-tool-title]="!isMobile"
+  >
+    {{ tool.name }}
+  </mat-card-title>
+
+  @if(tool.previewImage) {
+    <img
+      mat-card-image
+      [class.mobile-tool-title-image]="isMobile"
+      [src]="tool.previewImage"
+      alt="{{ tool.name }} Preview Image"
+    />
+  }
+</mat-card-header>
 
     <mat-card-content>
       <p>{{ tool.description }}</p>
