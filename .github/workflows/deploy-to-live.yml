@@ -35,7 +35,7 @@ jobs:
       - name: Replace <base href="/"> with <base href=".">
         run: |
           echo "Replacing <base href=\"/\"> with <base href=\".\"> in dist folder..."
-          find dist -type f -name "index.html" -print -exec sed -i 's|<base href="/">|<base href=".">|' {} \;
+          find deploy -type f -name "index.html" -print -exec sed -i 's|<base href="/">|<base href=".">|' {} \;
 
       # push to master
       - name: Deploy 🚀
