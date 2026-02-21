@@ -1,0 +1,19 @@
+<div class="info-tools-filter-container">
+  <form [formGroup]="filterFormGroup">
+    <mat-form-field appearance="outline" class="filter-form-field">
+      <mat-label>Filter Tools</mat-label>
+      <input
+        matInput
+        formControlName="filterStr"
+        placeholder="Search to check if I have experience with a specific tool"
+      />
+      @if (filterFormGroup.get('filterStr')?.value) {
+      <button mat-icon-button matSuffix aria-label="Clear" type="button" (click)="clearFilter()">
+        <mat-icon>close</mat-icon>
+      </button>
+      } @else {
+      <mat-icon matSuffix>search</mat-icon>
+      }
+    </mat-form-field>
+  </form>
+</div>

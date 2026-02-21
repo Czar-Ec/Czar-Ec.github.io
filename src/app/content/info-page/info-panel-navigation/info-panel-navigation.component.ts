@@ -36,7 +36,6 @@ export class InfoPanelNavigationComponent implements AfterViewInit {
     if (panel && button) {
       const width = button.getBoundingClientRect().width;
       panel.style.width = `${width}px`;
-      console.log('Menu resized to', width);
     }
   }
 

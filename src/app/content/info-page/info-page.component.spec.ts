@@ -1,7 +1,5 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { InfoPageComponent } from './info-page.component';
-import { provideZonelessChangeDetection } from '@angular/core';
 
 describe('InfoPageComponent', () => {
   let component: InfoPageComponent;

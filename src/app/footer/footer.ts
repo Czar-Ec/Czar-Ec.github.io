@@ -5,10 +5,11 @@ import { Observable } from 'rxjs';
 import { ScreenService } from '../shared/screen.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-footer',
-  imports: [AsyncPipe, MatIconModule, MatButtonModule, MatSlideToggleModule],
+  imports: [AsyncPipe, MatIconModule, MatButtonModule, MatMenuModule, MatSlideToggleModule],
   templateUrl: './footer.html',
   styleUrls: ['./footer.scss'],
 })
@@ -21,11 +22,35 @@ export class Footer {
     this.isMobile$ = this.screenService.isMobile$;
   }
 
+  // constant for CV location
+  private PDF_CV_LOCATION = 'assets/docs/CzarEchavezCV.pdf';
+  private WORD_CV_LOCATION = 'assets/docs/CzarEchavezCV.docx';
+
   /**
    * Open CV in a new tab
    */
   public openCV(): void {
-    // window.open('/assets/CV.pdf', '_blank');
+    window.open(this.PDF_CV_LOCATION, '_blank');
+  }
+
+  /**
+   * Downloads PDF version of CV
+   */
+  public downloadCVPDF(): void {
+    const link = document.createElement('a');
+    link.href = this.PDF_CV_LOCATION;
+    link.download = 'CzarEchavezCV.pdf';
+    link.click();
+  }
+
+  /**
+   * Downloads PDF version of CV
+   */
+  public downloadCVWord(): void {
+    const link = document.createElement('a');
+    link.href = this.WORD_CV_LOCATION;
+    link.download = 'CzarEchavezCV.docx';
+    link.click();
   }
 
   /**

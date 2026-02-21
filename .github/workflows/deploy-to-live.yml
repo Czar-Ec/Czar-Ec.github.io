@@ -5,6 +5,9 @@ on:
 
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,9 +20,9 @@ jobs:
     steps:
       # install ubuntu deps
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -28,6 +31,11 @@ jobs:
 
       # build
       - run: yarn build:prod --output-path deploy
+
+      - name: Replace <base href="/"> with <base href=".">
+        run: |
+          echo "Replacing <base href=\"/\"> with <base href=\".\"> in dist folder..."
+          find dist -type f -name "index.html" -print -exec sed -i 's|<base href="/">|<base href=".">|' {} \;
 
       # push to master
       - name: Deploy 🚀

@@ -7,6 +7,7 @@ import { NgParticlesService, NgxParticlesModule } from '@tsparticles/angular';
 import type { ISourceOptions } from '@tsparticles/engine';
 import { loadSlim } from '@tsparticles/slim';
 import { Footer } from './footer/footer';
+import { ConfigService } from './shared/config.service';
 
 @Component({
   selector: 'app-root',
@@ -24,11 +25,14 @@ export class App {
   currentRoute = signal<string>('');
 
   constructor(
+    private readonly configService: ConfigService,
     private domSanitizer: DomSanitizer,
     private readonly ngParticlesService: NgParticlesService,
     private readonly http: HttpClient,
     private cdr: ChangeDetectorRef
   ) {
+    this.configService.loadConfig('assets/config/config.json');
+
     // Register SVG icons
     this.matIconRegistry.addSvgIcon(
       'github',
