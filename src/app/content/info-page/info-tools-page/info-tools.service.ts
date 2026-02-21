@@ -26,6 +26,9 @@ export class InfoToolsService {
    */
   private async getTools() {
     const data = await firstValueFrom(this.http.get<ToolsConfig>(this.toolsUrl));
+    if (data.tools) {
+      data.tools.sort((a, b) => a.name.localeCompare(b.name));
+    }
     this.tools$.set(data);
     this._toolsList = data;
   }
@@ -35,8 +38,6 @@ export class InfoToolsService {
    * @param filterStr
    */
   public applyFilters(filterStr: string) {
-    console.log('Applying filter:', filterStr);
-
     // lower case and trim the filter string
     const filterValue = filterStr?.trim().toLowerCase() || '';
 
@@ -63,6 +64,5 @@ export class InfoToolsService {
     });
 
     this.tools$.set({ tools: filtered || [] });
-    console.log('Filtered tools:', filtered);
   }
 }
