@@ -3,6 +3,19 @@
   min-height: 0;
 }
 
+.tool-info {
+  display: flex;
+  flex-direction: column;
+  flex: 4;
+}
+
+.tool-img {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
 .info-tools-list-container {
   display: flex;
   flex-direction: column;
@@ -13,6 +26,8 @@
 
 .tool-card {
   width: 100%; /* full width */
+  display: flex;
+  flex-direction: row;
 }
 
 .tool-tags {
@@ -46,9 +61,8 @@
 
 .tool-card img[mat-card-image] {
   width: 100%;
-  max-width: 100px;
   height: auto;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 0.5rem;
   margin: 0.5rem;
 }
@@ -73,4 +87,24 @@
   object-fit: cover;
   border-radius: 0.5rem;
   margin: 0.5rem;
+}
+
+.mobile-tool-card {
+  flex-direction: column;
+}
+
+.mobile-tool-card .tool-info {
+  flex: none;
+}
+
+.mobile-tool-card .tool-img {
+  flex: none;
+  width: 100%;
+  justify-content: center;
+}
+
+.mobile-tool-card .mobile-tool-title-image {
+  width: 100%;
+  max-width: 100% !important;
+  margin: 0.5rem 0;
 }

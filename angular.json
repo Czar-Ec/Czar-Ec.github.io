@@ -59,6 +59,11 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          "options": {
+            "allowedHosts": [
+              "arcturus"
+            ]
+          },
           "configurations": {
             "production": {
               "buildTarget": "WebsitePortfolio:build:production"
